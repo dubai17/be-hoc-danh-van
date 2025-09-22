@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>DẠY HỌC VẦN LỚP 1</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f9ff;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #d62828;
+      margin-bottom: 30px;
+    }
+    .menu {
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 12px 20px;
+      margin: 8px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background: #0077b6;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #0096c7;
+    }
+    .video-container {
+      position: relative;
+      width: 80%;
+      max-width: 900px;
+      margin: auto;
+      padding-bottom: 45%; /* Tỷ lệ 16:9 */
+      height: 0;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <h1>DẠY HỌC VẦN LỚP 1</h1>
+
+  <div class="menu">
+    <button onclick="changeVideo(0)">Bé học vần OI - AI</button>
+    <button onclick="changeVideo(1)">Bé học vần ON - ÂN</button>
+    <button onclick="changeVideo(2)">Bé học vần UA - ƯA</button>
+    <button onclick="changeVideo(3)">Bé học vần ÂN - ĂN</button>
+  </div>
+
+  <div class="video-container">
+    <iframe id="videoFrame" 
+      src="https://www.youtube.com/embed/YLM9IUypgqQ" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <script>
+    const videos = [
+      "https://www.youtube.com/embed/YLM9IUypgqQ",
+      "https://www.youtube.com/embed/ww5wazKT7Ck",
+      "https://www.youtube.com/embed/-O8EgkNBARE",
+      "https://www.youtube.com/embed/zFXL3vkHA1A"
+    ];
+
+    function changeVideo(index) {
+      document.getElementById("videoFrame").src = videos[index];
+    }
+  </script>
+</body>
+</html>
