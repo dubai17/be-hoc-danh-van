@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bộ Trò Chơi Luyện Vần</title>
+    <title>Bộ Trò Chơi Luyện Phát Âm</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;700&display=swap');
@@ -14,7 +14,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 10px;
+            padding: 20px;
             overflow: hidden;
             background-color: #f0f8ff; /* Default background */
             transition: background-color 0.5s ease-in-out;
@@ -22,8 +22,8 @@
 
         .game-container {
             max-width: 800px;
-            width: 98%;
-            padding: 1rem;
+            width: 95%;
+            padding: 2rem;
             background-color: #fff;
             border-radius: 2rem;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.1);
@@ -37,7 +37,7 @@
             font-family: 'Pacifico', cursive;
             font-size: 2.5rem;
             color: #4a90e2;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             text-shadow: 2px 2px 0 #fff;
         }
         
@@ -46,7 +46,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             max-height: 150px;
             overflow-y: auto;
             padding-right: 10px;
@@ -55,8 +55,8 @@
         .nav-btn {
             background-color: #a0a0a0;
             color: white;
-            padding: 0.4rem 0.6rem;
-            font-size: 0.9rem;
+            padding: 0.5rem 0.75rem;
+            font-size: 1rem;
             font-weight: bold;
             border-radius: 9999px;
             cursor: pointer;
@@ -69,17 +69,17 @@
         }
 
         .sentence-display {
-            min-height: 100px;
+            min-height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: bold;
             color: #3d3d3d;
-            padding: 0.8rem;
+            padding: 1rem;
             background-color: #f7f7f7;
             border-radius: 1.5rem;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
             border: 2px dashed #a0a0a0;
             line-height: 1.5;
@@ -92,8 +92,8 @@
         }
 
         .icon {
-            margin: 0 0.4rem;
-            font-size: 2rem;
+            margin: 0 0.5rem;
+            font-size: 2.5rem;
             vertical-align: middle;
         }
 
@@ -101,14 +101,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
 
         .btn {
             background-color: #4a90e2;
             color: white;
-            padding: 0.4rem 0.6rem;
-            font-size: 1rem;
+            padding: 0.5rem 0.8rem;
+            font-size: 1.25rem;
             font-weight: bold;
             border-radius: 9999px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -136,25 +136,18 @@
             cursor: not-allowed;
             box-shadow: none;
         }
-        
-        .btn-text {
-            display: none;
-        }
-        .btn-icon {
-            display: block;
-        }
 
         .read-btn {
             background-color: #ff69b4;
             color: #fff;
-            font-size: 1rem;
-            padding: 0.4rem 0.8rem;
+            font-size: 1.25rem;
+            padding: 0.75rem 1.5rem;
             border-radius: 9999px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border: 3px solid white;
             transition: all 0.2s ease-in-out;
             cursor: pointer;
-            margin-top: 1rem;
+            margin-top: 2rem;
             font-weight: bold;
         }
         
@@ -173,53 +166,8 @@
             cursor: not-allowed;
         }
 
-        .record-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .record-btn, .playback-btn {
-            background-color: #17c1d7;
-            color: #fff;
-            padding: 0.6rem 1.2rem;
-            font-size: 1rem;
-            border-radius: 9999px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border: 3px solid white;
-            transition: all 0.2s ease-in-out;
-            cursor: pointer;
-        }
-        
-        .record-btn:hover:not(:disabled), .playback-btn:hover:not(:disabled) {
-            background-color: #129fae;
-        }
-        .record-btn:active:not(:disabled), .playback-btn:active:not(:disabled) {
-            transform: translateY(0);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.08);
-        }
-
-        .record-btn.recording {
-            background-color: #c71585;
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .record-btn:disabled, .playback-btn:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-            box-shadow: none;
-        }
-
         .counter {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: #4a90e2;
             text-shadow: 1px 1px 0 #fff;
@@ -253,74 +201,56 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
-        .timer-container {
-            font-size: 1rem;
-            font-weight: bold;
-            color: #4a90e2;
-            margin-top: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .timer-btn {
-            padding: 0.2rem 0.5rem;
-            font-size: 0.9rem;
-            background-color: #4a90e2;
-            color: white;
-            border-radius: 9999px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-            cursor: pointer;
-        }
-
-        .timer-btn:hover {
-            transform: scale(1.05);
-        }
         
-        @media (min-width: 641px) {
-            .btn-text {
-                display: block;
+        @media (max-width: 640px) {
+            body {
+                padding: 10px;
             }
-            .btn-icon {
-                display: none;
+            .game-container {
+                padding: 1rem;
+            }
+            .title {
+                font-size: 1.75rem;
+            }
+            .sentence-display {
+                font-size: 1.5rem;
+                min-height: 80px;
+            }
+            .nav-btn {
+                font-size: 0.875rem;
+                padding: 0.4rem 0.6rem;
             }
             .btn {
-                padding: 0.5rem 0.8rem;
+                font-size: 1rem;
+                padding: 0.4rem 0.6rem;
+            }
+            .btn svg {
+                width: 1rem;
+                height: 1rem;
+            }
+            .read-btn {
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
+            }
+            .icon {
+                font-size: 2rem;
+            }
+            .btn span {
+                display: none;
             }
         }
 
         /* --- Theme-specific styles --- */
-        .theme-ai { background-color: #fce8a9; }
-        .theme-ai .game-container { border-color: #ffcc00; }
-        .theme-ai .title, .theme-ai .counter, .theme-ai .timer-container { color: #ffcc00; }
-        .theme-ai .btn, .theme-ai .timer-btn { background-color: #ffd700; border-color: #fff; }
-        .theme-ai .btn:hover:not(:disabled), .theme-ai .timer-btn:hover { background-color: #ffc200; }
-        .theme-ai .sentence-display { background-color: #fffacd; border-color: #ffcc00; }
-        .theme-ai .loading-spinner { border-top-color: #ffcc00; }
-        .theme-ai .nav-btn.active { background-color: #ffcc00; }
+        .theme-a { background-color: #fce8a9; } /* Bright yellow */
+        .theme-a .game-container { border-color: #ffcc00; }
+        .theme-a .title, .theme-a .counter, .theme-a .timer-container { color: #ffcc00; }
+        .theme-a .btn, .theme-a .timer-btn { background-color: #ffd700; border-color: #fff; }
+        .theme-a .btn:hover:not(:disabled), .theme-a .timer-btn:hover { background-color: #ffc200; }
+        .theme-a .sentence-display { background-color: #fffacd; border-color: #ffcc00; }
+        .theme-a .loading-spinner { border-top-color: #ffcc00; }
+        .theme-a .nav-btn.active { background-color: #ffcc00; }
 
-        .theme-oi { background-color: #e6e6fa; } 
-        .theme-oi .game-container { border-color: #9370db; }
-        .theme-oi .title, .theme-oi .counter, .theme-oi .timer-container { color: #9370db; }
-        .theme-oi .btn, .theme-oi .timer-btn { background-color: #9370db; border-color: #fff; }
-        .theme-oi .btn:hover:not(:disabled), .theme-oi .timer-btn:hover { background-color: #8a2be2; }
-        .theme-oi .sentence-display { background-color: #f8f8ff; border-color: #9370db; }
-        .theme-oi .loading-spinner { border-top-color: #9370db; }
-        .theme-oi .nav-btn.active { background-color: #9370db; }
-
-        .theme-on { background-color: #f0f8ff; } 
-        .theme-on .game-container { border-color: #4a90e2; }
-        .theme-on .title, .theme-on .counter, .theme-on .timer-container { color: #4a90e2; }
-        .theme-on .btn, .theme-on .timer-btn { background-color: #4a90e2; border-color: #fff; }
-        .theme-on .btn:hover:not(:disabled), .theme-on .timer-btn:hover { background-color: #357bd9; }
-        .theme-on .sentence-display { background-color: #c8e6c9; border-color: #4a90e2; }
-        .theme-on .loading-spinner { border-top-color: #4a90e2; }
-        .theme-on .nav-btn.active { background-color: #4a90e2; }
-
-        .theme-an { background-color: #ffcc99; }
+        .theme-an { background-color: #ffcc99; } /* Orange */
         .theme-an .game-container { border-color: #ff9933; }
         .theme-an .title, .theme-an .counter, .theme-an .timer-container { color: #ff9933; }
         .theme-an .btn, .theme-an .timer-btn { background-color: #ff9933; border-color: #fff; }
@@ -329,470 +259,369 @@
         .theme-an .loading-spinner { border-top-color: #ff9933; }
         .theme-an .nav-btn.active { background-color: #ff9933; }
 
-        .theme-ua { background-color: #f7e9f7; } 
-        .theme-ua .game-container { border-color: #d889d8; }
-        .theme-ua .title, .theme-ua .counter, .theme-ua .timer-container { color: #d889d8; }
-        .theme-ua .btn, .theme-ua .timer-btn { background-color: #d889d8; border-color: #fff; }
-        .theme-ua .btn:hover:not(:disabled), .theme-ua .timer-btn:hover { background-color: #c960c9; }
-        .theme-ua .sentence-display { background-color: #ffe4e1; border-color: #d889d8; }
-        .theme-ua .loading-spinner { border-top-color: #d889d8; }
-        .theme-ua .nav-btn.active { background-color: #d889d8; }
+        .theme-a-hat { background-color: #e6e6fa; } /* Light purple */
+        .theme-a-hat .game-container { border-color: #9370db; }
+        .theme-a-hat .title, .theme-a-hat .counter, .theme-a-hat .timer-container { color: #9370db; }
+        .theme-a-hat .btn, .theme-a-hat .timer-btn { background-color: #9370db; border-color: #fff; }
+        .theme-a-hat .btn:hover:not(:disabled), .theme-a-hat .timer-btn:hover { background-color: #8a2be2; }
+        .theme-a-hat .sentence-display { background-color: #f8f8ff; border-color: #9370db; }
+        .theme-a-hat .loading-spinner { border-top-color: #9370db; }
+        .theme-a-hat .nav-btn.active { background-color: #9370db; }
 
-        .theme-uu { background-color: #e0f2f1; }
-        .theme-uu .game-container { border-color: #2e8b57; }
-        .theme-uu .title, .theme-uu .counter, .theme-uu .timer-container { color: #2e8b57; }
-        .theme-uu .btn, .theme-uu .timer-btn { background-color: #2e8b57; border-color: #fff; }
-        .theme-uu .btn:hover:not(:disabled), .theme-uu .timer-btn:hover { background-color: #1f6b43; }
-        .theme-uu .sentence-display { background-color: #d4edda; border-color: #2e8b57; }
-        .theme-uu .loading-spinner { border-top-color: #2e8b57; }
-        .theme-uu .nav-btn.active { background-color: #2e8b57; }
+        .theme-b { background-color: #c8e6c9; } /* Light green */
+        .theme-b .game-container { border-color: #4a90e2; }
+        .theme-b .title, .theme-b .counter, .theme-b .timer-container { color: #4a90e2; }
+        .theme-b .btn, .theme-b .timer-btn { background-color: #4a90e2; border-color: #fff; }
+        .theme-b .btn:hover:not(:disabled), .theme-b .timer-btn:hover { background-color: #357bd9; }
+        .theme-b .sentence-display { background-color: #f0fff0; border-color: #4a90e2; }
+        .theme-b .loading-spinner { border-top-color: #4a90e2; }
+        .theme-b .nav-btn.active { background-color: #4a90e2; }
 
-        .theme-a-mu { background-color: #fff8e1; }
-        .theme-a-mu .game-container { border-color: #f99061; }
-        .theme-a-mu .title, .theme-a-mu .counter, .theme-a-mu .timer-container { color: #f99061; }
-        .theme-a-mu .btn, .theme-a-mu .timer-btn { background-color: #f99061; border-color: #fff; }
-        .theme-a-mu .btn:hover:not(:disabled), .theme-a-mu .timer-btn:hover { background-color: #f47b4d; }
-        .theme-a-mu .sentence-display { background-color: #fffacd; border-color: #f99061; }
-        .theme-a-mu .loading-spinner { border-top-color: #f99061; }
-        .theme-a-mu .nav-btn.active { background-color: #f99061; }
+        .theme-c { background-color: #f0f8ff; } /* Blue */
+        .theme-c .game-container { border-color: #4682b4; }
+        .theme-c .title, .theme-c .counter, .theme-c .timer-container { color: #4682b4; }
+        .theme-c .btn, .theme-c .timer-btn { background-color: #4682b4; border-color: #fff; }
+        .theme-c .btn:hover:not(:disabled), .theme-c .timer-btn:hover { background-color: #2e648e; }
+        .theme-c .sentence-display { background-color: #add8e6; border-color: #4682b4; }
+        .theme-c .loading-spinner { border-top-color: #4682b4; }
+        .theme-c .nav-btn.active { background-color: #4682b4; }
 
-        .theme-a-mo { background-color: #b0e0e6; }
-        .theme-a-mo .game-container { border-color: #4682b4; }
-        .theme-a-mo .title, .theme-a-mo .counter, .theme-a-mo .timer-container { color: #4682b4; }
-        .theme-a-mo .btn, .theme-a-mo .timer-btn { background-color: #4682b4; border-color: #fff; }
-        .theme-a-mo .btn:hover:not(:disabled), .theme-a-mo .timer-btn:hover { background-color: #2e648e; }
-        .theme-a-mo .sentence-display { background-color: #add8e6; border-color: #4682b4; }
-        .theme-a-mo .loading-spinner { border-top-color: #4682b4; }
-        .theme-a-mo .nav-btn.active { background-color: #4682b4; }
+        .theme-d { background-color: #f7e9f7; } /* Pink */
+        .theme-d .game-container { border-color: #d889d8; }
+        .theme-d .title, .theme-d .counter, .theme-d .timer-container { color: #d889d8; }
+        .theme-d .btn, .theme-d .timer-btn { background-color: #d889d8; border-color: #fff; }
+        .theme-d .btn:hover:not(:disabled), .theme-d .timer-btn:hover { background-color: #c960c9; }
+        .theme-d .sentence-display { background-color: #ffe4e1; border-color: #d889d8; }
+        .theme-d .loading-spinner { border-top-color: #d889d8; }
+        .theme-d .nav-btn.active { background-color: #d889d8; }
+
+        .theme-d-hat { background-color: #f8e8b0; } /* Yellow */
+        .theme-d-hat .game-container { border-color: #ffc400; }
+        .theme-d-hat .title, .theme-d-hat .counter, .theme-d-hat .timer-container { color: #ffc400; }
+        .theme-d-hat .btn, .theme-d-hat .timer-btn { background-color: #ffc400; border-color: #fff; }
+        .theme-d-hat .btn:hover:not(:disabled), .theme-d-hat .timer-btn:hover { background-color: #e5b000; }
+        .theme-d-hat .sentence-display { background-color: #fff8d7; border-color: #ffc400; }
+        .theme-d-hat .loading-spinner { border-top-color: #ffc400; }
+        .theme-d-hat .nav-btn.active { background-color: #ffc400; }
+
+        .theme-e { background-color: #f6e4a2; } /* Pastel yellow */
+        .theme-e .game-container { border-color: #f99061; }
+        .theme-e .title, .theme-e .counter, .theme-e .timer-container { color: #f99061; }
+        .theme-e .btn, .theme-e .timer-btn { background-color: #f99061; border-color: #fff; }
+        .theme-e .btn:hover:not(:disabled), .theme-e .timer-btn:hover { background-color: #f47b4d; }
+        .theme-e .sentence-display { background-color: #fff8e1; border-color: #f99061; }
+        .theme-e .loading-spinner { border-top-color: #f99061; }
+        .theme-e .nav-btn.active { background-color: #f99061; }
+
+        .theme-e-hat { background-color: #f0fff0; } /* Honeydew */
+        .theme-e-hat .game-container { border-color: #228b22; }
+        .theme-e-hat .title, .theme-e-hat .counter, .theme-e-hat .timer-container { color: #228b22; }
+        .theme-e-hat .btn, .theme-e-hat .timer-btn { background-color: #228b22; border-color: #fff; }
+        .theme-e-hat .btn:hover:not(:disabled), .theme-e-hat .timer-btn:hover { background-color: #176417; }
+        .theme-e-hat .sentence-display { background-color: #c8e6c9; border-color: #228b22; }
+        .theme-e-hat .loading-spinner { border-top-color: #228b22; }
+        .theme-e-hat .nav-btn.active { background-color: #228b22; }
+
+        .theme-g { background-color: #e6f7ff; } /* Light blue */
+        .theme-g .game-container { border-color: #00aaff; }
+        .theme-g .title, .theme-g .counter, .theme-g .timer-container { color: #00aaff; }
+        .theme-g .btn, .theme-g .timer-btn { background-color: #00aaff; border-color: #fff; }
+        .theme-g .btn:hover:not(:disabled), .theme-g .timer-btn:hover { background-color: #008fcc; }
+        .theme-g .sentence-display { background-color: #b3e0ff; border-color: #00aaff; }
+        .theme-g .loading-spinner { border-top-color: #00aaff; }
+        .theme-g .nav-btn.active { background-color: #00aaff; }
+
+        .theme-h { background-color: #f8f8f2; } /* Off-white */
+        .theme-h .game-container { border-color: #8b4513; }
+        .theme-h .title, .theme-h .counter, .theme-h .timer-container { color: #8b4513; }
+        .theme-h .btn, .theme-h .timer-btn { background-color: #8b4513; border-color: #fff; }
+        .theme-h .btn:hover:not(:disabled), .theme-h .timer-btn:hover { background-color: #6d330c; }
+        .theme-h .sentence-display { background-color: #f5deb3; border-color: #8b4513; }
+        .theme-h .loading-spinner { border-top-color: #8b4513; }
+        .theme-h .nav-btn.active { background-color: #8b4513; }
+
+        .theme-i { background-color: #fce8e8; } /* Light pink */
+        .theme-i .game-container { border-color: #e06666; }
+        .theme-i .title, .theme-i .counter, .theme-i .timer-container { color: #e06666; }
+        .theme-i .btn, .theme-i .timer-btn { background-color: #e06666; border-color: #fff; }
+        .theme-i .btn:hover:not(:disabled), .theme-i .timer-btn:hover { background-color: #cc3333; }
+        .theme-i .sentence-display { background-color: #fff0f0; border-color: #e06666; }
+        .theme-i .loading-spinner { border-top-color: #e06666; }
+        .theme-i .nav-btn.active { background-color: #e06666; }
+
+        .theme-k { background-color: #fff8e1; } /* Light yellow */
+        .theme-k .game-container { border-color: #f99061; }
+        .theme-k .title, .theme-k .counter, .theme-k .timer-container { color: #f99061; }
+        .theme-k .btn, .theme-k .timer-btn { background-color: #f99061; border-color: #fff; }
+        .theme-k .btn:hover:not(:disabled), .theme-k .timer-btn:hover { background-color: #f47b4d; }
+        .theme-k .sentence-display { background-color: #fffacd; border-color: #f99061; }
+        .theme-k .loading-spinner { border-top-color: #f99061; }
+        .theme-k .nav-btn.active { background-color: #f99061; }
+
+        .theme-l { background-color: #f0f8ff; } /* Light blue */
+        .theme-l .game-container { border-color: #4a90e2; }
+        .theme-l .title, .theme-l .counter, .theme-l .timer-container { color: #4a90e2; }
+        .theme-l .btn, .theme-l .timer-btn { background-color: #4a90e2; border-color: #fff; }
+        .theme-l .btn:hover:not(:disabled), .theme-l .timer-btn:hover { background-color: #357bd9; }
+        .theme-l .sentence-display { background-color: #c8e6c9; border-color: #4a90e2; }
+        .theme-l .loading-spinner { border-top-color: #4a90e2; }
+        .theme-l .nav-btn.active { background-color: #4a90e2; }
+
+        .theme-m { background-color: #fce8a9; } /* Bright yellow */
+        .theme-m .game-container { border-color: #ffcc00; }
+        .theme-m .title, .theme-m .counter, .theme-m .timer-container { color: #ffcc00; }
+        .theme-m .btn, .theme-m .timer-btn { background-color: #ffd700; border-color: #fff; }
+        .theme-m .btn:hover:not(:disabled), .theme-m .timer-btn:hover { background-color: #ffc200; }
+        .theme-m .sentence-display { background-color: #fffacd; border-color: #ffcc00; }
+        .theme-m .loading-spinner { border-top-color: #ffcc00; }
+        .theme-m .nav-btn.active { background-color: #ffcc00; }
+
+        .theme-n { background-color: #e0f2f1; } /* Light cyan-green for forest theme */
+        .theme-n .game-container { border-color: #2e8b57; }
+        .theme-n .title, .theme-n .counter, .theme-n .timer-container { color: #2e8b57; }
+        .theme-n .btn, .theme-n .timer-btn { background-color: #2e8b57; border-color: #fff; }
+        .theme-n .btn:hover:not(:disabled), .theme-n .timer-btn:hover { background-color: #1f6b43; }
+        .theme-n .sentence-display { background-color: #d4edda; border-color: #2e8b57; }
+        .theme-n .loading-spinner { border-top-color: #2e8b57; }
+        .theme-n .nav-btn.active { background-color: #2e8b57; }
+
+        .theme-o { background-color: #ffe4e1; } /* Misty Rose */
+        .theme-o .game-container { border-color: #d889d8; }
+        .theme-o .title, .theme-o .counter, .theme-o .timer-container { color: #d889d8; }
+        .theme-o .btn, .theme-o .timer-btn { background-color: #d889d8; border-color: #fff; }
+        .theme-o .btn:hover:not(:disabled), .theme-o .timer-btn:hover { background-color: #c960c9; }
+        .theme-o .sentence-display { background-color: #fffacd; border-color: #d889d8; }
+        .theme-o .loading-spinner { border-top-color: #d889d8; }
+        .theme-o .nav-btn.active { background-color: #d889d8; }
+
+        .theme-o-hat { background-color: #e6e6fa; } /* Light purple */
+        .theme-o-hat .game-container { border-color: #9370db; }
+        .theme-o-hat .title, .theme-o-hat .counter, .theme-o-hat .timer-container { color: #9370db; }
+        .theme-o-hat .btn, .theme-o-hat .timer-btn { background-color: #9370db; border-color: #fff; }
+        .theme-o-hat .btn:hover:not(:disabled), .theme-o-hat .timer-btn:hover { background-color: #8a2be2; }
+        .theme-o-hat .sentence-display { background-color: #f8f8ff; border-color: #9370db; }
+        .theme-o-hat .loading-spinner { border-top-color: #9370db; }
+        .theme-o-hat .nav-btn.active { background-color: #9370db; }
+
+        .theme-o-mo { background-color: #b0e0e6; } /* Powder Blue */
+        .theme-o-mo .game-container { border-color: #4682b4; }
+        .theme-o-mo .title, .theme-o-mo .counter, .theme-o-mo .timer-container { color: #4682b4; }
+        .theme-o-mo .btn, .theme-o-mo .timer-btn { background-color: #4682b4; border-color: #fff; }
+        .theme-o-mo .btn:hover:not(:disabled), .theme-o-mo .timer-btn:hover { background-color: #2e648e; }
+        .theme-o-mo .sentence-display { background-color: #add8e6; border-color: #4682b4; }
+        .theme-o-mo .loading-spinner { border-top-color: #4682b4; }
+        .theme-o-mo .nav-btn.active { background-color: #4682b4; }
+
+        .theme-p { background-color: #fff8e1; } /* Light yellow */
+        .theme-p .game-container { border-color: #f99061; }
+        .theme-p .title, .theme-p .counter, .theme-p .timer-container { color: #f99061; }
+        .theme-p .btn, .theme-p .timer-btn { background-color: #f99061; border-color: #fff; }
+        .theme-p .btn:hover:not(:disabled), .theme-p .timer-btn:hover { background-color: #f47b4d; }
+        .theme-p .sentence-display { background-color: #fffacd; border-color: #f99061; }
+        .theme-p .loading-spinner { border-top-color: #f99061; }
+        .theme-p .nav-btn.active { background-color: #f99061; }
+
+        .theme-q { background-color: #ffe4e1; } /* Misty Rose */
+        .theme-q .game-container { border-color: #d889d8; }
+        .theme-q .title, .theme-q .counter, .theme-q .timer-container { color: #d889d8; }
+        .theme-q .btn, .theme-q .timer-btn { background-color: #d889d8; border-color: #fff; }
+        .theme-q .btn:hover:not(:disabled), .theme-q .timer-btn:hover { background-color: #c960c9; }
+        .theme-q .sentence-display { background-color: #fffacd; border-color: #d889d8; }
+        .theme-q .loading-spinner { border-top-color: #d889d8; }
+        .theme-q .nav-btn.active { background-color: #d889d8; }
+
+        .theme-r { background-color: #f7e9f7; } /* Light Lavender */
+        .theme-r .game-container { border-color: #d889d8; }
+        .theme-r .title, .theme-r .counter, .theme-r .timer-container { color: #d889d8; }
+        .theme-r .btn, .theme-r .timer-btn { background-color: #d889d8; border-color: #fff; }
+        .theme-r .btn:hover:not(:disabled), .theme-r .timer-btn:hover { background-color: #c960c9; }
+        .theme-r .sentence-display { background-color: #ffe4e1; border-color: #d889d8; }
+        .theme-r .loading-spinner { border-top-color: #d889d8; }
+        .theme-r .nav-btn.active { background-color: #d889d8; }
+
+        .theme-s { background-color: #f0f8ff; } /* Alice Blue */
+        .theme-s .game-container { border-color: #4682b4; }
+        .theme-s .title, .theme-s .counter, .theme-s .timer-container { color: #4682b4; }
+        .theme-s .btn, .theme-s .timer-btn { background-color: #4682b4; border-color: #fff; }
+        .theme-s .btn:hover:not(:disabled), .theme-s .timer-btn:hover { background-color: #2e648e; }
+        .theme-s .sentence-display { background-color: #add8e6; border-color: #4682b4; }
+        .theme-s .loading-spinner { border-top-color: #4682b4; }
+        .theme-s .nav-btn.active { background-color: #4682b4; }
+
+        .theme-t { background-color: #f6e4a2; } /* Pastel yellow */
+        .theme-t .game-container { border-color: #f99061; }
+        .theme-t .title, .theme-t .counter, .theme-t .timer-container { color: #f99061; }
+        .theme-t .btn, .theme-t .timer-btn { background-color: #f99061; border-color: #fff; }
+        .theme-t .btn:hover:not(:disabled), .theme-t .timer-btn:hover { background-color: #f47b4d; }
+        .theme-t .sentence-display { background-color: #fff8e1; border-color: #f99061; }
+        .theme-t .loading-spinner { border-top-color: #f99061; }
+        .theme-t .nav-btn.active { background-color: #f99061; }
+
+        .theme-u { background-color: #f0f8ff; } /* Blue */
+        .theme-u .game-container { border-color: #4a90e2; }
+        .theme-u .title, .theme-u .counter, .theme-u .timer-container { color: #4a90e2; }
+        .theme-u .btn, .theme-u .timer-btn { background-color: #4a90e2; border-color: #fff; }
+        .theme-u .btn:hover:not(:disabled), .theme-u .timer-btn:hover { background-color: #357bd9; }
+        .theme-u .sentence-display { background-color: #c8e6c9; border-color: #4a90e2; }
+        .theme-u .loading-spinner { border-top-color: #4a90e2; }
+        .theme-u .nav-btn.active { background-color: #4a90e2; }
+
+        .theme-u-mo { background-color: #e0f2f1; } /* Light cyan-green for forest theme */
+        .theme-u-mo .game-container { border-color: #2e8b57; }
+        .theme-u-mo .title, .theme-u-mo .counter, .theme-u-mo .timer-container { color: #2e8b57; }
+        .theme-u-mo .btn, .theme-u-mo .timer-btn { background-color: #2e8b57; border-color: #fff; }
+        .theme-u-mo .btn:hover:not(:disabled), .theme-u-mo .timer-btn:hover { background-color: #1f6b43; }
+        .theme-u-mo .sentence-display { background-color: #d4edda; border-color: #2e8b57; }
+        .theme-u-mo .loading-spinner { border-top-color: #2e8b57; }
+        .theme-u-mo .nav-btn.active { background-color: #2e8b57; }
+
+        .theme-v { background-color: #e6e6fa; } /* Light purple */
+        .theme-v .game-container { border-color: #9370db; }
+        .theme-v .title, .theme-v .counter, .theme-v .timer-container { color: #9370db; }
+        .theme-v .btn, .theme-v .timer-btn { background-color: #9370db; border-color: #fff; }
+        .theme-v .btn:hover:not(:disabled), .theme-v .timer-btn:hover { background-color: #8a2be2; }
+        .theme-v .sentence-display { background-color: #f8f8ff; border-color: #9370db; }
+        .theme-v .loading-spinner { border-top-color: #9370db; }
+        .theme-v .nav-btn.active { background-color: #9370db; }
         
-        .theme-oi-hat { background-color: #e6e6fa; } 
-        .theme-oi-hat .game-container { border-color: #9370db; }
-        .theme-oi-hat .title, .theme-oi-hat .counter, .theme-oi-hat .timer-container { color: #9370db; }
-        .theme-oi-hat .btn, .theme-oi-hat .timer-btn { background-color: #9370db; border-color: #fff; }
-        .theme-oi-hat .btn:hover:not(:disabled), .theme-oi-hat .timer-btn:hover { background-color: #8a2be2; }
-        .theme-oi-hat .sentence-display { background-color: #f8f8ff; border-color: #9370db; }
-        .theme-oi-hat .loading-spinner { border-top-color: #9370db; }
-        .theme-oi-hat .nav-btn.active { background-color: #9370db; }
+        .theme-x { background-color: #f5f5dc; } /* Beige */
+        .theme-x .game-container { border-color: #ff6347; }
+        .theme-x .title, .theme-x .counter, .theme-x .timer-container { color: #ff6347; }
+        .theme-x .btn, .theme-x .timer-btn { background-color: #ff6347; border-color: #fff; }
+        .theme-x .btn:hover:not(:disabled), .theme-x .timer-btn:hover { background-color: #e5533d; }
+        .theme-x .sentence-display { background-color: #ffe4e1; border-color: #ff6347; }
+        .theme-x .loading-spinner { border-top-color: #ff6347; }
+        .theme-x .nav-btn.active { background-color: #ff6347; }
         
-        .theme-oi-mo { background-color: #f0fff0; }
-        .theme-oi-mo .game-container { border-color: #228b22; }
-        .theme-oi-mo .title, .theme-oi-mo .counter, .theme-oi-mo .timer-container { color: #228b22; }
-        .theme-oi-mo .btn, .theme-oi-mo .timer-btn { background-color: #228b22; border-color: #fff; }
-        .theme-oi-mo .btn:hover:not(:disabled), .theme-oi-mo .timer-btn:hover { background-color: #176417; }
-        .theme-oi-mo .sentence-display { background-color: #c8e6c9; border-color: #228b22; }
-        .theme-oi-mo .loading-spinner { border-top-color: #228b22; }
-        .theme-oi-mo .nav-btn.active { background-color: #228b22; }
+        .theme-y { background-color: #ffb6c1; } /* Light pink */
+        .theme-y .game-container { border-color: #ff69b4; }
+        .theme-y .title, .theme-y .counter, .theme-y .timer-container { color: #ff69b4; }
+        .theme-y .btn, .theme-y .timer-btn { background-color: #ff69b4; border-color: #fff; }
+        .theme-y .btn:hover:not(:disabled), .theme-y .timer-btn:hover { background-color: #c71585; }
+        .theme-y .sentence-display { background-color: #ffe4e1; border-color: #ff69b4; }
+        .theme-y .loading-spinner { border-top-color: #ff69b4; }
+        .theme-y .nav-btn.active { background-color: #ff69b4; }
         
-        .theme-en { background-color: #ffe4e1; }
-        .theme-en .game-container { border-color: #d889d8; }
-        .theme-en .title, .theme-en .counter, .theme-en .timer-container { color: #d889d8; }
-        .theme-en .btn, .theme-en .timer-btn { background-color: #d889d8; border-color: #fff; }
-        .theme-en .btn:hover:not(:disabled), .theme-en .timer-btn:hover { background-color: #c960c9; }
-        .theme-en .sentence-display { background-color: #fff0f0; border-color: #d889d8; }
-        .theme-en .loading-spinner { border-top-color: #d889d8; }
-        .theme-en .nav-btn.active { background-color: #d889d8; }
-        
-        .theme-en-hat { background-color: #b0e0e6; }
-        .theme-en-hat .game-container { border-color: #4682b4; }
-        .theme-en-hat .title, .theme-en-hat .counter, .theme-en-hat .timer-container { color: #4682b4; }
-        .theme-en-hat .btn, .theme-en-hat .timer-btn { background-color: #4682b4; border-color: #fff; }
-        .theme-en-hat .btn:hover:not(:disabled), .theme-en-hat .timer-btn:hover { background-color: #2e648e; }
-        .theme-en-hat .sentence-display { background-color: #add8e6; border-color: #4682b4; }
-        .theme-en-hat .loading-spinner { border-top-color: #4682b4; }
-        .theme-en-hat .nav-btn.active { background-color: #4682b4; }
-        
-        .theme-ay { background-color: #f6e4a2; }
-        .theme-ay .game-container { border-color: #f99061; }
-        .theme-ay .title, .theme-ay .counter, .theme-ay .timer-container { color: #f99061; }
-        .theme-ay .btn, .theme-ay .timer-btn { background-color: #f99061; border-color: #fff; }
-        .theme-ay .btn:hover:not(:disabled), .theme-ay .timer-btn:hover { background-color: #f47b4d; }
-        .theme-ay .sentence-display { background-color: #fff8e1; border-color: #f99061; }
-        .theme-ay .loading-spinner { border-top-color: #f99061; }
-        .theme-ay .nav-btn.active { background-color: #f99061; }
-        
-        .theme-ay-hat { background-color: #e6e6fa; }
-        .theme-ay-hat .game-container { border-color: #9370db; }
-        .theme-ay-hat .title, .theme-ay-hat .counter, .theme-ay-hat .timer-container { color: #9370db; }
-        .theme-ay-hat .btn, .theme-ay-hat .timer-btn { background-color: #9370db; border-color: #fff; }
-        .theme-ay-hat .btn:hover:not(:disabled), .theme-ay-hat .timer-btn:hover { background-color: #8a2be2; }
-        .theme-ay-hat .sentence-display { background-color: #f8f8ff; border-color: #9370db; }
-        .theme-ay-hat .loading-spinner { border-top-color: #9370db; }
-        .theme-ay-hat .nav-btn.active { background-color: #9370db; }
+        .theme-ch { background-color: #f8e8b0; } /* Yellow */
+        .theme-ch .game-container { border-color: #ffc400; }
+        .theme-ch .title, .theme-ch .counter, .theme-ch .timer-container { color: #ffc400; }
+        .theme-ch .btn, .theme-ch .timer-btn { background-color: #ffc400; border-color: #fff; }
+        .theme-ch .btn:hover:not(:disabled), .theme-ch .timer-btn:hover { background-color: #e5b000; }
+        .theme-ch .sentence-display { background-color: #fff8d7; border-color: #ffc400; }
+        .theme-ch .loading-spinner { border-top-color: #ffc400; }
+        .theme-ch .nav-btn.active { background-color: #ffc400; }
 
-        .theme-om { background-color: #fce8a9; }
-        .theme-om .game-container { border-color: #ffcc00; }
-        .theme-om .title, .theme-om .counter, .theme-om .timer-container { color: #ffcc00; }
-        .theme-om .btn, .theme-om .timer-btn { background-color: #ffd700; border-color: #fff; }
-        .theme-om .btn:hover:not(:disabled), .theme-om .timer-btn:hover { background-color: #ffc200; }
-        .theme-om .sentence-display { background-color: #fffacd; border-color: #ffcc00; }
-        .theme-om .loading-spinner { border-top-color: #ffcc00; }
-        .theme-om .nav-btn.active { background-color: #ffcc00; }
+        .theme-kh { background-color: #e0f2f1; } /* Light cyan-green for forest theme */
+        .theme-kh .game-container { border-color: #2e8b57; }
+        .theme-kh .title, .theme-kh .counter, .theme-kh .timer-container { color: #2e8b57; }
+        .theme-kh .btn, .theme-kh .timer-btn { background-color: #2e8b57; border-color: #fff; }
+        .theme-kh .btn:hover:not(:disabled), .theme-kh .timer-btn:hover { background-color: #1f6b43; }
+        .theme-kh .sentence-display { background-color: #d4edda; border-color: #2e8b57; }
+        .theme-kh .loading-spinner { border-top-color: #2e8b57; }
+        .theme-kh .nav-btn.active { background-color: #2e8b57; }
 
-        .theme-am { background-color: #ffcc99; }
-        .theme-am .game-container { border-color: #ff9933; }
-        .theme-am .title, .theme-am .counter, .theme-am .timer-container { color: #ff9933; }
-        .theme-am .btn, .theme-am .timer-btn { background-color: #ff9933; border-color: #fff; }
-        .theme-am .btn:hover:not(:disabled), .theme-am .timer-btn:hover { background-color: #ff8c00; }
-        .theme-am .sentence-display { background-color: #fff0e0; border-color: #ff9933; }
-        .theme-am .loading-spinner { border-top-color: #ff9933; }
-        .theme-am .nav-btn.active { background-color: #ff9933; }
+        .theme-nh { background-color: #fce8a9; } /* Bright yellow */
+        .theme-nh .game-container { border-color: #ffcc00; }
+        .theme-nh .title, .theme-nh .counter, .theme-nh .timer-container { color: #ffcc00; }
+        .theme-nh .btn, .theme-nh .timer-btn { background-color: #ffd700; border-color: #fff; }
+        .theme-nh .btn:hover:not(:disabled), .theme-nh .timer-btn:hover { background-color: #ffc200; }
+        .theme-nh .sentence-display { background-color: #fffacd; border-color: #ffcc00; }
+        .theme-nh .loading-spinner { border-top-color: #ffcc00; }
+        .theme-nh .nav-btn.active { background-color: #ffcc00; }
         
-        .theme-au { background-color: #f0f8ff; }
-        .theme-au .game-container { border-color: #4a90e2; }
-        .theme-au .title, .theme-au .counter, .theme-au .timer-container { color: #4a90e2; }
-        .theme-au .btn, .theme-au .timer-btn { background-color: #4a90e2; border-color: #fff; }
-        .theme-au .btn:hover:not(:disabled), .theme-au .timer-btn:hover { background-color: #357bd9; }
-        .theme-au .sentence-display { background-color: #c8e6c9; border-color: #4a90e2; }
-        .theme-au .loading-spinner { border-top-color: #4a90e2; }
-        .theme-au .nav-btn.active { background-color: #4a90e2; }
+        .theme-th { background-color: #f0f8ff; } /* Alice Blue */
+        .theme-th .game-container { border-color: #9370db; }
+        .theme-th .title, .theme-th .counter, .theme-th .timer-container { color: #9370db; }
+        .theme-th .btn, .theme-th .timer-btn { background-color: #9370db; border-color: #fff; }
+        .theme-th .btn:hover:not(:disabled), .theme-th .timer-btn:hover { background-color: #8a2be2; }
+        .theme-th .sentence-display { background-color: #e6e6fa; border-color: #9370db; }
+        .theme-th .loading-spinner { border-top-color: #9370db; }
+        .theme-th .nav-btn.active { background-color: #9370db; }
         
-        .theme-au-hat { background-color: #f7e9f7; } 
-        .theme-au-hat .game-container { border-color: #d889d8; }
-        .theme-au-hat .title, .theme-au-hat .counter, .theme-au-hat .timer-container { color: #d889d8; }
-        .theme-au-hat .btn, .theme-au-hat .timer-btn { background-color: #d889d8; border-color: #fff; }
-        .theme-au-hat .btn:hover:not(:disabled), .theme-au-hat .timer-btn:hover { background-color: #c960c9; }
-        .theme-au-hat .sentence-display { background-color: #ffe4e1; border-color: #d889d8; }
-        .theme-au-hat .loading-spinner { border-top-color: #d889d8; }
-        .theme-au-hat .nav-btn.active { background-color: #d889d8; }
-
-        .theme-uon { background-color: #f0fff0; }
-        .theme-uon .game-container { border-color: #228b22; }
-        .theme-uon .title, .theme-uon .counter, .theme-uon .timer-container { color: #228b22; }
-        .theme-uon .btn, .theme-uon .timer-btn { background-color: #228b22; border-color: #fff; }
-        .theme-uon .btn:hover:not(:disabled), .theme-uon .timer-btn:hover { background-color: #176417; }
-        .theme-uon .sentence-display { background-color: #c8e6c9; border-color: #228b22; }
-        .theme-uon .loading-spinner { border-top-color: #228b22; }
-        .theme-uon .nav-btn.active { background-color: #228b22; }
+        .theme-ph { background-color: #e0f2ff; } /* Light blue */
+        .theme-ph .game-container { border-color: #00bfff; }
+        .theme-ph .title, .theme-ph .counter, .theme-ph .timer-container { color: #00bfff; }
+        .theme-ph .btn, .theme-ph .timer-btn { background-color: #00bfff; border-color: #fff; }
+        .theme-ph .btn:hover:not(:disabled), .theme-ph .timer-btn:hover { background-color: #008eb7; }
+        .theme-ph .sentence-display { background-color: #e6f7ff; border-color: #00bfff; }
+        .theme-ph .loading-spinner { border-top-color: #00bfff; }
+        .theme-ph .nav-btn.active { background-color: #00bfff; }
         
-        .theme-uon-mo { background-color: #b0e0e6; }
-        .theme-uon-mo .game-container { border-color: #4682b4; }
-        .theme-uon-mo .title, .theme-uon-mo .counter, .theme-uon-mo .timer-container { color: #4682b4; }
-        .theme-uon-mo .btn, .theme-uon-mo .timer-btn { background-color: #4682b4; border-color: #fff; }
-        .theme-uon-mo .btn:hover:not(:disabled), .theme-uon-mo .timer-btn:hover { background-color: #2e648e; }
-        .theme-uon-mo .sentence-display { background-color: #add8e6; border-color: #4682b4; }
-        .theme-uon-mo .loading-spinner { border-top-color: #4682b4; }
-        .theme-uon-mo .nav-btn.active { background-color: #4682b4; }
+        .theme-gh { background-color: #b0e0e6; } /* Powder Blue */
+        .theme-gh .game-container { border-color: #4682b4; }
+        .theme-gh .title, .theme-gh .counter, .theme-gh .timer-container { color: #4682b4; }
+        .theme-gh .btn, .theme-gh .timer-btn { background-color: #4682b4; border-color: #fff; }
+        .theme-gh .btn:hover:not(:disabled), .theme-gh .timer-btn:hover { background-color: #2e648e; }
+        .theme-gh .sentence-display { background-color: #add8e6; border-color: #4682b4; }
+        .theme-gh .loading-spinner { border-top-color: #4682b4; }
+        .theme-gh .nav-btn.active { background-color: #4682b4; }
+
+        .theme-ng { background-color: #f7e9f7; } /* Light Lavender */
+        .theme-ng .game-container { border-color: #d889d8; }
+        .theme-ng .title, .theme-ng .counter, .theme-ng .timer-container { color: #d889d8; }
+        .theme-ng .btn, .theme-ng .timer-btn { background-color: #d889d8; border-color: #fff; }
+        .theme-ng .btn:hover:not(:disabled), .theme-ng .timer-btn:hover { background-color: #c960c9; }
+        .theme-ng .sentence-display { background-color: #ffe4e1; border-color: #d889d8; }
+        .theme-ng .loading-spinner { border-top-color: #d889d8; }
+        .theme-ng .nav-btn.active { background-color: #d889d8; }
         
-        .theme-on-hat { background-color: #fff8e1; }
-        .theme-on-hat .game-container { border-color: #f99061; }
-        .theme-on-hat .title, .theme-on-hat .counter, .theme-on-hat .timer-container { color: #f99061; }
-        .theme-on-hat .btn, .theme-on-hat .timer-btn { background-color: #f99061; border-color: #fff; }
-        .theme-on-hat .btn:hover:not(:disabled), .theme-on-hat .timer-btn:hover { background-color: #f47b4d; }
-        .theme-on-hat .sentence-display { background-color: #fffacd; border-color: #f99061; }
-        .theme-on-hat .loading-spinner { border-top-color: #f99061; }
-        .theme-on-hat .nav-btn.active { background-color: #f99061; }
+        .theme-ngh { background-color: #b0e0e6; } /* Powder Blue */
+        .theme-ngh .game-container { border-color: #4682b4; }
+        .theme-ngh .title, .theme-ngh .counter, .theme-ngh .timer-container { color: #4682b4; }
+        .theme-ngh .btn, .theme-ngh .timer-btn { background-color: #4682b4; border-color: #fff; }
+        .theme-ngh .btn:hover:not(:disabled), .theme-ngh .timer-btn:hover { background-color: #2e648e; }
+        .theme-ngh .sentence-display { background-color: #add8e6; border-color: #4682b4; }
+        .theme-ngh .loading-spinner { border-top-color: #4682b4; }
+        .theme-ngh .nav-btn.active { background-color: #4682b4; }
         
-        .theme-on-mo { background-color: #fce8e8; }
-        .theme-on-mo .game-container { border-color: #e06666; }
-        .theme-on-mo .title, .theme-on-mo .counter, .theme-on-mo .timer-container { color: #e06666; }
-        .theme-on-mo .btn, .theme-on-mo .timer-btn { background-color: #e06666; border-color: #fff; }
-        .theme-on-mo .btn:hover:not(:disabled), .theme-on-mo .timer-btn:hover { background-color: #cc3333; }
-        .theme-on-mo .sentence-display { background-color: #fff0f0; border-color: #e06666; }
-        .theme-on-mo .loading-spinner { border-top-color: #e06666; }
-        .theme-on-mo .nav-btn.active { background-color: #e06666; }
+        .theme-tr { background-color: #f0fff0; } /* Honeydew */
+        .theme-tr .game-container { border-color: #228b22; }
+        .theme-tr .title, .theme-tr .counter, .theme-tr .timer-container { color: #228b22; }
+        .theme-tr .btn, .theme-tr .timer-btn { background-color: #228b22; border-color: #fff; }
+        .theme-tr .btn:hover:not(:disabled), .theme-tr .timer-btn:hover { background-color: #176417; }
+        .theme-tr .sentence-display { background-color: #c8e6c9; border-color: #228b22; }
+        .theme-tr .loading-spinner { border-top-color: #228b22; }
+        .theme-tr .nav-btn.active { background-color: #228b22; }
+
+        .theme-gi { background-color: #f6e4a2; } /* Pastel yellow */
+        .theme-gi .game-container { border-color: #f99061; }
+        .theme-gi .title, .theme-gi .counter, .theme-gi .timer-container { color: #f99061; }
+        .theme-gi .btn, .theme-gi .timer-btn { background-color: #f99061; border-color: #fff; }
+        .theme-gi .btn:hover:not(:disabled), .theme-gi .timer-btn:hover { background-color: #f47b4d; }
+        .theme-gi .sentence-display { background-color: #fff8e1; border-color: #f99061; }
+        .theme-gi .loading-spinner { border-top-color: #f99061; }
+        .theme-gi .nav-btn.active { background-color: #f99061; }
         
-        .theme-eo { background-color: #f5f5dc; }
-        .theme-eo .game-container { border-color: #ff6347; }
-        .theme-eo .title, .theme-eo .counter, .theme-eo .timer-container { color: #ff6347; }
-        .theme-eo .btn, .theme-eo .timer-btn { background-color: #ff6347; border-color: #fff; }
-        .theme-eo .btn:hover:not(:disabled), .theme-eo .timer-btn:hover { background-color: #e5533d; }
-        .theme-eo .sentence-display { background-color: #ffe4e1; border-color: #ff6347; }
-        .theme-eo .loading-spinner { border-top-color: #ff6347; }
-        .theme-eo .nav-btn.active { background-color: #ff6347; }
-        
-        .theme-ao { background-color: #ffb6c1; }
-        .theme-ao .game-container { border-color: #ff69b4; }
-        .theme-ao .title, .theme-ao .counter, .theme-ao .timer-container { color: #ff69b4; }
-        .theme-ao .btn, .theme-ao .timer-btn { background-color: #ff69b4; border-color: #fff; }
-        .theme-ao .btn:hover:not(:disabled), .theme-ao .timer-btn:hover { background-color: #c71585; }
-        .theme-ao .sentence-display { background-color: #ffe4e1; border-color: #ff69b4; }
-        .theme-ao .loading-spinner { border-top-color: #ff69b4; }
-        .theme-ao .nav-btn.active { background-color: #ff69b4; }
-
-        .theme-ong { background-color: #f8f8f2; }
-        .theme-ong .game-container { border-color: #8b4513; }
-        .theme-ong .title, .theme-ong .counter, .theme-ong .timer-container { color: #8b4513; }
-        .theme-ong .btn, .theme-ong .timer-btn { background-color: #8b4513; border-color: #fff; }
-        .theme-ong .btn:hover:not(:disabled), .theme-ong .timer-btn:hover { background-color: #6d330c; }
-        .theme-ong .sentence-display { background-color: #f5deb3; border-color: #8b4513; }
-        .theme-ong .loading-spinner { border-top-color: #8b4513; }
-        .theme-ong .nav-btn.active { background-color: #8b4513; }
-
-        .theme-ong-hat { background-color: #fce8e8; }
-        .theme-ong-hat .game-container { border-color: #e06666; }
-        .theme-ong-hat .title, .theme-ong-hat .counter, .theme-ong-hat .timer-container { color: #e06666; }
-        .theme-ong-hat .btn, .theme-ong-hat .timer-btn { background-color: #e06666; border-color: #fff; }
-        .theme-ong-hat .btn:hover:not(:disabled), .theme-ong-hat .timer-btn:hover { background-color: #cc3333; }
-        .theme-ong-hat .sentence-display { background-color: #fff0f0; border-color: #e06666; }
-        .theme-ong-hat .loading-spinner { border-top-color: #e06666; }
-        .theme-ong-hat .nav-btn.active { background-color: #e06666; }
-        
-        .theme-em { background-color: #fff8e1; }
-        .theme-em .game-container { border-color: #f99061; }
-        .theme-em .title, .theme-em .counter, .theme-em .timer-container { color: #f99061; }
-        .theme-em .btn, .theme-em .timer-btn { background-color: #f99061; border-color: #fff; }
-        .theme-em .btn:hover:not(:disabled), .theme-em .timer-btn:hover { background-color: #f47b4d; }
-        .theme-em .sentence-display { background-color: #fffacd; border-color: #f99061; }
-        .theme-em .loading-spinner { border-top-color: #f99061; }
-        .theme-em .nav-btn.active { background-color: #f99061; }
-
-        .theme-em-hat { background-color: #e6e6fa; }
-        .theme-em-hat .game-container { border-color: #9370db; }
-        .theme-em-hat .title, .theme-em-hat .counter, .theme-em-hat .timer-container { color: #9370db; }
-        .theme-em-hat .btn, .theme-em-hat .timer-btn { background-color: #9370db; border-color: #fff; }
-        .theme-em-hat .btn:hover:not(:disabled), .theme-em-hat .timer-btn:hover { background-color: #8a2be2; }
-        .theme-em-hat .sentence-display { background-color: #f8f8ff; border-color: #9370db; }
-        .theme-em-hat .loading-spinner { border-top-color: #9370db; }
-        .theme-em-hat .nav-btn.active { background-color: #9370db; }
-
-        .theme-im { background-color: #f0f8ff; }
-        .theme-im .game-container { border-color: #4a90e2; }
-        .theme-im .title, .theme-im .counter, .theme-im .timer-container { color: #4a90e2; }
-        .theme-im .btn, .theme-im .timer-btn { background-color: #4a90e2; border-color: #fff; }
-        .theme-im .btn:hover:not(:disabled), .theme-im .timer-btn:hover { background-color: #357bd9; }
-        .theme-im .sentence-display { background-color: #c8e6c9; border-color: #4a90e2; }
-        .theme-im .loading-spinner { border-top-color: #4a90e2; }
-        .theme-im .nav-btn.active { background-color: #4a90e2; }
-        
-        .theme-um { background-color: #e0f2f1; }
-        .theme-um .game-container { border-color: #2e8b57; }
-        .theme-um .title, .theme-um .counter, .theme-um .timer-container { color: #2e8b57; }
-        .theme-um .btn, .theme-um .timer-btn { background-color: #2e8b57; border-color: #fff; }
-        .theme-um .btn:hover:not(:disabled), .theme-um .timer-btn:hover { background-color: #1f6b43; }
-        .theme-um .sentence-display { background-color: #d4edda; border-color: #2e8b57; }
-        .theme-um .loading-spinner { border-top-color: #2e8b57; }
-        .theme-um .nav-btn.active { background-color: #2e8b57; }
-
-        .theme-in { background-color: #fce8e8; }
-        .theme-in .game-container { border-color: #e06666; }
-        .theme-in .title, .theme-in .counter, .theme-in .timer-container { color: #e06666; }
-        .theme-in .btn, .theme-in .timer-btn { background-color: #e06666; border-color: #fff; }
-        .theme-in .btn:hover:not(:disabled), .theme-in .timer-btn:hover { background-color: #cc3333; }
-        .theme-in .sentence-display { background-color: #fff0f0; border-color: #e06666; }
-        .theme-in .loading-spinner { border-top-color: #e06666; }
-        .theme-in .nav-btn.active { background-color: #e06666; }
-
-        .theme-un { background-color: #f8f8f2; }
-        .theme-un .game-container { border-color: #8b4513; }
-        .theme-un .title, .theme-un .counter, .theme-un .timer-container { color: #8b4513; }
-        .theme-un .btn, .theme-un .timer-btn { background-color: #8b4513; border-color: #fff; }
-        .theme-un .btn:hover:not(:disabled), .theme-un .timer-btn:hover { background-color: #6d330c; }
-        .theme-un .sentence-display { background-color: #f5deb3; border-color: #8b4513; }
-        .theme-un .loading-spinner { border-top-color: #8b4513; }
-        .theme-un .nav-btn.active { background-color: #8b4513; }
-        
-        .theme-om-hat { background-color: #fff8e1; }
-        .theme-om-hat .game-container { border-color: #f99061; }
-        .theme-om-hat .title, .theme-om-hat .counter, .theme-om-hat .timer-container { color: #f99061; }
-        .theme-om-hat .btn, .theme-om-hat .timer-btn { background-color: #f99061; border-color: #fff; }
-        .theme-om-hat .btn:hover:not(:disabled), .theme-om-hat .timer-btn:hover { background-color: #f47b4d; }
-        .theme-om-hat .sentence-display { background-color: #fffacd; border-color: #f99061; }
-        .theme-om-hat .loading-spinner { border-top-color: #f99061; }
-        .theme-om-hat .nav-btn.active { background-color: #f99061; }
-        
-        .theme-om-mo { background-color: #ffb6c1; }
-        .theme-om-mo .game-container { border-color: #ff69b4; }
-        .theme-om-mo .title, .theme-om-mo .counter, .theme-om-mo .timer-container { color: #ff69b4; }
-        .theme-om-mo .btn, .theme-om-mo .timer-btn { background-color: #ff69b4; border-color: #fff; }
-        .theme-om-mo .btn:hover:not(:disabled), .theme-om-mo .timer-btn:hover { background-color: #c71585; }
-        .theme-om-mo .sentence-display { background-color: #ffe4e1; border-color: #ff69b4; }
-        .theme-om-mo .loading-spinner { border-top-color: #ff69b4; }
-        .theme-om-mo .nav-btn.active { background-color: #ff69b4; }
-        
-        .theme-iu { background-color: #e6e6fa; }
-        .theme-iu .game-container { border-color: #9370db; }
-        .theme-iu .title, .theme-iu .counter, .theme-iu .timer-container { color: #9370db; }
-        .theme-iu .btn, .theme-iu .timer-btn { background-color: #9370db; border-color: #fff; }
-        .theme-iu .btn:hover:not(:disabled), .theme-iu .timer-btn:hover { background-color: #8a2be2; }
-        .theme-iu .sentence-display { background-color: #f8f8ff; border-color: #9370db; }
-        .theme-iu .loading-spinner { border-top-color: #9370db; }
-        .theme-iu .nav-btn.active { background-color: #9370db; }
-        
-        .theme-eu { background-color: #f0f8ff; }
-        .theme-eu .game-container { border-color: #4a90e2; }
-        .theme-eu .title, .theme-eu .counter, .theme-eu .timer-container { color: #4a90e2; }
-        .theme-eu .btn, .theme-eu .timer-btn { background-color: #4a90e2; border-color: #fff; }
-        .theme-eu .btn:hover:not(:disabled), .theme-eu .timer-btn:hover { background-color: #357bd9; }
-        .theme-eu .sentence-display { background-color: #c8e6c9; border-color: #4a90e2; }
-        .theme-eu .loading-spinner { border-top-color: #4a90e2; }
-        .theme-eu .nav-btn.active { background-color: #4a90e2; }
-        
-        .theme-ui { background-color: #f7e9f7; }
-        .theme-ui .game-container { border-color: #d889d8; }
-        .theme-ui .title, .theme-ui .counter, .theme-ui .timer-container { color: #d889d8; }
-        .theme-ui .btn, .theme-ui .timer-btn { background-color: #d889d8; border-color: #fff; }
-        .theme-ui .btn:hover:not(:disabled), .theme-ui .timer-btn:hover { background-color: #c960c9; }
-        .theme-ui .sentence-display { background-color: #ffe4e1; border-color: #d889d8; }
-        .theme-ui .loading-spinner { border-top-color: #d889d8; }
-        .theme-ui .nav-btn.active { background-color: #d889d8; }
-        
-        .theme-ui-mo { background-color: #e0f2f1; }
-        .theme-ui-mo .game-container { border-color: #2e8b57; }
-        .theme-ui-mo .title, .theme-ui-mo .counter, .theme-ui-mo .timer-container { color: #2e8b57; }
-        .theme-ui-mo .btn, .theme-ui-mo .timer-btn { background-color: #2e8b57; border-color: #fff; }
-        .theme-ui-mo .btn:hover:not(:disabled), .theme-ui-mo .timer-btn:hover { background-color: #1f6b43; }
-        .theme-ui-mo .sentence-display { background-color: #d4edda; border-color: #2e8b57; }
-        .theme-ui-mo .loading-spinner { border-top-color: #2e8b57; }
-        .theme-ui-mo .nav-btn.active { background-color: #2e8b57; }
-        
-        .theme-ot { background-color: #fce8a9; }
-        .theme-ot .game-container { border-color: #ffcc00; }
-        .theme-ot .title, .theme-ot .counter, .theme-ot .timer-container { color: #ffcc00; }
-        .theme-ot .btn, .theme-ot .timer-btn { background-color: #ffd700; border-color: #fff; }
-        .theme-ot .btn:hover:not(:disabled), .theme-ot .timer-btn:hover { background-color: #ffc200; }
-        .theme-ot .sentence-display { background-color: #fffacd; border-color: #ffcc00; }
-        .theme-ot .loading-spinner { border-top-color: #ffcc00; }
-        .theme-ot .nav-btn.active { background-color: #ffcc00; }
-
-        .theme-at { background-color: #ffcc99; }
-        .theme-at .game-container { border-color: #ff9933; }
-        .theme-at .title, .theme-at .counter, .theme-at .timer-container { color: #ff9933; }
-        .theme-at .btn, .theme-at .timer-btn { background-color: #ff9933; border-color: #fff; }
-        .theme-at .btn:hover:not(:disabled), .theme-at .timer-btn:hover { background-color: #ff8c00; }
-        .theme-at .sentence-display { background-color: #fff0e0; border-color: #ff9933; }
-        .theme-at .loading-spinner { border-top-color: #ff9933; }
-        .theme-at .nav-btn.active { background-color: #ff9933; }
-        
-        .theme-et { background-color: #f0f8ff; }
-        .theme-et .game-container { border-color: #4a90e2; }
-        .theme-et .title, .theme-et .counter, .theme-et .timer-container { color: #4a90e2; }
-        .theme-et .btn, .theme-et .timer-btn { background-color: #4a90e2; border-color: #fff; }
-        .theme-et .btn:hover:not(:disabled), .theme-et .timer-btn:hover { background-color: #357bd9; }
-        .theme-et .sentence-display { background-color: #c8e6c9; border-color: #4a90e2; }
-        .theme-et .loading-spinner { border-top-color: #4a90e2; }
-        .theme-et .nav-btn.active { background-color: #4a90e2; }
-
-        .theme-et-hat { background-color: #f7e9f7; } 
-        .theme-et-hat .game-container { border-color: #d889d8; }
-        .theme-et-hat .title, .theme-et-hat .counter, .theme-et-hat .timer-container { color: #d889d8; }
-        .theme-et-hat .btn, .theme-et-hat .timer-btn { background-color: #d889d8; border-color: #fff; }
-        .theme-et-hat .btn:hover:not(:disabled), .theme-et-hat .timer-btn:hover { background-color: #c960c9; }
-        .theme-et-hat .sentence-display { background-color: #ffe4e1; border-color: #d889d8; }
-        .theme-et-hat .loading-spinner { border-top-color: #d889d8; }
-        .theme-et-hat .nav-btn.active { background-color: #d889d8; }
-
-        .theme-it { background-color: #e0f2f1; }
-        .theme-it .game-container { border-color: #2e8b57; }
-        .theme-it .title, .theme-it .counter, .theme-it .timer-container { color: #2e8b57; }
-        .theme-it .btn, .theme-it .timer-btn { background-color: #2e8b57; border-color: #fff; }
-        .theme-it .btn:hover:not(:disabled), .theme-it .timer-btn:hover { background-color: #1f6b43; }
-        .theme-it .sentence-display { background-color: #d4edda; border-color: #2e8b57; }
-        .theme-it .loading-spinner { border-top-color: #2e8b57; }
-        .theme-it .nav-btn.active { background-color: #2e8b57; }
-
-        .theme-ia { background-color: #ffb6c1; }
-        .theme-ia .game-container { border-color: #ff69b4; }
-        .theme-ia .title, .theme-ia .counter, .theme-ia .timer-container { color: #ff69b4; }
-        .theme-ia .btn, .theme-ia .timer-btn { background-color: #ff69b4; border-color: #fff; }
-        .theme-ia .btn:hover:not(:disabled), .theme-ia .timer-btn:hover { background-color: #c71585; }
-        .theme-ia .sentence-display { background-color: #ffe4e1; border-color: #ff69b4; }
-        .theme-ia .loading-spinner { border-top-color: #ff69b4; }
-        .theme-ia .nav-btn.active { background-color: #ff69b4; }
-
-        .theme-uoi { background-color: #fce8a9; }
-        .theme-uoi .game-container { border-color: #ffcc00; }
-        .theme-uoi .title, .theme-uoi .counter, .theme-uoi .timer-container { color: #ffcc00; }
-        .theme-uoi .btn, .theme-uoi .timer-btn { background-color: #ffd700; border-color: #fff; }
-        .theme-uoi .btn:hover:not(:disabled), .theme-uoi .timer-btn:hover { background-color: #ffc200; }
-        .theme-uoi .sentence-display { background-color: #fffacd; border-color: #ffcc00; }
-        .theme-uoi .loading-spinner { border-top-color: #ffcc00; }
-        .theme-uoi .nav-btn.active { background-color: #ffcc00; }
-
-        .theme-anh { background-color: #e6e6fa; }
-        .theme-anh .game-container { border-color: #9370db; }
-        .theme-anh .title, .theme-anh .counter, .theme-anh .timer-container { color: #9370db; }
-        .theme-anh .btn, .theme-anh .timer-btn { background-color: #9370db; border-color: #fff; }
-        .theme-anh .btn:hover:not(:disabled), .theme-anh .timer-btn:hover { background-color: #8a2be2; }
-        .theme-anh .sentence-display { background-color: #f8f8ff; border-color: #9370db; }
-        .theme-anh .loading-spinner { border-top-color: #9370db; }
-        .theme-anh .nav-btn.active { background-color: #9370db; }
-
-        .theme-ach { background-color: #f0f8ff; }
-        .theme-ach .game-container { border-color: #4a90e2; }
-        .theme-ach .title, .theme-ach .counter, .theme-ach .timer-container { color: #4a90e2; }
-        .theme-ach .btn, .theme-ach .timer-btn { background-color: #4a90e2; border-color: #fff; }
-        .theme-ach .btn:hover:not(:disabled), .theme-ach .timer-btn:hover { background-color: #357bd9; }
-        .theme-ach .sentence-display { background-color: #c8e6c9; border-color: #4a90e2; }
-        .theme-ach .loading-spinner { border-top-color: #4a90e2; }
-        .theme-ach .nav-btn.active { background-color: #4a90e2; }
-
-        .theme-ien { background-color: #f7e9f7; }
-        .theme-ien .game-container { border-color: #d889d8; }
-        .theme-ien .title, .theme-ien .counter, .theme-ien .timer-container { color: #d889d8; }
-        .theme-ien .btn, .theme-ien .timer-btn { background-color: #d889d8; border-color: #fff; }
-        .theme-ien .btn:hover:not(:disabled), .theme-ien .timer-btn:hover { background-color: #c960c9; }
-        .theme-ien .sentence-display { background-color: #ffe4e1; border-color: #d889d8; }
-        .theme-ien .loading-spinner { border-top-color: #d889d8; }
-        .theme-ien .nav-btn.active { background-color: #d889d8; }
-
-        .theme-uong { background-color: #f0fff0; }
-        .theme-uong .game-container { border-color: #228b22; }
-        .theme-uong .title, .theme-uong .counter, .theme-uong .timer-container { color: #228b22; }
-        .theme-uong .btn, .theme-uong .timer-btn { background-color: #228b22; border-color: #fff; }
-        .theme-uong .btn:hover:not(:disabled), .theme-uong .timer-btn:hover { background-color: #176417; }
-        .theme-uong .sentence-display { background-color: #c8e6c9; border-color: #228b22; }
-        .theme-uong .loading-spinner { border-top-color: #228b22; }
-        .theme-uong .nav-btn.active { background-color: #228b22; }
-
-        .theme-uong-mo { background-color: #b0e0e6; }
-        .theme-uong-mo .game-container { border-color: #4682b4; }
-        .theme-uong-mo .title, .theme-uong-mo .counter, .theme-uong-mo .timer-container { color: #4682b4; }
-        .theme-uong-mo .btn, .theme-uong-mo .timer-btn { background-color: #4682b4; border-color: #fff; }
-        .theme-uong-mo .btn:hover:not(:disabled), .theme-uong-mo .timer-btn:hover { background-color: #2e648e; }
-        .theme-uong-mo .sentence-display { background-color: #add8e6; border-color: #4682b4; }
-        .theme-uong-mo .loading-spinner { border-top-color: #4682b4; }
-        .theme-uong-mo .nav-btn.active { background-color: #4682b4; }
-
-        .theme-uot { background-color: #fce8e8; }
-        .theme-uot .game-container { border-color: #e06666; }
-        .theme-uot .title, .theme-uot .counter, .theme-uot .timer-container { color: #e06666; }
-        .theme-uot .btn, .theme-uot .timer-btn { background-color: #e06666; border-color: #fff; }
-        .theme-uot .btn:hover:not(:disabled), .theme-uot .timer-btn:hover { background-color: #cc3333; }
-        .theme-uot .sentence-display { background-color: #fff0f0; border-color: #e06666; }
-        .theme-uot .loading-spinner { border-top-color: #e06666; }
-        .theme-uot .nav-btn.active { background-color: #e06666; }
-
-        .theme-oai { background-color: #fff8e1; }
-        .theme-oai .game-container { border-color: #f99061; }
-        .theme-oai .title, .theme-oai .counter, .theme-oai .timer-container { color: #f99061; }
-        .theme-oai .btn, .theme-oai .timer-btn { background-color: #f99061; border-color: #fff; }
-        .theme-oai .btn:hover:not(:disabled), .theme-oai .timer-btn:hover { background-color: #f47b4d; }
-        .theme-oai .sentence-display { background-color: #fffacd; border-color: #f99061; }
-        .theme-oai .loading-spinner { border-top-color: #f99061; }
-        .theme-oai .nav-btn.active { background-color: #f99061; }
+        .theme-qu { background-color: #ffe4e1; } /* Misty Rose */
+        .theme-qu .game-container { border-color: #d889d8; }
+        .theme-qu .title, .theme-qu .counter, .theme-qu .timer-container { color: #d889d8; }
+        .theme-qu .btn, .theme-qu .timer-btn { background-color: #d889d8; border-color: #fff; }
+        .theme-qu .btn:hover:not(:disabled), .theme-qu .timer-btn:hover { background-color: #c960c9; }
+        .theme-qu .sentence-display { background-color: #fffacd; border-color: #d889d8; }
+        .theme-qu .loading-spinner { border-top-color: #d889d8; }
+        .theme-qu .nav-btn.active { background-color: #d889d8; }
     </style>
 </head>
 <body>
 
     <div class="game-container">
-        <h1 class="title" id="game-title">Bé Học Vần</h1>
+        <h1 class="title" id="game-title">Bé Học Tiếng Việt</h1>
         <div id="nav-container" class="nav-container"></div>
         <div id="sentence-display" class="sentence-display"></div>
-        <div id="mic-status" class="text-sm font-semibold text-red-500 mt-2 hidden"></div>
         <div class="controls">
             <button id="prev-btn" class="btn">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
-                <span class="btn-text">Lùi lại</span>
+                <span>Lùi lại</span>
             </button>
             <div id="counter" class="counter"></div>
             <button id="next-btn" class="btn">
-                <span class="btn-text">Tiến lên</span>
+                <span>Tiến lên</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
             </button>
-        </div>
-        
-        <div class="timer-container">
-            <span id="timer-display"></span>
-            <button id="stop-timer-btn" class="timer-btn">Dừng lại</button>
-        </div>
-
-        <div class="record-controls">
-            <button id="record-btn" class="record-btn">Ghi âm</button>
-            <button id="playback-btn" class="playback-btn" disabled>Nghe lại</button>
         </div>
 
         <button id="read-aloud-btn" class="read-btn">
@@ -813,7 +642,6 @@
         const API_KEY = ""; 
         const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=";
         const LOADING_OVERLAY = document.getElementById('loading-overlay');
-        const MAX_TIME = 90; // 90 seconds
         
         // Firebase initialization (required by the platform)
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
@@ -836,1050 +664,901 @@
         }
         
         const contentData = [
-            { id: "AI", label: "AI", title: "Bé Học Vần AI", themeClass: "theme-ai", sentences: [
-                { text: "Bé trai đi hái trái vải.", icons: ["👦", "🍇", "🌳"] },
-                { text: "Cái tai nghe bài hát hay.", icons: ["👂", "🎶", "🎤"] },
-                { text: "Bé Mai cài bông hoa thật đẹp.", icons: ["👧", "🌸", "💖"] },
-                { text: "Ngày mai đi chơi thật vui.", icons: ["📆", "🥳", "🚗"] },
-                { text: "Con gà mái nhảy trên bãi cỏ.", icons: ["🐔", "🤸", "🌿"] },
-                { text: "Hải cẩu vẫy tai trên bãi cát.", icons: ["🐦", "👂", "🏖️"] },
-                { text: "Ngại ngùng làm bạn với bạn mới.", icons: ["😳", "🤝", "👦"] },
-                { text: "Bé hái trái dứa toại nguyện.", icons: ["👧", "🍍", "✨"] },
-                { text: "Mẹ cài áo cho bé.", icons: ["👩", "👚", "👍"] },
-                { text: "Cái tai nghe nhạc thật vui.", icons: ["👂", "🎧", "😊"] },
-                { text: "Bé trai đá banh giỏi.", icons: ["👦", "⚽", "🏆"] },
-                { text: "Bài hát hay quá.", icons: ["🎶", "🎤", "👍"] },
-                { text: "Cá ngài vẫy đuôi.", icons: ["🐟", "🌊", "✨"] },
-                { text: "Hải cẩu bay trên biển.", icons: ["🐦", "🌊", "🌬️"] },
-                { text: "Ngại ngùng làm sao.", icons: ["😳", "🤫", "😶"] },
-                { text: "Bé Mai vẽ cái tai.", icons: ["👧", "🎨", "✍️"] },
-                { text: "Cái tai nghe nhạc.", icons: ["👂", "🎧", "🎵"] },
-                { text: "Bạn trai của Mai.", icons: ["👦", "👧", "💖"] },
-                { text: "Mẹ nói câu hay.", icons: ["👩", "🗣️", "👍"] },
-                { text: "Bé trai học bài.", icons: ["👦", "📖", "📚"] }
+            { id: "A", label: "A", title: "Bé Học Chữ A", themeClass: "theme-a", sentences: [
+                { text: "Bé an toàn khi qua đường.", icons: ["👦", "🚦"] },
+                { text: "Hà mã ăn táo to.", icons: ["🦛", "🍎"] },
+                { text: "Ba mua áo cho bé.", icons: ["👨", "👚"] },
+                { text: "Mẹ và bà ở nhà.", icons: ["👩", "👵", "🏡"] },
+                { text: "Gà và cá ăn cám.", icons: ["🐔", "🐟"] },
+                { text: "Bé Na ba tuổi.", icons: ["👧", "🎂"] },
+                { text: "Ba má anh An.", icons: ["👨", "👩", "👦"] },
+                { text: "Hai anh an toàn.", icons: ["👦", "👦", "👍"] },
+                { text: "A a a, cá vàng.", icons: ["🐠", "🐠"] },
+                { text: "Ba mua cà.", icons: ["👨", "🍆"] },
+                { text: "Chả cá của bà.", icons: ["🍥", "👵"] },
+                { text: "Nắng vàng lan tỏa.", icons: ["☀️", "✨"] },
+                { text: "Lan và An đi nhà trẻ.", icons: ["👧", "👦", "🏫"] },
+                { text: "A a a, hát nào.", icons: ["🎶", "🎤"] },
+                { text: "Quả cam, quả táo.", icons: ["🍊", "🍎"] },
+                { text: "Mẹ mua cá và gà.", icons: ["👩", "🐟", "🐔"] },
+                { text: "Ba an toàn lái xe.", icons: ["👨", "🚗"] },
+                { text: "Gà và cá bơi.", icons: ["🐔", "🐠"] },
+                { text: "Ba an toàn trên đường.", icons: ["👨", "🛣️"] },
+                { text: "Hai bạn an toàn.", icons: ["👫", "👍"] }
             ]},
-            { id: "OI", label: "OI", title: "Bé Học Vần OI", themeClass: "theme-oi", sentences: [
-                { text: "Con voi uống nước bằng vòi.", icons: ["🐘", "💦", "💧"] },
-                { text: "Bé hỏi mẹ về những vì sao.", icons: ["👧", "🤔", "⭐"] },
-                { text: "Ông nói với tôi về những câu chuyện cổ tích.", icons: ["👴", "📖", "✨"] },
-                { text: "Ối giời ơi, con voi to quá.", icons: ["😮", "🐘", "😮"] },
-                { text: "Thôi rồi, đi chơi thôi.", icons: ["😊", "🏃", "🤸"] },
-                { text: "Cái chổi nhỏ của mẹ.", icons: ["🧹", "🤏", "👩"] },
-                { text: "Bé ngồi học bài chăm chỉ.", icons: ["👧", "📚", "✍️"] },
-                { text: "Con vòi voi dùng để phun nước.", icons: ["🐘", "💧", "🌊"] },
-                { text: "Bé hỏi mẹ về mặt trăng.", icons: ["👧", "🤔", "🌕"] },
-                { text: "Tôi hỏi bạn về trò chơi.", icons: ["👦", "❓", "🎮"] },
-                { text: "Bạn tôi rất tốt.", icons: ["👫", "👍", "❤️"] },
-                { text: "Cái chòi thật nhỏ.", icons: ["🛖", "🤏", "🏡"] },
-                { text: "Ông nói với tôi.", icons: ["👴", "🗣️", "👂"] },
-                { text: "Mẹ gọi tôi về.", icons: ["👩", "📞", "🏠"] },
-                { text: "Bé hỏi mẹ.", icons: ["👧", "🤔", "👩"] },
-                { text: "Ối trời ơi, đau quá.", icons: ["😲", "😭", "😖"] },
-                { text: "Thôi rồi, ăn bánh đi.", icons: ["😋", "🍰", "🍩"] },
-                { text: "Chổi của ba.", icons: ["🧹", "👨", "👍"] },
-                { text: "Bé ngồi học bài.", icons: ["👧", "📖", "📚"] },
-                { text: "Hỏi ai, hỏi ai.", icons: ["❓", "❓", "🤔"] }
+            { id: "Ă", label: "Ă", title: "Bé Học Chữ Ă", themeClass: "theme-an", sentences: [
+                { text: "Con ốc ăn lá rau.", icons: ["🐌", "🥬"] },
+                { text: "Ăn bánh rồi, ăn kem.", icons: ["🍰", "🍦"] },
+                { text: "Ông đang ăn khoai lang.", icons: ["👴", "🍠"] },
+                { text: "Ăn cháo rồi ăn bánh.", icons: ["🥣", "🎂"] },
+                { text: "Ăn sáng cho chắc dạ.", icons: ["🍳", "💪"] },
+                { text: "Mẹ nấu ăn ngon.", icons: ["👩", "😋"] },
+                { text: "Bạn ăn rồi bạn chạy.", icons: ["🏃", "💨"] },
+                { text: "Ông bà ăn bánh quy.", icons: ["👴", "👵", "🍪"] },
+                { text: "Ăn uống phải sạch sẽ.", icons: ["😋", "🧼"] },
+                { text: "Bạn ốc ăn lá cà.", icons: ["🐌", "🥬"] },
+                { text: "Ăn xong rồi đi ngủ.", icons: ["😴", "🛌"] },
+                { text: "Bé ăn nhiều bánh.", icons: ["👧", "🍰"] },
+                { text: "Ăn một cái bánh rán.", icons: ["🍩", "😋"] },
+                { text: "Ăn cam, ăn dứa.", icons: ["🍊", "🍍"] },
+                { text: "Bé ăn vạ mẹ.", icons: ["😭", "👩"] },
+                { text: "Ăn dặm để lớn.", icons: ["👶", "💪"] },
+                { text: "Ăn táo, ăn ổi.", icons: ["🍎", "🍐"] },
+                { text: "Ăn trưa đi nào.", icons: ["⏰", "😋"] },
+                { text: "Ăn hoa quả.", icons: ["🍓", "🍇"] },
+                { text: "Ăn món ăn mẹ nấu.", icons: ["👩", "🍲"] }
             ]},
-            { id: "ỐI", label: "ỐI", title: "Bé Học Vần ÔI", themeClass: "theme-oi-hat", sentences: [
-                { text: "Ối, con lợn lười biếng.", icons: ["🐷", "😴", "😮"] },
-                { text: "Mẹ phơi quần áo ngoài trời.", icons: ["👩", "👚", "☀️"] },
-                { text: "Trái ổi chín thật ngọt.", icons: ["🍐", "😋", "💖"] },
-                { text: "Bé cười khúc khích.", icons: ["😂", "😆", "😊"] },
-                { text: "Đôi tay mẹ tôi rất khéo.", icons: ["🖐️", "👩", "👍"] },
-                { text: "Bé ối lên vì đau bụng.", icons: ["🤢", "😭", "😖"] },
-                { text: "Tôm bơi lội trong hồ.", icons: ["🦐", "🏊", "🌊"] },
-                { text: "Ối trời, cái gì vậy?", icons: ["😮", "🤔", "❓"] },
-                { text: "Cái gói bánh to quá.", icons: ["📦", "🎂", "😮"] },
-                { text: "Ôi dối lừa.", icons: ["🤥", "😠", "😤"] },
-                { text: "Ối trời ơi, ngã rồi.", icons: ["😮", "😭", "🤕"] },
-                { text: "Cái gối mềm mại.", icons: ["🛏️", "😌", "😴"] },
-                { text: "Bé lội nước.", icons: ["👦", "🌊", "💧"] },
-                { text: "Ối trời, gió to quá.", icons: ["😮", "🌬️", "💨"] },
-                { text: "Bé bị hối thúc.", icons: ["🏃", "💨", "⏰"] },
-                { text: "Mẹ gói bánh.", icons: ["👩", "🍙", "😋"] },
-                { text: "Cái gối ôm của bé.", icons: ["🧸", "😴", "💖"] },
-                { text: "Ối, con bò to.", icons: ["😮", "🐄", "🐮"] },
-                { text: "Bé lội sông.", icons: ["👦", "🌊", "🐟"] },
-                { text: "Đôi mắt của mẹ.", icons: ["👀", "👩", "💖"] }
+            { id: "Â", label: "Â", title: "Bé Học Chữ Â", themeClass: "theme-a-hat", sentences: [
+                { text: "Bạn âm thầm hát.", icons: ["🎶", "🤫"] },
+                { text: "Âu yếm vỗ về.", icons: ["🤗", "❤️"] },
+                { text: "Âm nhạc thật hay.", icons: ["🎶", "🎵"] },
+                { text: "Ân cần với bạn.", icons: ["🤝", "👦"] },
+                { text: "Bé vâng lời cô giáo.", icons: ["👧", "👩‍🏫"] },
+                { text: "Cá đớp mồi ầm ầm.", icons: ["🐟", "🔊"] },
+                { text: "Bé chăm học văn.", icons: ["📖", "✍️"] },
+                { text: "Âm thanh thật vui tai.", icons: ["🎶", "👂"] },
+                { text: "Âm thầm làm việc tốt.", icons: ["🤫", "👍"] },
+                { text: "Ân nhân của bé.", icons: ["😇", "💖"] },
+                { text: "Bạn Văn rất hiền.", icons: ["👦", "😊"] },
+                { text: "Âm nhạc giúp bé thư giãn.", icons: ["🎶", "😌"] },
+                { text: "Cái ô tô chạy ầm ầm.", icons: ["🚗", "💨"] },
+                { text: "Vân chăm chỉ học bài.", icons: ["👧", "📚"] },
+                { text: "Ấm trà rất nóng.", icons: ["🍵", "🔥"] },
+                { text: "Ông bà thật ân cần.", icons: ["👴", "👵", "💖"] },
+                { text: "Âu yếm mèo con.", icons: ["🤗", "😺"] },
+                { text: "Âm nhạc rất tuyệt vời.", icons: ["🎶", "🌟"] },
+                { text: "Vân hát hay quá.", icons: ["🎤", "👍"] },
+                { text: "Âm thầm giúp đỡ bạn.", icons: ["🤫", "🤝"] }
             ]},
-            { id: "ƠI", label: "ƠI", title: "Bé Học Vần ƠI", themeClass: "theme-oi-mo", sentences: [
-                { text: "Bạn ơi, đi chơi nào.", icons: ["👋", "🤸", "😊"] },
-                { text: "Mẹ ơi, con yêu mẹ.", icons: ["👩", "💖", "❤️"] },
-                { text: "Ơ hay, sao bạn ở đây?", icons: ["😮", "👦", "❓"] },
-                { text: "Con bơi lơi trên mặt nước.", icons: ["🐟", "🌊", "💧"] },
-                { text: "Ơn giời, tớ tới rồi.", icons: ["🙌", "😊", "🏃"] },
-                { text: "Ơn nghĩa của cha mẹ.", icons: ["👨‍👩‍👧‍👦", "🙏", "💖"] },
-                { text: "Ơ kìa, mèo con của tôi.", icons: ["😺", "👀", "😮"] },
-                { text: "Cá lơ lửng trên không trung.", icons: ["🐟", "☁️", "💨"] },
-                { text: "Bé ơi, mẹ gọi.", icons: ["👧", "📞", "👩"] },
-                { text: "Bạn ơi, ăn kem nào.", icons: ["👫", "🍦", "😋"] },
-                { text: "Bố ơi, bố ơi.", icons: ["👨", "🗣️", "📢"] },
-                { text: "Ơ hay, bạn đến rồi.", icons: ["😮", "👋", "😊"] },
-                { text: "Bé ơi, mẹ thương bé.", icons: ["👧", "💖", "👩"] },
-                { text: "Con cá bơi lơ tơ.", icons: ["🐟", "🌊", "💧"] },
-                { text: "Con ơi, con về.", icons: ["👩", "🏠", "👋"] },
-                { text: "Ơ kìa, mèo con.", icons: ["😺", "👀", "😮"] },
-                { text: "Bé ơi, học bài.", icons: ["👧", "📖", "📚"] },
-                { text: "Bạn lơ mơ đi đâu.", icons: ["🤔", "🚶", "❓"] },
-                { text: "Bé ơi, ăn cơm.", icons: ["👧", "🍚", "🥢"] },
-                { text: "Lơ mơ ngủ gật.", icons: ["😴", "😌", "😴"] }
+            { id: "B", label: "B", title: "Bé Học Chữ B", themeClass: "theme-b", sentences: [
+                { text: "Bạn Bắp bơi rất nhanh.", icons: ["👦", "🏊"] },
+                { text: "Bàn tay bé nhỏ.", icons: ["🖐️", "🤏"] },
+                { text: "Bánh bông lan thật ngon.", icons: ["🎂", "😋"] },
+                { text: "Bé Bi bập bẹ gọi bố.", icons: ["👶", "👨"] },
+                { text: "Bóng bay bay lên trời.", icons: ["🎈", "☁️"] },
+                { text: "Bầu trời xanh biếc.", icons: ["🌈", "☁️"] },
+                { text: "Bố bảo bé phải biết vâng lời.", icons: ["👨", "👍"] },
+                { text: "Bà bồng bé.", icons: ["👵", "🤱"] },
+                { text: "Búp bê thật xinh.", icons: ["👧", "👗"] },
+                { text: "Cái bàn, cái ghế.", icons: ["🪑", "🪑"] },
+                { text: "Bạn Bi thích đá bóng.", icons: ["👦", "⚽"] },
+                { text: "Bé Bi biết bơi.", icons: ["👶", "🏊"] },
+                { text: "Bông hoa màu đỏ.", icons: ["🌺", "🔴"] },
+                { text: "Bố bế bé.", icons: ["👨", "👶"] },
+                { text: "Bánh bao nóng hổi.", icons: ["🥟", "🔥"] },
+                { text: "Bé bú bình sữa.", icons: ["👶", "🍼"] },
+                { text: "Bé tập bay.", icons: ["🤸", "💨"] },
+                { text: "Bố bưng bê đồ.", icons: ["👨", "💪"] },
+                { text: "Bé thích bóp bóng.", icons: ["👧", "🎈"] },
+                { text: "Bạn Bi có nhiều bạn bè.", icons: ["👦", "👫"] }
             ]},
-            { id: "EN", label: "EN", title: "Bé Học Vần EN", themeClass: "theme-en", sentences: [
-                { text: "Con ếch kêu ền ền.", icons: ["🐸", "🔊", "🎶"] },
-                { text: "Bé thổi kèn thật to.", icons: ["🎺", "👦", "📢"] },
-                { text: "Lên đền rồi đi về.", icons: ["🏛️", "👋", "🏡"] },
-                { text: "Rèn luyện sức khỏe.", icons: ["💪", "🤸", "🏋️"] },
-                { text: "Bánh chưng, bánh tét.", icons: ["🍙", "🍙", "😋"] },
-                { text: "Chân của con voi.", icons: ["🐘", "🦶", "🦵"] },
-                { text: "Đèn đường buổi tối.", icons: ["💡", "🌃", "✨"] },
-                { text: "Bạn Tên rất giỏi.", icons: ["👦", "👍", "🏆"] },
-                { text: "Em thổi kèn.", icons: ["👧", "🎺", "🎶"] },
-                { text: "Con nhện giăng tơ.", icons: ["🕷️", "🕸️", "✨"] },
-                { text: "Em ăn kem.", icons: ["👧", "🍦", "😋"] },
-                { text: "Lên lớp.", icons: ["🏫", "🚶", "⬆️"] },
-                { text: "Rèn luyện.", icons: ["💪", "🏋️", "👍"] },
-                { text: "Đèn pin.", icons: ["🔦", "💡", "✨"] },
-                { text: "Tên tôi là An.", icons: ["📝", "👦", "👧"] },
-                { text: "Bánh tét.", icons: ["🍙", "😋", "🤤"] },
-                { text: "Chân gà.", icons: ["🐔", "🦶", "🦵"] },
-                { text: "Đèn lồng.", icons: ["🏮", "💡", "✨"] },
-                { text: "Lên xe.", icons: ["🚗", "⬆️", "💨"] },
-                { text: "Lên bờ.", icons: ["🌊", "🚶", "🏞️"] }
+            { id: "C", label: "C", title: "Bé Học Chữ C", themeClass: "theme-c", sentences: [
+                { text: "Con cá bơi dưới nước.", icons: ["🐟", "💧"] },
+                { text: "Cái cặp sách mới.", icons: ["🎒", "✨"] },
+                { text: "Con chim hót ca.", icons: ["🐦", "🎶"] },
+                { text: "Cái ca, cái cốc.", icons: ["☕", "🥤"] },
+                { text: "Con công có nhiều màu.", icons: ["🦚", "🌈"] },
+                { text: "Mẹ có cả củ cà rốt.", icons: ["👩", "🥕"] },
+                { text: "Cánh cam bay.", icons: ["🐞", "💨"] },
+                { text: "Cái cân, cái ca.", icons: ["⚖️", "☕"] },
+                { text: "Cái cặp sách của bé.", icons: ["🎒", "👦"] },
+                { text: "Con cá bơi tung tăng.", icons: ["🐟", "🌊"] },
+                { text: "Con chim ca hót.", icons: ["🐦", "🎵"] },
+                { text: "Con cáo tinh ranh.", icons: ["🦊", "👀"] },
+                { text: "Căn nhà của cô.", icons: ["🏡", "👩‍🏫"] },
+                { text: "Củ khoai của ba.", icons: ["🍠", "👨"] },
+                { text: "Cây cối xanh tươi.", icons: ["🌳", "🌱"] },
+                { text: "Cây cam có quả.", icons: ["🍊", "🌳"] },
+                { text: "Con cá của bà.", icons: ["🐟", "👵"] },
+                { text: "Cái ca màu xanh.", icons: ["☕", "🔵"] },
+                { text: "Cái cặp sách màu đỏ.", icons: ["🎒", "🔴"] },
+                { text: "Củ cà rốt to.", icons: ["🥕", "😮"] }
             ]},
-            { id: "ÊN", label: "ÊN", title: "Bé Học Vần ÊN", themeClass: "theme-en-hat", sentences: [
-                { text: "Bé mến cô giáo.", icons: ["👧", "💖", "👩‍🏫"] },
-                { text: "Cái ghế gỗ của ba.", icons: ["🪑", "🪵", "👨"] },
-                { text: "Lên trên cầu thang.", icons: ["⬆️", "🪜", "🚶"] },
-                { text: "Ghế đẩu rất nhỏ.", icons: ["🪑", "🤏", "😊"] },
-                { text: "Thế là bé lên giường.", icons: ["👧", "🛏️", "😴"] },
-                { text: "Cánh chim bay trên trời.", icons: ["🐦", "🌬️", "☁️"] },
-                { text: "Bé chê dở.", icons: ["👧", "👎", "😠"] },
-                { text: "Sẽ đến lúc ăn bánh.", icons: ["⏰", "🍰", "😋"] },
-                { text: "Bé lên thuyền.", icons: ["👧", "⛵", "🌊"] },
-                { text: "Ghế thật êm.", icons: ["🪑", "😌", "👍"] },
-                { text: "Bé mến yêu cô.", icons: ["💖", "👩‍🏫", "😊"] },
-                { text: "Ếch ngồi trên bàn.", icons: ["🐸", "🪑", "👀"] },
-                { text: "Ghế da mềm mại.", icons: ["🪑", "😌", "✨"] },
-                { text: "Thuyền buồm đang lên.", icons: ["⛵", "⬆️", "🌊"] },
-                { text: "Bé chê kem dở.", icons: ["👧", "🍦", "😖"] },
-                { text: "Bé mến cô giáo.", icons: ["💖", "👩‍🏫", "😊"] },
-                { text: "Ghế đẩu.", icons: ["🪑", "🪑", "🪑"] },
-                { text: "Sẽ có bánh.", icons: ["🍰", "😋", "🤤"] },
-                { text: "Bé chê.", icons: ["👧", "👎", "😠"] },
-                { text: "Ghế gỗ.", icons: ["🪑", "🪵", "🌳"] }
+            { id: "D", label: "D", title: "Bé Học Chữ D", themeClass: "theme-d", sentences: [
+                { text: "Con dê đi dạo.", icons: ["🐐", "🚶"] },
+                { text: "Dì đưa bé đi học.", icons: ["👩", "👧", "🏫"] },
+                { text: "Dì Tư đi chợ mua dứa.", icons: ["👩", "🍍"] },
+                { text: "Dì Duyên đi đâu?", icons: ["👩", "❓"] },
+                { text: "Dòng sông xanh mát.", icons: ["🌊", "🍃"] },
+                { text: "Dưa hấu rất ngon.", icons: ["🍉", "😋"] },
+                { text: "Dễ thương quá đi.", icons: ["😍", "💖"] },
+                { text: "Da dẻ trắng hồng.", icons: ["👶", "✨"] },
+                { text: "Dây dứa của bà.", icons: ["🍍", "👵"] },
+                { text: "Dù là bạn, dù là bè.", icons: ["👫", "🤝"] },
+                { text: "Dạo chơi trong vườn.", icons: ["🚶", "🌺"] },
+                { text: "Bạn Dũng rất giỏi.", icons: ["👦", "🏆"] },
+                { text: "Da trắng như tuyết.", icons: ["👧", "❄️"] },
+                { text: "Dậy sớm tập thể dục.", icons: ["⏰", "🤸"] },
+                { text: "Dưa leo, dưa chuột.", icons: ["🥒", "🥒"] },
+                { text: "Dòng nước chảy xiết.", icons: ["🌊", "💨"] },
+                { text: "Dì đưa bé đi chơi.", icons: ["👩", "👧"] },
+                { text: "Dạy dỗ con cái.", icons: ["👨‍👩‍👧‍👦", "📖"] },
+                { text: "Dán dính keo.", icons: ["🩹", "🧴"] },
+                { text: "Da gà rất ngon.", icons: ["🐔", "😋"] }
             ]},
-            { id: "AY", label: "AY", title: "Bé Học Vần AY", themeClass: "theme-ay", sentences: [
-                { text: "Ngày mai đi học.", icons: ["📆", "🏫", "🎒"] },
-                { text: "Máy bay bay thật cao.", icons: ["✈️", "☁️", "⬆️"] },
-                { text: "Làm bài tập ngay.", icons: ["✍️", "📚", "⏰"] },
-                { text: "Cái dây thun của mẹ.", icons: [" elastic band", "🧵", "👩"] },
-                { text: "Bé May hay hát.", icons: ["👧", "🎶", "🎤"] },
-                { text: "Giúp tôi cái tay.", icons: ["🤝", "👦", "🖐️"] },
-                { text: "Cái máy bay thật to.", icons: ["✈️", "😮", "✨"] },
-                { text: "May vá quần áo.", icons: ["🧵", "👚", "🪡"] },
-                { text: "Tay nắm tay.", icons: ["🤝", "❤️", "😊"] },
-                { text: "Ngày hôm nay thật vui.", icons: ["📆", "☀️", "🥳"] },
-                { text: "Bé hay hát.", icons: ["👧", "🎶", "🎤"] },
-                { text: "Tay trái, tay phải.", icons: ["🖐️", "🖐️", "✋"] },
-                { text: "May áo cho búp bê.", icons: ["🧵", "👗", "🧸"] },
-                { text: "Ngày ngày đi học.", icons: ["📆", "🏫", "🎒"] },
-                { text: "Máy bay bay.", icons: ["✈️", "💨", "☁️"] },
-                { text: "Bé hay cười.", icons: ["👧", "😂", "😊"] },
-                { text: "Tay cầm bút.", icons: ["🖐️", "✍️", "✏️"] },
-                { text: "May đồ.", icons: ["🧵", "👚", "👕"] },
-                { text: "Ngày đi chơi.", icons: ["📆", "🥳", "🎉"] },
-                { text: "Bạn hay hát.", icons: ["👦", "🎶", "🎤"] }
+            { id: "Đ", label: "Đ", title: "Bé Học Chữ Đ", themeClass: "theme-d-hat", sentences: [
+                { text: "Con đà điểu đi đâu?", icons: ["🦩", "❓"] },
+                { text: "Đọc sách mỗi ngày.", icons: ["📖", "📚"] },
+                { text: "Đường đi thật xa.", icons: ["🛣️", "🚶"] },
+                { text: "Đôi mắt của mẹ.", icons: ["👀", "👩"] },
+                { text: "Đàn gà con chạy.", icons: ["🐥", "🏃"] },
+                { text: "Đèn đỏ, dừng lại.", icons: ["🚦", "🛑"] },
+                { text: "Đàn cá bơi lội.", icons: ["🐠", "🌊"] },
+                { text: "Đón đưa bạn đi học.", icons: ["👋", "🏫"] },
+                { text: "Đọc thật hay.", icons: ["🗣️", "👍"] },
+                { text: "Đá banh thật giỏi.", icons: ["⚽", "🏆"] },
+                { text: "Đi đường cẩn thận.", icons: ["🚶", "⚠️"] },
+                { text: "Đôi bạn thân thiết.", icons: ["👫", "💖"] },
+                { text: "Đêm đêm trăng sáng.", icons: ["🌌", "🌕"] },
+                { text: "Đàn kiến rất đông.", icons: ["🐜", "🐜"] },
+                { text: "Đầu đội mũ.", icons: ["👒", "👦"] },
+                { text: "Đũa và bát.", icons: ["🥢", "🥣"] },
+                { text: "Đường về nhà.", icons: ["🏡", "➡️"] },
+                { text: "Đánh vần thật to.", icons: ["🗣️", "📢"] },
+                { text: "Đèn pin sáng.", icons: ["🔦", "💡"] },
+                { text: "Đỗ xe cẩn thận.", icons: ["🚗", "🅿️"] }
             ]},
-            { id: "ÂY", label: "ÂY", title: "Bé Học Vần ÂY", themeClass: "theme-ay-hat", sentences: [
-                { text: "Bé thấy con gấu.", icons: ["👧", "👀", "🐻"] },
-                { text: "Cái cây rất cao.", icons: ["🌳", "⬆️", "🌳"] },
-                { text: "Đây là nhà tôi.", icons: ["👉", "🏡", "🏠"] },
-                { text: "Bé lấy chiếc giày.", icons: ["👧", "👟", "🛍️"] },
-                { text: "Dậy sớm tập thể dục.", icons: ["⏰", "🤸", "💪"] },
-                { text: "Bảy sắc cầu vồng.", icons: ["🌈", "🌈", "🌈"] },
-                { text: "Nắm lấy tay bạn.", icons: ["🤝", "👦", "👧"] },
-                { text: "Thấy bạn, bé cười.", icons: ["👀", "😊", "😂"] },
-                { text: "Cây to, cây nhỏ.", icons: ["🌳", "🌳", "🌲"] },
-                { text: "Giúp mẹ cấy lúa.", icons: ["🌾", "👩", "👨‍🌾"] },
-                { text: "Đậy nắp hộp sữa.", icons: ["🥛", "📦", "👍"] },
-                { text: "Lấy sách, lấy vở.", icons: ["📖", "📚", "✍️"] },
-                { text: "Cái cây xanh mướt.", icons: ["🌳", "🟢", "🌿"] },
-                { text: "Mẹ lấy quả cam.", icons: ["👩", "🍊", "😋"] },
-                { text: "Thấy bạn tôi.", icons: ["👀", "👦", "👧"] },
-                { text: "Bé lấy quả táo.", icons: ["👧", "🍎", "😋"] },
-                { text: "Cây dừa cao.", icons: ["🌴", "⬆️", "🌳"] },
-                { text: "Mẹ lấy đồ chơi.", icons: ["👩", "🧸", "🎁"] },
-                { text: "Bé cấy lúa.", icons: ["👧", "🌾", "🚜"] },
-                { text: "Lấy đồ cho em.", icons: ["🛍️", "👦", "👧"] }
+            { id: "E", label: "E", title: "Bé Học Chữ E", themeClass: "theme-e", sentences: [
+                { text: "Bé Heo đi xe đạp.", icons: ["🐖", "🚲"] },
+                { text: "Bé làm em của chị.", icons: ["👧", "👩‍🦱"] },
+                { text: "Con ve kêu hè hè.", icons: ["🦗", "🔊"] },
+                { text: "Cá he có trên mạng.", icons: ["🐠", "🌐"] },
+                { text: "Em bé của mẹ.", icons: ["👶", "👩"] },
+                { text: "E dè ngại ngùng.", icons: ["😳", "🤫"] },
+                { text: "Bé kể chuyện.", icons: ["📖", "🗣️"] },
+                { text: "Cái xe của ba.", icons: ["🚗", "👨"] },
+                { text: "Em ăn bánh ngọt.", icons: ["👧", "🍰"] },
+                { text: "Bạn Ve rất hay.", icons: ["👦", "👍"] },
+                { text: "E ngại điều gì?", icons: ["🤔", "❓"] },
+                { text: "Em học vẽ.", icons: ["👧", "🎨"] },
+                { text: "Bé Heo rất mập.", icons: ["🐖", "🐽"] },
+                { text: "Xe đạp màu đen.", icons: ["🚲", "⚫"] },
+                { text: "Em thích ca hát.", icons: ["🎶", "🎤"] },
+                { text: "Xe hơi thật to.", icons: ["🚗", "😮"] },
+                { text: "Bạn Heo rất dễ thương.", icons: ["🐖", "💖"] },
+                { text: "Kể chuyện cho em nghe.", icons: ["📖", "👂"] },
+                { text: "Em bé cười tươi.", icons: ["👶", "😁"] },
+                { text: "Em hát bài ve ve.", icons: ["🎤", "🎶"] }
             ]},
-            { id: "OM", label: "OM", title: "Bé Học Vần OM", themeClass: "theme-om", sentences: [
-                { text: "Con bướm bay trên đóm hoa.", icons: ["🦋", "💐", "🌸"] },
-                { text: "Cơm nóng ăn ngon.", icons: ["🍚", "🔥", "😋"] },
-                { text: "Bé ôm gấu bông.", icons: ["👧", "🧸", "🤗"] },
-                { text: "Con tôm bơi lội.", icons: ["🦐", "🏊", "🌊"] },
-                { text: "Chiếc rơm khô.", icons: ["🌾", "🌾", "🌾"] },
-                { text: "Cơm của mẹ.", icons: ["🍚", "👩", "💖"] },
-                { text: "Bé ôm mẹ thật chặt.", icons: ["👧", "👩", "🤗"] },
-                { text: "Tôm tép của ba.", icons: ["🦐", "👨", "😋"] },
-                { text: "Đốm lửa nhỏ.", icons: ["🔥", "🤏", "✨"] },
-                { text: "Con tôm màu đỏ.", icons: ["🦐", "🔴", "🦞"] },
-                { text: "Chị Sương bơi lội.", icons: ["👧", "🏊", "💧"] },
-                { text: "Con đom đóm.", icons: ["✨", "🌟", "💡"] },
-                { text: "Cơm của con.", icons: ["🍚", "👦", "👧"] },
-                { text: "Bé ôm bạn.", icons: ["👧", "👦", "🤝"] },
-                { text: "Con tôm càng to.", icons: ["🦐", "😮", "💪"] },
-                { text: "Rơm rạ.", icons: ["🌾", "🌾", "🌾"] },
-                { text: "Đốm lửa.", icons: ["🔥", "✨", "💡"] },
-                { text: "Ôm mẹ.", icons: ["🤗", "👩", "💖"] },
-                { text: "Con tôm nhảy.", icons: ["🦐", "🤸", "💨"] },
-                { text: "Rơm rạ khô.", icons: ["🌾", "☀️", "🌾"] }
+            { id: "Ê", label: "Ê", title: "Bé Học Chữ Ê", themeClass: "theme-e-hat", sentences: [
+                { text: "Bé mến yêu cô.", icons: ["💖", "👩‍🏫"] },
+                { text: "Ếch ngồi trên bàn.", icons: ["🐸", "🪑"] },
+                { text: "Cái ghế gỗ của ba.", icons: ["🪑", "🪵"] },
+                { text: "Bố làm nghề thợ mộc.", icons: ["👨", "🔨"] },
+                { text: "Ghế đẩu rất nhỏ.", icons: ["🪑", "🤏"] },
+                { text: "Ê a ê a.", icons: ["🎶", "🎵"] },
+                { text: "Bé mến cô giáo.", icons: ["👧", "👩‍🏫"] },
+                { text: "Ghế của bé màu xanh.", icons: ["🪑", "🔵"] },
+                { text: "Ê-tô thật là hay.", icons: ["🛠️", "⚙️"] },
+                { text: "Ghế rất nặng.", icons: ["🪑", "🏋️"] },
+                { text: "Bạn ấy mến em.", icons: ["👦", "👧"] },
+                { text: "Ếch nhái kêu.", icons: ["🐸", "🔊"] },
+                { text: "Ê, đừng làm thế.", icons: ["😠", "🙅‍♀️"] },
+                { text: "Ghế gỗ rất đẹp.", icons: ["🪑", "✨"] },
+                { text: "Mến thương mọi người.", icons: ["💖", "🤗"] },
+                { text: "Ghế làm bằng tre.", icons: ["🪑", "🎍"] },
+                { text: "Ếch ăn côn trùng.", icons: ["🐸", "🐛"] },
+                { text: "Ghế da mềm mại.", icons: ["🪑", "😌"] },
+                { text: "Ếch xanh rất to.", icons: ["🐸", "😮"] },
+                { text: "Ghế của em.", icons: ["🪑", "💖"] }
             ]},
-            { id: "AM", label: "AM", title: "Bé Học Vần AM", themeClass: "theme-am", sentences: [
-                { text: "Quả cam, quả chanh.", icons: ["🍊", "🍋", "🍏"] },
-                { text: "Mẹ mang chiếc cặp.", icons: ["👩", "👜", "💼"] },
-                { text: "Bé học bài chăm chỉ.", icons: ["👧", "📖", "✍️"] },
-                { text: "Chân chậm, tay cầm.", icons: ["🚶", "🖐️", "🚶"] },
-                { text: "Đêm rằm thật sáng.", icons: ["🌕", "🌃", "✨"] },
-                { text: "Nấm rơm rất ngon.", icons: ["🍄", "😋", "🤤"] },
-                { text: "Bạn làm bài tập.", icons: ["👦", "📚", "✍️"] },
-                { text: "Cái cặp sách của bạn.", icons: ["🎒", "👦", "👧"] },
-                { text: "Làm lồng đèn.", icons: ["🏮", "💡", "💖"] },
-                { text: "Bạn chăm ngoan.", icons: ["👍", "😊", "💖"] },
-                { text: "Quả cam.", icons: ["🍊", "😋", "🍊"] },
-                { text: "Cái cặp.", icons: ["🎒", "📚", "✏️"] },
-                { text: "Làm bài.", icons: ["✍️", "📖", "📚"] },
-                { text: "Lá thăm.", icons: ["🎲", "🍀", "👍"] },
-                { text: "Rằm trung thu.", icons: ["🏮", "🌕", "🎉"] },
-                { text: "Cây cam.", icons: ["🌳", "🍊", "🌱"] },
-                { text: "Con cám.", icons: ["🌾", "🐟", "🍚"] },
-                { text: "Mẹ làm bánh.", icons: ["👩", "🍰", "😋"] },
-                { text: "Cái cặp to.", icons: ["🎒", "😮", "💖"] },
-                { text: "Bạn An chăm.", icons: ["👦", "👍", "😊"] }
+            { id: "G", label: "G", title: "Bé Học Chữ G", themeClass: "theme-g", sentences: [
+                { text: "Con gà gáy o o.", icons: ["🐔", "☀️"] },
+                { text: "Gà và cá bơi.", icons: ["🐔", "🐟"] },
+                { text: "Gà mẹ gà con.", icons: ["🐓", "🐥"] },
+                { text: "Gió thổi mạnh quá.", icons: ["💨", "🌬️"] },
+                { text: "Gà trống gáy vang.", icons: ["🐓", "📢"] },
+                { text: "Gà gáy le te.", icons: ["🐔", "🎵"] },
+                { text: "Gà con líu lo.", icons: ["🐥", "🎶"] },
+                { text: "Gạo nếp rất ngon.", icons: ["🍚", "😋"] },
+                { text: "Gà mái ấp trứng.", icons: ["🐓", "🥚"] },
+                { text: "Gió lùa qua cửa.", icons: ["🌬️", "🚪"] },
+                { text: "Gà con tập bay.", icons: ["🐥", "🤸"] },
+                { text: "Gia đình thật vui.", icons: ["👨‍👩‍👧‍👦", "🎉"] },
+                { text: "Gió lạnh đầu mùa.", icons: ["🌬️", "🧣"] },
+                { text: "Gà mái dẫn con.", icons: ["🐓", "🐥"] },
+                { text: "Gà con đi theo mẹ.", icons: ["🐥", "👩‍🦱"] },
+                { text: "Gà con ăn thóc.", icons: ["🐥", "🍚"] },
+                { text: "Gà con rất hiền.", icons: ["🐥", "😊"] },
+                { text: "Gà mẹ rất tốt.", icons: ["🐓", "💖"] },
+                { text: "Gà mái đẻ trứng.", icons: ["🐓", "🥚"] },
+                { text: "Gà trống gáy to.", icons: ["🐓", "📢"] }
             ]},
-            { id: "AU", label: "AU", title: "Bé Học Vần AU", themeClass: "theme-au", sentences: [
-                { text: "Cái rau cải thật ngon.", icons: ["🥬", "😋", "🤤"] },
-                { text: "Bạn Rau rất hay.", icons: ["👦", "👍", "👏"] },
-                { text: "Con tẩu bay đi đâu.", icons: ["✈️", "❓", "🤔"] },
-                { text: "Bé đau bụng rồi.", icons: ["👧", "😭", "😖"] },
-                { text: "Mẹ nấu ăn ngon.", icons: ["👩", "🍳", "🍲"] },
-                { text: "Con râu con rể.", icons: ["👨‍🦱", "👩‍🦱", "👨‍👩‍👧‍👦"] },
-                { text: "Đau rồi khóc đi.", icons: ["😭", "😥", "😔"] },
-                { text: "Cháu rất hiền.", icons: ["👦", "😊", "💖"] },
-                { text: "Nhà cháu có nhiều đồ chơi.", icons: ["🏡", "🧸", "🎁"] },
-                { text: "Sáu tuổi đi học.", icons: ["👧", "📚", "🏫"] },
-                { text: "Rau cải.", icons: ["🥬", "🥗", "😋"] },
-                { text: "Nấu cơm.", icons: ["🍚", "🍳", "🍲"] },
-                { text: "Bé đau.", icons: ["👧", "😭", "😖"] },
-                { text: "Bạn đau.", icons: ["👦", "😭", "😖"] },
-                { text: "Cháu ngoan.", icons: ["👦", "👍", "👏"] },
-                { text: "Sáu quả cam.", icons: ["6️⃣", "🍊", "🍊"] },
-                { text: "Mẹ nấu cháo.", icons: ["👩", "🥣", "😋"] },
-                { text: "Rau muống.", icons: ["🥬", "😋", "🤤"] },
-                { text: "Cháu bé.", icons: ["👶", "🧒", "👧"] },
-                { text: "Đau chân.", icons: ["🦶", "🤕", "😭"] }
+            { id: "H", label: "H", title: "Bé Học Chữ H", themeClass: "theme-h", sentences: [
+                { text: "Hải âu bay trên biển.", icons: ["🐦", "🌊"] },
+                { text: "Hà mã ăn cỏ.", icons: ["🦛", "🍀"] },
+                { text: "Học bài thật giỏi.", icons: ["📖", "✍️"] },
+                { text: "Hoa hồng thật đẹp.", icons: ["🌹", "✨"] },
+                { text: "Con hổ rất mạnh.", icons: ["🐅", "💪"] },
+                { text: "Hạt mưa rơi tí tách.", icons: ["💧", "🌧️"] },
+                { text: "Hòa mình vào thiên nhiên.", icons: ["🧘", "🌿"] },
+                { text: "Hát ca thật vui.", icons: ["🎤", "🎶"] },
+                { text: "Heo hồng, heo đỏ.", icons: ["🐖", "🐖"] },
+                { text: "Hươu cao cổ.", icons: ["🦒", "🌳"] },
+                { text: "Hòn đá to.", icons: ["🪨", "😮"] },
+                { text: "Hát hay quá.", icons: ["🎤", "👍"] },
+                { text: "Hà mã rất to.", icons: ["🦛", "🐘"] },
+                { text: "Hộp bút của bé.", icons: ["📦", "✏️"] },
+                { text: "Hà mã ăn no.", icons: ["🦛", "😋"] },
+                { text: "Hạt gạo trắng.", icons: ["🍚", "⚪"] },
+                { text: "Hà mã bơi.", icons: ["🦛", "🏊"] },
+                { text: "Hàng cây xanh.", icons: ["🌳", "🌳"] },
+                { text: "Học hành chăm chỉ.", icons: ["📖", "💡"] },
+                { text: "Hoa cúc trắng.", icons: ["🌼", "⚪"] }
             ]},
-            { id: "ÂU", label: "ÂU", title: "Bé Học Vần ÂU", themeClass: "theme-au-hat", sentences: [
-                { text: "Con sâu ăn lá.", icons: ["🐛", "🍃", "🌿"] },
-                { text: "Chị Sâu rất sâu sắc.", icons: ["👧", "🧠", "💡"] },
-                { text: "Vào vườn, hái rau.", icons: ["🏡", "🥬", "🫙"] },
-                { text: "Cầu thủ ghi bàn.", icons: ["⚽", "🏆", "🏃"] },
-                { text: "Cái cầu rất cao.", icons: ["🌉", "⬆️", "☁️"] },
-                { text: "Bé lầu bầu.", icons: ["👦", "😠", "🗣️"] },
-                { text: "Nơi sâu nhất.", icons: ["🌊", "⬇️", "🤿"] },
-                { text: "Đấu võ, đấu kiếm.", icons: ["🥋", "⚔️", "💪"] },
-                { text: "Bé sầu vì bị điểm kém.", icons: ["👧", "😔", "😭"] },
-                { text: "Bạn Sầu rất tốt.", icons: ["👦", "👍", "💖"] },
-                { text: "Con sâu.", icons: ["🐛", "🪱", "🌱"] },
-                { text: "Cây cầu.", icons: ["🌉", "🌉", "🌉"] },
-                { text: "Cầu thủ.", icons: ["⚽", "🏆", "🏃"] },
-                { text: "Đấu tranh.", icons: ["💪", "💪", "👊"] },
-                { text: "Lầu cao.", icons: ["🏢", "⬆️", "🏠"] },
-                { text: "Sâu.", icons: ["🐛", "🪱", "🪱"] },
-                { text: "Vào trong.", icons: ["➡️", "🚶", "🏠"] },
-                { text: "Bé sầu.", icons: ["👧", "😔", "😞"] },
-                { text: "Cầu nguyện.", icons: ["🙏", "💖", "✨"] },
-                { text: "Lầu bầu.", icons: ["😠", "😤", "🗣️"] }
+            { id: "I", label: "I", title: "Bé Học Chữ I", themeClass: "theme-i", sentences: [
+                { text: "Con vịt đi bơi.", icons: ["🦆", "💧"] },
+                { text: "Bé rất vui vì được đi chơi.", icons: ["👧", "🎉"] },
+                { text: "Chiếc ví của bà.", icons: ["👛", "👵"] },
+                { text: "Bé đi chơi thật vui.", icons: ["👦", "🤸"] },
+                { text: "Con vịt kêu quác quác.", icons: ["🦆", "🔊"] },
+                { text: "Vui chơi cùng bạn.", icons: ["👫", "😂"] },
+                { text: "Mẹ ơi, con xin lỗi.", icons: ["👩", "🙏"] },
+                { text: "Bé rất ngoan.", icons: ["👧", "👍"] },
+                { text: "Đi học thật vui.", icons: ["🏫", "😊"] },
+                { text: "Ví da của ba.", icons: ["💼", "👨"] },
+                { text: "Tivi thật hay.", icons: ["📺", "👍"] },
+                { text: "Bé Vi đi học.", icons: ["👧", "🏫"] },
+                { text: "Mì ăn liền.", icons: ["🍜", "😋"] },
+                { text: "Bé Mi đi bơi.", icons: ["👧", "🏊"] },
+                { text: "Bé đi khám bệnh.", icons: ["👩‍⚕️", "🏥"] },
+                { text: "Bé Vi rất xinh.", icons: ["👧", "✨"] },
+                { text: "Nước miếng của bé.", icons: ["👶", "💦"] },
+                { text: "Bé làm việc.", icons: ["👦", "🛠️"] },
+                { text: "Bé thích xem tivi.", icons: ["👧", "📺"] },
+                { text: "Con vịt đẻ trứng.", icons: ["🦆", "🥚"] }
             ]},
-            { id: "UÔN", label: "UÔN", title: "Bé Học Vần UÔN", themeClass: "theme-uon", sentences: [
-                { text: "Cuốn sách của bé.", icons: ["📖", "📚", "💖"] },
-                { text: "Vườn rau xanh mướt.", icons: ["🏡", "🥬", "🌱"] },
-                { text: "Bạn Duân thật giỏi.", icons: ["👦", "🏆", "👏"] },
-                { text: "Uôn uôn, uôn uôn.", icons: ["🎶", "🎵", "🔊"] },
-                { text: "Buồn bã, buồn rầu.", icons: ["😔", "😞", "😭"] },
-                { text: "Vườn hoa hồng.", icons: ["🌹", "🌸", "💐"] },
-                { text: "Bé cuộn mình ngủ.", icons: ["👧", "🛌", "😴"] },
-                { text: "Bạn Luân rất ngoan.", icons: ["👦", "👍", "😊"] },
-                { text: "Cuốn vở của ba.", icons: ["📖", "👨", "📚"] },
-                { text: "Buồn ngủ, buồn ngủ.", icons: ["😴", "😌", "😴"] },
-                { text: "Cuốn sách.", icons: ["📖", "📚", "📚"] },
-                { text: "Vườn cây.", icons: ["🌳", "🌲", "🌳"] },
-                { text: "Buồn ngủ.", icons: ["😴", "😔", "😴"] },
-                { text: "Luân chuyển.", icons: ["🔄", "🔄", "🔄"] },
-                { text: "Vườn táo.", icons: ["🍎", "🌳", "🍏"] },
-                { text: "Bạn Duân.", icons: ["👦", "👧", "🧑"] },
-                { text: "Cuộn chỉ.", icons: ["🧵", "🧶", "🧵"] },
-                { text: "Luân phiên.", icons: ["🔄", "🔄", "🔄"] },
-                { text: "Buồn bã.", icons: ["😔", "😞", "😭"] },
-                { text: "Cuộn giấy.", icons: ["📄", "📜", "📜"] }
+            { id: "K", label: "K", title: "Bé Học Chữ K", themeClass: "theme-k", sentences: [
+                { text: "Con kiến tha mồi.", icons: ["🐜", "🐜"] },
+                { text: "Kính của bà đây.", icons: ["👓", "👵"] },
+                { text: "Cái kéo của mẹ.", icons: ["✂️", "👩"] },
+                { text: "Bé Kẹo rất ngoan.", icons: ["👧", "👍"] },
+                { text: "Cá kho tộ.", icons: ["🐟", "🍲"] },
+                { text: "Bé tập kéo co.", icons: ["👦", "💪"] },
+                { text: "Kẹo ngọt thật ngon.", icons: ["🍬", "😋"] },
+                { text: "Cái kim, cái chỉ.", icons: ["🧵", "🪡"] },
+                { text: "Kiên trì học bài.", icons: ["💪", "📖"] },
+                { text: "Bé khoe áo mới.", icons: ["👧", "👚"] },
+                { text: "Con kiến nhỏ.", icons: ["🐜", "🐜"] },
+                { text: "Kính của ba.", icons: ["👓", "👨"] },
+                { text: "Cái kéo sắc.", icons: ["✂️", "⚠️"] },
+                { text: "Kẹo mút, kẹo dẻo.", icons: ["🍭", "🍬"] },
+                { text: "Bé thích kéo cưa.", icons: ["👦", "🪚"] },
+                { text: "Kiên nhẫn chờ đợi.", icons: ["⏳", "😌"] },
+                { text: "Kéo co thật vui.", icons: ["🎉", "😂"] },
+                { text: "Cái kim may vá.", icons: ["🪡", "🧵"] },
+                { text: "Khoe đồ chơi.", icons: ["🧸", "😊"] },
+                { text: "Kẹo rất ngọt.", icons: ["🍬", "😋"] }
             ]},
-            { id: "ƯƠN", label: "ƯƠN", title: "Bé Học Vần ƯƠN", themeClass: "theme-uon-mo", sentences: [
-                { text: "Con lươn trườn trên bùn.", icons: ["🐍", "💩", "🌿"] },
-                { text: "Cánh vườn ươm cây.", icons: ["🌳", "🌱", "🌿"] },
-                { text: "Bé ươn lên để hái quả.", icons: ["👦", "🍇", "⬆️"] },
-                { text: "Ươn ươn, ươn ươn.", icons: ["🎶", "🎵", "🔊"] },
-                { text: "Buồn bã, buồn rầu.", icons: ["😔", "😞", "😭"] },
-                { text: "Vườn rau xanh mướt.", icons: ["🏡", "🥬", "🌱"] },
-                { text: "Lườn lượn qua lại.", icons: ["🚶", "🔄", "🔄"] },
-                { text: "Bé thích lượn vòng.", icons: ["👧", "🔄", "💨"] },
-                { text: "Vườn cây của ông.", icons: ["🌳", "👴", "🌿"] },
-                { text: "Ươm mầm xanh.", icons: ["🌱", "🌿", "💧"] },
-                { text: "Lươn trườn.", icons: ["🐍", "🐍", "💨"] },
-                { text: "Ươm mầm.", icons: ["🌱", "🌿", "💧"] },
-                { text: "Buồn nôn.", icons: ["🤢", "🤮", "😖"] },
-                { text: "Vườn rau.", icons: ["🏡", "🥬", "🥗"] },
-                { text: "Lươn.", icons: ["🐍", "🐟", "🐠"] },
-                { text: "Vườn cây.", icons: ["🌳", "🌿", "🌲"] },
-                { text: "Ươm.", icons: ["🌱", "💧", "☀️"] },
-                { text: "Lượn.", icons: ["🔄", "🔄", "🔄"] },
-                { text: "Lươn lẹo.", icons: ["🤥", "🤫", "🤥"] },
-                { text: "Ươn.", icons: ["🗣️", "🎵", "🎶"] }
+            { id: "L", label: "L", title: "Bé Học Chữ L", themeClass: "theme-l", sentences: [
+                { text: "Bé la lên thật to.", icons: ["🗣️", "📢"] },
+                { text: "Lá cây xanh mướt.", icons: ["🍃", "🌳"] },
+                { text: "Làm lồng đèn.", icons: ["🏮", "🔨"] },
+                { text: "Lê Văn rất giỏi.", icons: ["👦", "🏆"] },
+                { text: "Lòng tốt của bạn.", icons: ["❤️", "👍"] },
+                { text: "Lá lành đùm lá rách.", icons: ["🤝", "💖"] },
+                { text: "Lò nướng bánh.", icons: ["🔥", "🎂"] },
+                { text: "Lá chuối gói bánh.", icons: ["🍃", "🍙"] },
+                { text: "Lăn, lộn, lật.", icons: ["🤸", "🔄"] },
+                { text: "Lá me non.", icons: ["🍃", "🌱"] },
+                { text: "Làm bài tập.", icons: ["📖", "✍️"] },
+                { text: "Lòng lợn.", icons: ["🐽", "😋"] },
+                { text: "Làm đèn lồng.", icons: ["🏮", "💡"] },
+                { text: "Lá bàng đỏ.", icons: ["🍃", "🍁"] },
+                { text: "Làm việc tốt.", icons: ["👍", "😊"] },
+                { text: "Lá rau cải.", icons: ["🥬", "🥗"] },
+                { text: "Lăn bóng thật nhanh.", icons: ["⚽", "💨"] },
+                { text: "Lòng kiên nhẫn.", icons: ["😌", "💪"] },
+                { text: "Làm việc nhà.", icons: ["🧹", "🪣"] },
+                { text: "Làm bạn với tất cả.", icons: ["👫", "💖"] }
             ]},
-            { id: "ÔN", label: "ÔN", title: "Bé Học Vần ÔN", themeClass: "theme-on-hat", sentences: [
-                { text: "Con chồn hòn chốn.", icons: ["🦊", "🏃", "💨"] },
-                { text: "Tôn trọng người lớn.", icons: ["👍", "👴", "👵"] },
-                { text: "Bé ôn bài thật giỏi.", icons: ["👧", "📖", "✍️"] },
-                { text: "Bạn Tôn rất thông minh.", icons: ["👦", "🧠", "💡"] },
-                { text: "Bé chồn đi chơi.", icons: ["🦊", "🏃", "🤸"] },
-                { text: "Ôn tập mỗi ngày.", icons: ["📚", "✍️", "📖"] },
-                { text: "Ôn hòa với bạn bè.", icons: ["🤝", "😊", "💖"] },
-                { text: "Chồn chồn.", icons: ["🦊", "🦊", "🦊"] },
-                { text: "Tôn trọng.", icons: ["👍", "👏", "💖"] },
-                { text: "Ôn bài.", icons: ["📚", "📖", "✍️"] },
-                { text: "Bạn Tôn.", icons: ["👦", "👧", "🧑"] },
-                { text: "Chồn.", icons: ["🦊", "🦊", "🦊"] },
-                { text: "Tôn vinh.", icons: ["🏆", "🥇", "✨"] },
-                { text: "Ôn hòa.", icons: ["😊", "😌", "💖"] },
-                { text: "Tôn vinh.", icons: ["🏆", "🥇", "✨"] },
-                { text: "Chồn.", icons: ["🦊", "🦊", "🦊"] },
-                { text: "Tôn.", icons: ["👦", "👧", "🧑"] },
-                { text: "Ôn.", icons: ["📚", "📖", "✍️"] },
-                { text: "Chồn.", icons: ["🦊", "🦊", "🦊"] },
-                { text: "Tôn trọng.", icons: ["👍", "👏", "💖"] }
+            { id: "M", label: "M", title: "Bé Học Chữ M", themeClass: "theme-m", sentences: [
+                { text: "Con mèo lười biếng.", icons: ["😺", "😴"] },
+                { text: "Mẹ mua mứt.", icons: ["👩", "🍓"] },
+                { text: "Mâm cơm có mắm.", icons: ["🍽️", "🐟"] },
+                { text: "Món mì rất ngon.", icons: ["🍜", "😋"] },
+                { text: "Mèo và chuột.", icons: ["😺", "🐭"] },
+                { text: "Mẹ rất yêu bé.", icons: ["👩", "💖"] },
+                { text: "Mũ màu đỏ.", icons: ["🧢", "🔴"] },
+                { text: "Mâm cơm đầy đủ.", icons: ["🍚", "🍲"] },
+                { text: "Mơ màng, mơ mộng.", icons: ["💭", "✨"] },
+                { text: "Con mèo của bé.", icons: ["😺", "👧"] },
+                { text: "Mùa hè thật nóng.", icons: ["☀️", "🥵"] },
+                { text: "Mặt trời mọc.", icons: ["🌞", "🌅"] },
+                { text: "Mẹ mắng, con sợ.", icons: ["👩", "😨"] },
+                { text: "Mùi hương hoa.", icons: ["👃", "🌸"] },
+                { text: "Mặt trăng tròn.", icons: ["🌕", "🌌"] },
+                { text: "Mắm tép ngon.", icons: ["🦐", "😋"] },
+                { text: "Mứt dừa, mứt gừng.", icons: ["🥥", "🫚"] },
+                { text: "Mèo con nghịch ngợm.", icons: ["😺", "🤪"] },
+                { text: "Mặt trời thật lớn.", icons: ["☀️", "😮"] },
+                { text: "Món ăn của mẹ.", icons: ["👩", "💖"] }
             ]},
-            { id: "ƠN", label: "ƠN", title: "Bé Học Vần ƠN", themeClass: "theme-on-mo", sentences: [
-                { text: "Ơn giời, cậu đây rồi.", icons: ["🙏", "😊", "🏃"] },
-                { text: "Con sơn ca hót hay.", icons: ["🐦", "🎶", "🎤"] },
-                { text: "Bé rất biết ơn.", icons: ["👧", "🙏", "💖"] },
-                { text: "Sơn móng tay cho mẹ.", icons: ["💅", "👩", "✨"] },
-                { text: "Bé nhởn nhơ chơi.", icons: ["👦", "🤸", "😊"] },
-                { text: "Ơn nghĩa của mẹ.", icons: ["👩", "💖", "🙏"] },
-                { text: "Sơn tường nhà.", icons: ["🏠", "🎨", "🧑‍🎨"] },
-                { text: "ơn giời.", icons: ["🙏", "😊", "💖"] },
-                { text: "Sơn ca.", icons: ["🐦", "🎶", "🎤"] },
-                { text: "Bé biết ơn.", icons: ["👧", "🙏", "💖"] },
-                { text: "Sơn.", icons: ["🎨", "🖌️", "🧑‍🎨"] },
-                { text: "Ơn nghĩa.", icons: ["❤️", "🙏", "💖"] },
-                { text: "Nhởn nhơ.", icons: ["😊", " carefree", "✨"] },
-                { text: "Sơn ca hát.", icons: ["🐦", "🎶", "🎤"] },
-                { text: "Ơn.", icons: ["🙏", "💖", "😊"] },
-                { text: "Sơn móng.", icons: ["💅", "💅", "💅"] },
-                { text: "Sơn màu.", icons: ["🎨", "🖌️", "🎨"] },
-                { text: "Ơn.", icons: ["🙏", "💖", "😊"] },
-                { text: "Sơn ca.", icons: ["🐦", "🎶", "🎤"] },
-                { text: "Biết ơn.", icons: ["🙏", "💖", "😊"] }
+            { id: "N", label: "N", title: "Bé Học Chữ N", themeClass: "theme-n", sentences: [
+                { text: "Nắng vàng thật đẹp.", icons: ["☀️", "✨"] },
+                { text: "Nghỉ ngơi nào.", icons: ["😴", "😌"] },
+                { text: "Bé Nai đi nương.", icons: ["🦌", "🏞️"] },
+                { text: "Nón của bà.", icons: ["👒", "👵"] },
+                { text: "Nước uống rất mát.", icons: ["💧", "🧊"] },
+                { text: "Nhanh chân lên nào.", icons: ["🏃", "💨"] },
+                { text: "Nước non quê hương.", icons: ["🏞️", "❤️"] },
+                { text: "Nón lá của mẹ.", icons: ["👒", "👩"] },
+                { text: "Nai con chạy.", icons: ["🦌", "💨"] },
+                { text: "Nắng chiếu vào nhà.", icons: ["☀️", "🏡"] },
+                { text: "Nước suối chảy.", icons: ["💧", "🏞️"] },
+                { text: "Nói lời hay.", icons: ["🗣️", "👍"] },
+                { text: "Nâng niu, nâng niu.", icons: ["🤲", "💖"] },
+                { text: "Nồi cơm nóng.", icons: ["🍚", "🔥"] },
+                { text: "Nước biển xanh.", icons: ["🌊", "🔵"] },
+                { text: "Nhanh, nhanh.", icons: ["🏃", "💨"] },
+                { text: "Nước non đẹp quá.", icons: ["🏞️", "😍"] },
+                { text: "Nắng ấm đầu mùa.", icons: ["☀️", "😊"] },
+                { text: "Nóng quá đi.", icons: ["🔥", "🥵"] },
+                { text: "Nước ngọt.", icons: ["🥤", "😋"] }
             ]},
-            { id: "EO", label: "EO", title: "Bé Học Vần EO", themeClass: "theme-eo", sentences: [
-                { text: "Con mèo ngoèo đuôi.", icons: ["😺", "🐈", "💨"] },
-                { text: "Bé nheo mắt cười.", icons: ["👦", "😊", "😂"] },
-                { text: "Con chim hót reo.", icons: ["🐦", "🎶", "🎤"] },
-                { text: "Cái kẹo thật ngọt.", icons: ["🍭", "🍬", "😋"] },
-                { text: "Bé đi dẻo chân.", icons: ["👧", "🚶", "🚶"] },
-                { text: "Leo cây hái quả.", icons: ["🌳", "🍇", "🍎"] },
-                { text: "Cái kèo của nhà.", icons: ["🏠", "🪵", "🔨"] },
-                { text: "Bé reo hò.", icons: ["👦", "📢", "🎉"] },
-                { text: "Con mèo kêu meo meo.", icons: ["😺", "🐈", "🔊"] },
-                { text: "Bé nheo mắt.", icons: ["👦", "👀", "😊"] },
-                { text: "Reo hò.", icons: ["📢", "🎉", "🥳"] },
-                { text: "Kẹo.", icons: ["🍬", "🍭", "😋"] },
-                { text: "Leo trèo.", icons: ["🧗", "🌳", "🤸"] },
-                { text: "Kèo.", icons: ["🔨", "🪵", "🏠"] },
-                { text: "Reo hò.", icons: ["📢", "🎉", "🥳"] },
-                { text: "Mèo.", icons: ["😺", "🐈", "🐾"] },
-                { text: "Nheo.", icons: ["👀", "🤫", "😶"] },
-                { text: "Reo hò.", icons: ["📢", "🎉", "🥳"] },
-                { text: "Kẹo.", icons: ["🍬", "🍭", "😋"] },
-                { text: "Leo.", icons: ["🧗", "🌳", "🤸"] }
+            { id: "O", label: "O", title: "Bé Học Chữ O", themeClass: "theme-o", sentences: [
+                { text: "Bố cho bé con gấu bông.", icons: ["👨", "🧸"] },
+                { text: "Con ong bay đi đâu.", icons: ["🐝", "❓"] },
+                { text: "Con công xòe đuôi.", icons: ["🦚", "✨"] },
+                { text: "Đọc to, rõ ràng.", icons: ["🗣️", "📢"] },
+                { text: "Cá lóc của ba.", icons: ["🐟", "👨"] },
+                { text: "Cỏ non, con bò.", icons: ["🍀", "🐄"] },
+                { text: "Con ong chăm chỉ.", icons: ["🐝", "💪"] },
+                { text: "Bé Oanh học bài.", icons: ["👧", "📚"] },
+                { text: "Gió to, gió nhỏ.", icons: ["💨", "🌬️"] },
+                { text: "Cây hoa có ong.", icons: ["🌸", "🐝"] },
+                { text: "Chó con, mèo con.", icons: ["🐶", "😺"] },
+                { text: "Bé học trò ngoan.", icons: ["👦", "👍"] },
+                { text: "Cái bóng tròn.", icons: ["⚽", "⚪"] },
+                { text: "Con cóc, con cóc.", icons: ["🐸", "🐸"] },
+                { text: "Con hổ to lớn.", icons: ["🐅", "😮"] },
+                { text: "Con thỏ ăn cỏ.", icons: ["🐇", "🍀"] },
+                { text: "Con chó sủa.", icons: ["🐶", "🔊"] },
+                { text: "Bố con mình đi chơi.", icons: ["👨", "👦"] },
+                { text: "Con gà con.", icons: ["🐔", "🐥"] },
+                { text: "Cơn gió nhẹ.", icons: ["🌬️", "😌"] }
             ]},
-            { id: "AO", label: "AO", title: "Bé Học Vần AO", themeClass: "theme-ao", sentences: [
-                { text: "Quả táo màu đỏ.", icons: ["🍎", "🔴", "😋"] },
-                { text: "Áo len của bé.", icons: ["👚", "🧶", "🧥"] },
-                { text: "Ao cá của ông.", icons: ["🐟", "👴", "💧"] },
-                { text: "Bé táo tợn.", icons: ["👦", "😠", "😤"] },
-                { text: "Học lao động.", icons: ["👩‍🌾", "🔨", "🪚"] },
-                { text: "Cái áo của ba.", icons: ["👚", "👨", "👕"] },
-                { text: "Bạn ấy học thật giỏi.", icons: ["👦", "📚", "💯"] },
-                { text: "Bé xoa đầu bạn.", icons: ["👧", "🤝", "👦"] },
-                { text: "Ao của làng.", icons: ["💧", "🏡", "🌊"] },
-                { text: "Bạn lao động.", icons: ["👩‍🌾", "👨‍🏭", "🧑‍🔧"] },
-                { text: "Quả táo.", icons: ["🍎", "🍏", "🍎"] },
-                { text: "Cái áo.", icons: ["👚", "👕", "🧥"] },
-                { text: "Cái ao.", icons: ["💧", "🌊", "💧"] },
-                { text: "Lao động.", icons: ["💪", "🏋️", "🏃"] },
-                { text: "Ao cá.", icons: ["🐟", "🐟", "🐟"] },
-                { text: "Áo.", icons: ["👚", "👕", "🧥"] },
-                { text: "Lao.", icons: ["💪", "🏋️", "🏃"] },
-                { text: "Ao.", icons: ["💧", "🌊", "💧"] },
-                { text: "Táo.", icons: ["🍎", "🍏", "🍎"] },
-                { text: "Lao động.", icons: ["💪", "🏋️", "🏃"] }
+            { id: "Ô", label: "Ô", title: "Bé Học Chữ Ô", themeClass: "theme-o-hat", sentences: [
+                { text: "Mẹ đi ô tô.", icons: ["👩", "🚗"] },
+                { text: "Cái ô thật đẹp.", icons: ["☂️", "✨"] },
+                { text: "Ô hay, trời mưa.", icons: ["😮", "🌧️"] },
+                { text: "Cô giáo yêu bé.", icons: ["👩‍🏫", "💖"] },
+                { text: "Bé làm bài toán.", icons: ["👧", "➕"] },
+                { text: "Ô cửa sổ sáng.", icons: ["🪟", "💡"] },
+                { text: "Mở ô cửa sổ.", icons: ["🪟", "👋"] },
+                { text: "Ô mai, ô mai.", icons: ["🍬", "😋"] },
+                { text: "Bé Tôm rất tốt.", icons: ["👦", "👍"] },
+                { text: "Con thỏ ăn cỏ.", icons: ["🐇", "🍀"] },
+                { text: "Ô tô của bố.", icons: ["🚗", "👨"] },
+                { text: "Ôi trời ơi.", icons: ["😮", "😲"] },
+                { text: "Cái ô màu đỏ.", icons: ["☂️", "🔴"] },
+                { text: "Bé ngồi trên ô tô.", icons: ["👧", "🚗"] },
+                { text: "Ô tô chạy nhanh.", icons: ["🚗", "💨"] },
+                { text: "Ôi thích quá.", icons: ["😍", "🤩"] },
+                { text: "Bé ăn ô mai.", icons: ["👧", "🍬"] },
+                { text: "Cái ô to.", icons: ["☂️", "😮"] },
+                { text: "Cô Tôm rất hiền.", icons: ["👩", "😊"] },
+                { text: "Ối trời ơi.", icons: ["😲", "🤭"] }
             ]},
-            { id: "ONG", label: "ONG", title: "Bé Học Vần ONG", themeClass: "theme-ong", sentences: [
-                { text: "Con ong chăm chỉ làm mật.", icons: ["🐝", "🍯", "😋"] },
-                { text: "Bé rất thích thổi bong bóng.", icons: ["👧", "🎈", "🎈"] },
-                { text: "Con công xòe đuôi.", icons: ["🦚", "✨", "👑"] },
-                { text: "Ông bà rất tốt.", icons: ["👴", "👵", "💖"] },
-                { text: "Bong bóng bay lên trời.", icons: ["🎈", "☁️", "⬆️"] },
-                { text: "Con ong bay đi đâu.", icons: ["🐝", "❓", "🤔"] },
-                { text: "Con công có nhiều màu.", icons: ["🦚", "🌈", "✨"] },
-                { text: "Ông già Noel.", icons: ["🎅", "🎁", "🎄"] },
-                { text: "Bé rất thích thổi bong bóng.", icons: ["👧", "🎈", "😂"] },
-                { text: "Con ong bay.", icons: ["🐝", "💨", "✨"] },
-                { text: "Con ong.", icons: ["🐝", "🐝", "🐝"] },
-                { text: "Bong bóng.", icons: ["🎈", "🎈", "🎈"] },
-                { text: "Con công.", icons: ["🦚", "🦚", "🦚"] },
-                { text: "Ông.", icons: ["👴", "👨‍🦳", "🧓"] },
-                { text: "Ong mật.", icons: ["🍯", "🐝", "😋"] },
-                { text: "Bong bóng bay.", icons: ["🎈", "☁️", "⬆️"] },
-                { text: "Con công.", icons: ["🦚", "🦚", "🦚"] },
-                { text: "Ông già.", icons: ["👴", "👨‍🦳", "🧓"] },
-                { text: "Bong bóng.", icons: ["🎈", "🎈", "🎈"] },
-                { text: "Con ong.", icons: ["🐝", "🐝", "🐝"] }
+            { id: "Ơ", label: "Ơ", title: "Bé Học Chữ Ơ", themeClass: "theme-o-mo", sentences: [
+                { text: "Bố ơi, bố ơi.", icons: ["👨", "🗣️"] },
+                { text: "Ơ hay, bạn đến rồi.", icons: ["😮", "👋"] },
+                { text: "Bé ơi, mẹ thương bé.", icons: ["👧", "💖"] },
+                { text: "Con cá bơi lơ tơ.", icons: ["🐟", "🌊"] },
+                { text: "Con ơi, con về.", icons: ["👩", "🏠"] },
+                { text: "Ơ kìa, mèo con.", icons: ["😺", "👀"] },
+                { text: "Bé ơi, học bài.", icons: ["👧", "📖"] },
+                { text: "Bạn lơ mơ đi đâu.", icons: ["🤔", "🚶"] },
+                { text: "Con lợn ơ ơ.", icons: ["🐖", "🔊"] },
+                { text: "Bé ơi, ăn cơm.", icons: ["👧", "🍚"] },
+                { text: "Ơ kìa, quả gì vậy.", icons: ["😮", "❓"] },
+                { text: "Bé ơi, mẹ gọi.", icons: ["👧", "📢"] },
+                { text: "Lơ mơ ngủ gật.", icons: ["😴", "😌"] },
+                { text: "Ơ này, cậu đi đâu.", icons: ["🗣️", "❓"] },
+                { text: "Cá lơ tơ lửng.", icons: ["🐟", "🌊"] },
+                { text: "Con ơi, con ngoan.", icons: ["👧", "👍"] },
+                { text: "Ơ kìa, chó con.", icons: ["🐶", "👀"] },
+                { text: "Bạn Lơ mơ.", icons: ["👦", "😴"] },
+                { text: "Ơ này, nhìn kìa.", icons: ["👀", "😮"] },
+                { text: "Con ơi, mẹ yêu.", icons: ["👧", "💖"] }
             ]},
-            { id: "ÔNG", label: "ÔNG", title: "Bé Học Vần ÔNG", themeClass: "theme-ong-hat", sentences: [
-                { text: "Ông ngoại của bé.", icons: ["👴", "👨‍🦳", "👴"] },
-                { text: "Cái võng của ông.", icons: ["🪢", "👴", "🌳"] },
-                { text: "Bé bồng gấu bông.", icons: ["👧", "🧸", "🤗"] },
-                { text: "Cồng kềnh, cồng kềnh.", icons: ["📦", "📦", "📦"] },
-                { text: "Ông giáo làng.", icons: ["👨‍🏫", "🏫", "👨‍🦳"] },
-                { text: "Gió lộng trên sông.", icons: ["🌬️", "🌊", "💨"] },
-                { text: "Ông nội của bé.", icons: ["👴", "👨‍🦳", "👴"] },
-                { text: "Ông bà rất tốt.", icons: ["👴", "👵", "💖"] },
-                { text: "Ông ngoại.", icons: ["👴", "👨‍🦳", "👴"] },
-                { text: "Cái võng.", icons: ["🪢", "😴", "😌"] },
-                { text: "Bé bồng.", icons: ["👧", "👶", "🤱"] },
-                { text: "Cồng kềnh.", icons: ["📦", "📦", "📦"] },
-                { text: "Ông giáo.", icons: ["👨‍🏫", "🏫", "👨‍🦳"] },
-                { text: "Gió lộng.", icons: ["🌬️", "💨", "🌊"] },
-                { text: "Ông nội.", icons: ["👴", "👨‍🦳", "👴"] },
-                { text: "Ông bà.", icons: ["👴", "👵", "💖"] },
-                { text: "Ông mặt trời.", icons: ["☀️", "🌞", "🌅"] },
-                { text: "Ông tiên.", icons: ["🧚‍♀️", "✨", "👑"] },
-                { text: "Ông già.", icons: ["👴", "👨‍🦳", "🧓"] },
-                { text: "Ông chủ.", icons: ["🧑‍💼", "👨‍💼", "👔"] }
+            { id: "P", label: "P", title: "Bé Học Chữ P", themeClass: "theme-p", sentences: [
+                { text: "Bé tập phát âm.", icons: ["👦", "🎤"] },
+                { text: "Pha cà phê cho bố.", icons: ["☕", "👨"] },
+                { text: "Cái phễu của bà.", icons: ["🍶", "👵"] },
+                { text: "Bé tập phóng tàu.", icons: ["👧", "🚀"] },
+                { text: "Pháp luật công bằng.", icons: ["⚖️", "👍"] },
+                { text: "Phú ông rất giàu.", icons: ["💰", "👑"] },
+                { text: "Phong bì, phong bì.", icons: ["✉️", "💌"] },
+                { text: "Phòng học rất sạch.", icons: ["🏫", "✨"] },
+                { text: "Phép toán khó quá.", icons: ["🔢", "😖"] },
+                { text: "Pha lê lấp lánh.", icons: ["💎", "✨"] },
+                { text: "Phép màu thần tiên.", icons: ["🪄", "🧚‍♀️"] },
+                { text: "Phố phường đông vui.", icons: ["🏘️", "🎈"] },
+                { text: "Phù sa bồi đắp.", icons: ["🌾", "🌱"] },
+                { text: "Pháo hoa bay lên.", icons: ["🎆", "🎇"] },
+                { text: "Phía trước có đường lớn.", icons: ["➡️", "🛣️"] },
+                { text: "Phát âm chữ cái.", icons: ["🗣️", "🔤"] },
+                { text: "Phủi bụi quần áo.", icons: ["👕", "💨"] },
+                { text: "Phù sa bồi đắp.", icons: ["🏞️", "🌾"] },
+                { text: "Phát hiện điều bí ẩn.", icons: ["🔍", "🤫"] },
+                { text: "Phút giây hạnh phúc.", icons: ["💖", "👨‍👩‍👧‍👦"] }
             ]},
-            { id: "EM", label: "EM", title: "Bé Học Vần EM", themeClass: "theme-em", sentences: [
-                { text: "Con tem của ba.", icons: ["✉️", "👨", "📮"] },
-                { text: "Bé xem tivi.", icons: ["👧", "📺", "👀"] },
-                { text: "Cái xem của em.", icons: ["🚲", "👧", "👦"] },
-                { text: "Bé kem rất thích ăn.", icons: ["👧", "🍦", "😋"] },
-                { text: "Em bé của mẹ.", icons: ["👶", "👩", "💖"] },
-                { text: "Đèn đường buổi đêm.", icons: ["💡", "🌃", "✨"] },
-                { text: "Em thích ca hát.", icons: ["🎶", "🎤", "😊"] },
-                { text: "Cái kem ngon quá.", icons: ["🍦", "🤤", "😋"] },
-                { text: "Em em, em em.", icons: ["👶", "👧", "👦"] },
-                { text: "Em ăn kem.", icons: ["👧", "🍦", "😋"] },
-                { text: "Con tem.", icons: ["✉️", " stamp", "📜"] },
-                { text: "Xem tivi.", icons: ["📺", "👀", "👀"] },
-                { text: "Cái xem.", icons: ["🚲", "🛵", "🏍️"] },
-                { text: "Kem.", icons: ["🍦", "🍦", "🍦"] },
-                { text: "Em bé.", icons: ["👶", "👶", "👶"] },
-                { text: "Đêm.", icons: ["🌃", "🌌", "🌙"] },
-                { text: "Em.", icons: ["👧", "👦", "🧒"] },
-                { text: "Xem.", icons: ["👀", "👀", "👀"] },
-                { text: "Kem.", icons: ["🍦", "🍦", "🍦"] },
-                { text: "Em bé.", icons: ["👶", "👶", "👶"] }
+            { id: "Q", label: "Q", title: "Bé Học Chữ Q", themeClass: "theme-q", sentences: [
+                { text: "Que kem thật mát.", icons: ["🍦", "🧊"] },
+                { text: "Quả cam tròn quay.", icons: ["🍊", "⚪"] },
+                { text: "Quả quýt ngọt lịm.", icons: ["🍊", "😋"] },
+                { text: "Quân bạn thật vui.", icons: ["👫", "😂"] },
+                { text: "Quần áo của bé.", icons: ["👕", "👖"] },
+                { text: "Bạn Quý học bài.", icons: ["👦", "📚"] },
+                { text: "Quạt giấy của bà.", icons: ["👵", "💨"] },
+                { text: "Quê hương của tôi.", icons: ["🏡", "❤️"] },
+                { text: "Quả bóng tròn quay.", icons: ["⚽", "🔄"] },
+                { text: "Bạn Quế rất hiền.", icons: ["👧", "😊"] },
+                { text: "Que diêm nhỏ xíu.", icons: ["🔥", "🤏"] },
+                { text: "Bạn quay lại nhìn.", icons: ["👦", "👀"] },
+                { text: "Quãng đường thật dài.", icons: ["🛣️", "🚶"] },
+                { text: "Quạt máy quay.", icons: ["🌀", "💨"] },
+                { text: "Quýt ngon, cam ngọt.", icons: ["🍊", "😋"] },
+                { text: "Quả táo màu đỏ.", icons: ["🍎", "🔴"] },
+                { text: "Quần áo mới.", icons: ["👕", "✨"] },
+                { text: "Bạn Quý rất quý.", icons: ["👦", "💖"] },
+                { text: "Quạt mát cho mẹ.", icons: ["👩", "💨"] },
+                { text: "Quê hương thật đẹp.", icons: ["🏡", "😍"] }
             ]},
-            { id: "ÊM", label: "ÊM", title: "Bé Học Vần ÊM", themeClass: "theme-em-hat", sentences: [
-                { text: "Êm êm tiếng gió thổi.", icons: ["🌬️", "🍃", "🌬️"] },
-                { text: "Bé nằm êm trên giường.", icons: ["👧", "🛌", "😌"] },
-                { text: "Mềm êm như mây.", icons: ["☁️", "💖", "😊"] },
-                { text: "Cái gối rất êm.", icons: ["🛏️", "😌", "😴"] },
-                { text: "Lên lớp thật êm.", icons: ["🏫", "🤫", "🚶"] },
-                { text: "Êm đềm buổi chiều.", icons: ["🌆", "😌", "😊"] },
-                { text: "Êm êm, êm êm.", icons: ["🎶", "🎵", "🔊"] },
-                { text: "Bé nằm êm.", icons: ["👧", "😴", "😌"] },
-                { text: "Êm ái.", icons: ["💖", "😌", "😊"] },
-                { text: "Êm đềm.", icons: ["😊", "😌", "💖"] },
-                { text: "Cái gối êm.", icons: ["🛏️", "😌", "😴"] },
-                { text: "Êm ái.", icons: ["💖", "😌", "😊"] },
-                { text: "Êm đềm.", icons: ["😊", "😌", "💖"] },
-                { text: "Êm êm.", icons: ["🎶", "🎵", "🔊"] },
-                { text: "Cái gối.", icons: ["🛏️", "😴", "😌"] },
-                { text: "Êm ái.", icons: ["💖", "😌", "😊"] },
-                { text: "Êm đềm.", icons: ["😊", "😌", "💖"] },
-                { text: "Êm êm.", icons: ["🎶", "🎵", "🔊"] },
-                { text: "Cái gối.", icons: ["🛏️", "😴", "😌"] },
-                { text: "Êm ái.", icons: ["💖", "😌", "😊"] }
+            { id: "R", label: "R", title: "Bé Học Chữ R", themeClass: "theme-r", sentences: [
+                { text: "Rau cải rất ngon.", icons: ["🥬", "😋"] },
+                { text: "Ruộng lúa trổ bông.", icons: ["🌾", "🌱"] },
+                { text: "Con rùa bò chậm chạp.", icons: ["🐢", "🚶"] },
+                { text: "Bạn Rô-bốt.", icons: ["🤖", "✨"] },
+                { text: "Bé rửa tay.", icons: ["👦", "🧼"] },
+                { text: "Rừng cây xanh.", icons: ["🌳", "🌲"] },
+                { text: "Rau muống của mẹ.", icons: ["🥬", "👩"] },
+                { text: "Râu của ông.", icons: ["👨‍🦳", "🧔"] },
+                { text: "Ruộng lúa chín vàng.", icons: ["🌾", "🌾"] },
+                { text: "Rửa mặt sạch sẽ.", icons: ["👦", "🧼"] },
+                { text: "Con rùa chậm chạp.", icons: ["🐢", "🐢"] },
+                { text: "Rừng rậm.", icons: ["🌳", "🌲"] },
+                { text: "Rau củ quả.", icons: ["🥕", "🥒"] },
+                { text: "Rèn luyện thể thao.", icons: ["💪", "🏃"] },
+                { text: "Rau xanh, cá vàng.", icons: ["🥬", "🐠"] },
+                { text: "Râu ông già Noel.", icons: ["🎅", "👴"] },
+                { text: "Rồng bay lượn.", icons: ["🐉", "💨"] },
+                { text: "Rửa bát giúp mẹ.", icons: ["🍽️", "👩"] },
+                { text: "Rất vui vẻ.", icons: ["😂", "😊"] },
+                { text: "Ruộng lúa của ba.", icons: ["🌾", "👨"] }
             ]},
-            { id: "IM", label: "IM", title: "Bé Học Vần IM", themeClass: "theme-im", sentences: [
-                { text: "Con chim bay.", icons: ["🐦", "🌬️", "☁️"] },
-                { text: "Cái kim may áo.", icons: ["🪡", "🧵", "👚"] },
-                { text: "Im lặng, im lặng.", icons: ["🤫", "🤫", "🤫"] },
-                { text: "Kim chỉ của bà.", icons: ["🪡", "🧵", "👵"] },
-                { text: "Bé thích xem phim.", icons: ["👧", "🎬", "🍿"] },
-                { text: "Màu tím của hoa.", icons: ["💜", "🌸", "💖"] },
-                { text: "Chim bay trên trời.", icons: ["🐦", "☁️", "⬆️"] },
-                { text: "Im lặng để nghe.", icons: ["🤫", "👂", "😊"] },
-                { text: "Cái kim khâu.", icons: ["🪡", "🧵", "🧶"] },
-                { text: "Chim hót.", icons: ["🐦", "🎶", "🎤"] },
-                { text: "Con chim.", icons: ["🐦", "🐦", "🐦"] },
-                { text: "Cái kim.", icons: ["🪡", "🪡", "🪡"] },
-                { text: "Im lặng.", icons: ["🤫", "🤫", "🤫"] },
-                { text: "Phim.", icons: ["🎬", "🍿", "🎥"] },
-                { text: "Màu tím.", icons: ["💜", "💜", "💜"] },
-                { text: "Chim bay.", icons: ["🐦", "🌬️", "☁️"] },
-                { text: "Im.", icons: ["🤫", "🤫", "🤫"] },
-                { text: "Kim.", icons: ["🪡", "🪡", "🪡"] },
-                { text: "Im.", icons: ["🤫", "🤫", "🤫"] },
-                { text: "Chim.", icons: ["🐦", "🐦", "🐦"] }
+            { id: "S", label: "S", title: "Bé Học Chữ S", themeClass: "theme-s", sentences: [
+                { text: "Sông Sài Gòn.", icons: ["🌊", "🌃"] },
+                { text: "Sáng sớm thức dậy.", icons: ["☀️", "⏰"] },
+                { text: "Sắp xếp đồ chơi.", icons: ["🧸", "🧹"] },
+                { text: "Bánh su kem thật ngon.", icons: ["🍰", "😋"] },
+                { text: "Sân trường rộng lớn.", icons: ["🏫", "🏟️"] },
+                { text: "Con sên bò.", icons: ["🐌", "🐌"] },
+                { text: "Sáng ngời, sáng chói.", icons: ["✨", "🌟"] },
+                { text: "Sách vở của bé.", icons: ["📖", "📚"] },
+                { text: "Sữa tươi, sữa chua.", icons: ["🥛", "🍓"] },
+                { text: "Sơn ca hót hay.", icons: ["🐦", "🎶"] },
+                { text: "Sân chơi vui quá.", icons: ["🤸", "😂"] },
+                { text: "Sấm sét.", icons: ["🌩️", "⚡"] },
+                { text: "Sách giáo khoa.", icons: ["📖", "📚"] },
+                { text: "Súng nước.", icons: ["🔫", "💦"] },
+                { text: "Sườn xám.", icons: ["👗", "💃"] },
+                { text: "Sân bóng đá.", icons: ["⚽", "🏟️"] },
+                { text: "Sáng trăng.", icons: ["🌕", "🌌"] },
+                { text: "Sông nước hiền hòa.", icons: ["🌊", "😌"] },
+                { text: "Sắp đến giờ học.", icons: ["⏰", "📖"] },
+                { text: "Sức mạnh.", icons: ["💪", "🏋️"] }
             ]},
-            { id: "UM", label: "UM", title: "Bé Học Vần UM", themeClass: "theme-um", sentences: [
-                { text: "Bé ngủ trong đêm.", icons: ["👧", "😴", "🌃"] },
-                { text: "Cái chùm bóng bay.", icons: ["🎈", "🎈", "🎈"] },
-                { text: "Bé mỉm cười.", icons: ["😊", "😂", "💖"] },
-                { text: "Cái chum nước.", icons: ["🏺", "💧", "🌊"] },
-                { text: "Bé đi vào đêm.", icons: ["👦", "🌃", "🚶"] },
-                { text: "Bạn làm thùm.", icons: ["🤸", "💥", "🔊"] },
-                { text: "Cái chùm quả.", icons: ["🍇", "🍇", "🍇"] },
-                { text: "Bé ngủ muộn.", icons: ["👧", "😴", "⏰"] },
-                { text: "Chùm chìa khóa.", icons: ["🔑", "🔑", "🔑"] },
-                { text: "Bé đi vào đêm.", icons: ["👦", "🌃", "🚶"] },
-                { text: "Chùm bóng.", icons: ["🎈", "🎈", "🎈"] },
-                { text: "Cái chum.", icons: ["🏺", "💧", "🌊"] },
-                { text: "Chùm quả.", icons: ["🍇", "🍇", "🍇"] },
-                { text: "Bé ngủ đêm.", icons: ["👧", "😴", "🌃"] },
-                { text: "Thùm.", icons: ["💥", "🔊", "💥"] },
-                { text: "Đêm.", icons: ["🌃", "🌌", "🌙"] },
-                { text: "Chum.", icons: ["🏺", "💧", "🌊"] },
-                { text: "Chùm.", icons: ["🍇", "🍇", "🍇"] },
-                { text: "Đêm.", icons: ["🌃", "🌌", "🌙"] },
-                { text: "Bé mỉm cười.", icons: ["😊", "😂", "💖"] }
+            { id: "T", label: "T", title: "Bé Học Chữ T", themeClass: "theme-t", sentences: [
+                { text: "Trăng sao lấp lánh.", icons: ["🌕", "✨"] },
+                { text: "Cá chép to quá.", icons: ["🐠", "😮"] },
+                { text: "Bé Tôm rất tốt.", icons: ["👦", "👍"] },
+                { text: "Cái tủ gỗ của mẹ.", icons: ["📦", "👩"] },
+                { text: "Bé thích xem tivi.", icons: ["👧", "📺"] },
+                { text: "Cái tô, cái chén.", icons: ["🥣", "🍽️"] },
+                { text: "Tập viết thật đẹp.", icons: ["✍️", "💖"] },
+                { text: "Con tôm bơi.", icons: ["🦐", "🏊"] },
+                { text: "Tôm tép của ba.", icons: ["🦐", "👨"] },
+                { text: "Tàu hỏa chạy.", icons: ["🚂", "💨"] },
+                { text: "Tập tô màu.", icons: ["🎨", "🖍️"] },
+                { text: "Tập làm người lớn.", icons: ["👦", "👨"] },
+                { text: "Tôn trọng người già.", icons: ["👴", "👵"] },
+                { text: "Tấm lòng nhân ái.", icons: ["❤️", "🤗"] },
+                { text: "Tết đến rồi.", icons: ["🎉", "🎇"] },
+                { text: "Tàu thuyền.", icons: ["⛵", "🚢"] },
+                { text: "Tập thể dục.", icons: ["🤸", "💪"] },
+                { text: "Túi xách của mẹ.", icons: ["👜", "👩"] },
+                { text: "Tổ chim.", icons: ["🐦", "🏡"] },
+                { text: "Tập đọc, tập viết.", icons: ["📖", "✍️"] }
             ]},
-            { id: "IN", label: "IN", title: "Bé Học Vần IN", themeClass: "theme-in", sentences: [
-                { text: "Cái đinh đóng gỗ.", icons: ["🔨", "🪵", "🔩"] },
-                { text: "Bé xin phép bố mẹ.", icons: ["👧", "🙏", "👨‍👩‍👧‍👦"] },
-                { text: "Cái in của ba.", icons: ["🖨️", "👨", "📄"] },
-                { text: "Bé rất xinh xắn.", icons: ["👧", "💖", "✨"] },
-                { text: "Tin tôi đi.", icons: ["👍", "🤝", "😊"] },
-                { text: "Bé ăn xin.", icons: ["👧", "🙏", "😋"] },
-                { text: "Tin nhắn của mẹ.", icons: ["✉️", "👩", "💬"] },
-                { text: "In ra giấy.", icons: ["🖨️", "📄", "✍️"] },
-                { text: "Bé xin kẹo.", icons: ["👧", "🍬", "🍭"] },
-                { text: "Cái đinh.", icons: ["🔨", "🔩", "🔩"] },
-                { text: "Bé xin phép.", icons: ["👧", "🙏", "😊"] },
-                { text: "Cái in.", icons: ["🖨️", "📄", "✍️"] },
-                { text: "Bé xinh.", icons: ["👧", "💖", "✨"] },
-                { text: "Tin.", icons: ["👍", "🤝", "😊"] },
-                { text: "Bé ăn xin.", icons: ["👧", "🙏", "😋"] },
-                { text: "Tin nhắn.", icons: ["✉️", "💬", "✉️"] },
-                { text: "In.", icons: ["🖨️", "📄", "✍️"] },
-                { text: "Bé xin.", icons: ["👧", "🙏", "😊"] },
-                { text: "Cái đinh.", icons: ["🔨", "🔩", "🔩"] },
-                { text: "Tin.", icons: ["👍", "🤝", "😊"] }
+            { id: "U", label: "U", title: "Bé Học Chữ U", themeClass: "theme-u", sentences: [
+                { text: "Bà ru bé ngủ.", icons: ["👵", "😴"] },
+                { text: "U u u, gió thổi.", icons: ["💨", "🌬️"] },
+                { text: "Củ sắn của ba.", icons: ["🍠", "👨"] },
+                { text: "Cú mèo, cú mèo.", icons: ["🦉", "🦉"] },
+                { text: "Củ khoai của ba.", icons: ["🍠", "👨"] },
+                { text: "Cú mèo bay.", icons: ["🦉", "💨"] },
+                { text: "Củ sắn luộc.", icons: ["🍠", "😋"] },
+                { text: "Bé ngủ trưa.", icons: ["😴", "😌"] },
+                { text: "Ru hời ru hỡi.", icons: ["🎶", "🎵"] },
+                { text: "Củ su hào.", icons: ["🥬", "🥗"] },
+                { text: "Bé vui.", icons: ["👧", "😊"] },
+                { text: "Cú mèo.", icons: ["🦉", "👀"] },
+                { text: "Củ sen.", icons: ["🪷", "🪷"] },
+                { text: "Ru con.", icons: ["🤱", "👶"] },
+                { text: "U u u, em buồn.", icons: ["😭", "😔"] },
+                { text: "Củ khoai.", icons: ["🍠", "🥔"] },
+                { text: "Củ cải trắng.", icons: ["🥕", "⚪"] },
+                { text: "Ruộng lúa.", icons: ["🌾", "🏞️"] },
+                { text: "Củ tỏi.", icons: ["🧄", "🌶️"] },
+                { text: "Cúi đầu chào.", icons: ["🙇‍♀️", "👋"] }
             ]},
-            { id: "UN", label: "UN", title: "Bé Học Vần UN", themeClass: "theme-un", sentences: [
-                { text: "Bé buồn quá.", icons: ["👧", "😔", "😞"] },
-                { text: "Bé không buồn.", icons: ["👧", "😊", "💖"] },
-                { text: "Chun chun, chun chun.", icons: ["🎶", "🎵", "🔊"] },
-                { text: "Bé rất buồn.", icons: ["👦", "😔", "😞"] },
-                { text: "Buồn bã, buồn rầu.", icons: ["😔", "😞", "😭"] },
-                { text: "Bé không buồn.", icons: ["👧", "😊", "💖"] },
-                { text: "Buồn ngủ rồi.", icons: ["😴", "😌", "😴"] },
-                { text: "Bé buồn.", icons: ["👧", "😔", "😞"] },
-                { text: "Buồn.", icons: ["😔", "😞", "😭"] },
-                { text: "Buồn.", icons: ["😔", "😞", "😭"] },
-                { text: "Bé buồn ngủ.", icons: ["👧", "😴", "😌"] },
-                { text: "Buồn.", icons: ["😔", "😞", "😭"] },
-                { text: "Bé không buồn.", icons: ["👧", "😊", "💖"] },
-                { text: "Buồn.", icons: ["😔", "😞", "😭"] },
-                { text: "Buồn.", icons: ["😔", "😞", "😭"] },
-                { text: "Buồn ngủ.", icons: ["😴", "😌", "😴"] },
-                { text: "Bé buồn.", icons: ["👧", "😔", "😞"] },
-                { text: "Buồn.", icons: ["😔", "😞", "😭"] },
-                { text: "Buồn.", icons: ["😔", "😞", "😭"] },
-                { text: "Buồn ngủ.", icons: ["😴", "😌", "😴"] }
+            { id: "Ư", label: "Ư", title: "Bé Học Chữ Ư", themeClass: "theme-u-mo", sentences: [
+                { text: "Cá bơi lơ lửng.", icons: ["🐟", "🌊"] },
+                { text: "Ước mơ thật đẹp.", icons: ["💭", "✨"] },
+                { text: "Cánh cửa bật mở.", icons: ["🚪", "👋"] },
+                { text: "Ước gì được đó.", icons: ["💖", "🌟"] },
+                { text: "Bé ước mơ làm bác sĩ.", icons: ["👧", "👩‍⚕️"] },
+                { text: "Cơn mưa lất phất.", icons: ["🌧️", "💧"] },
+                { text: "Ươm mầm xanh.", icons: ["🌱", "🌿"] },
+                { text: "Ước muốn của bé.", icons: ["💭", "💖"] },
+                { text: "Bạn Ứng rất vui.", icons: ["👦", "😊"] },
+                { text: "Cơn mơ dịu êm.", icons: ["😴", "😌"] },
+                { text: "Ưa nhìn.", icons: ["👀", "😍"] },
+                { text: "Ước gì được đi chơi.", icons: ["💭", "🤸"] },
+                { text: "Ước ao.", icons: ["💖", "✨"] },
+                { text: "Cơn mưa rào.", icons: ["🌧️", "💧"] },
+                { text: "Ươm hạt giống.", icons: ["🌱", "🫘"] },
+                { text: "Ưa thích màu đỏ.", icons: ["❤️", "🔴"] },
+                { text: "Ước hẹn.", icons: ["🤝", "💖"] },
+                { text: "Bé ước mơ.", icons: ["💭", "🌟"] },
+                { text: "Ưu tiên.", icons: ["🥇", "👍"] },
+                { text: "Cơn gió lùa.", icons: ["🌬️", "💨"] }
             ]},
-            { id: "ÔM", label: "ÔM", title: "Bé Học Vần ÔM", themeClass: "theme-om-hat", sentences: [
-                { text: "Bé ôm gấu bông.", icons: ["👧", "🧸", "🤗"] },
-                { text: "Bé ôm mẹ thật chặt.", icons: ["👧", "👩", "🤗"] },
-                { text: "Bé ôm ba.", icons: ["👧", "👨", "🤗"] },
-                { text: "Bé ôm em.", icons: ["👧", "👶", "🤗"] },
-                { text: "Bé ôm bạn.", icons: ["👧", "👦", "🤗"] },
-                { text: "Ôm cây.", icons: ["🌳", "🤗", "🌳"] },
-                { text: "Ôm lấy mẹ.", icons: ["👩", "🤗", "💖"] },
-                { text: "Ôm con.", icons: ["👩", "👶", "🤗"] },
-                { text: "Ôm lấy em.", icons: ["👧", "👶", "🤗"] },
-                { text: "Ôm bạn.", icons: ["👧", "👦", "🤗"] },
-                { text: "Bé ôm ba.", icons: ["👧", "👨", "🤗"] },
-                { text: "Ôm.", icons: ["🤗", "🤗", "🤗"] },
-                { text: "Ôm mẹ.", icons: ["👩", "🤗", "💖"] },
-                { text: "Ôm.", icons: ["🤗", "🤗", "🤗"] },
-                { text: "Ôm.", icons: ["🤗", "🤗", "🤗"] },
-                { text: "Ôm.", icons: ["🤗", "🤗", "🤗"] },
-                { text: "Ôm.", icons: ["🤗", "🤗", "🤗"] },
-                { text: "Ôm.", icons: ["🤗", "🤗", "🤗"] },
-                { text: "Ôm.", icons: ["🤗", "🤗", "🤗"] },
-                { text: "Ôm.", icons: ["🤗", "🤗", "🤗"] }
+            { id: "V", label: "V", title: "Bé Học Chữ V", themeClass: "theme-v", sentences: [
+                { text: "Vào vườn hái quả.", icons: ["🚶", "🍎"] },
+                { text: "Con vịt kêu quạc quạc.", icons: ["🦆", "🔊"] },
+                { text: "Vẽ vời thật vui.", icons: ["🎨", "😊"] },
+                { text: "Cái ví tiền của mẹ.", icons: ["👛", "👩"] },
+                { text: "Vào nhà nào bé.", icons: ["🏡", "👋"] },
+                { text: "Vịt con bơi lội.", icons: ["🦆", "💧"] },
+                { text: "Vẽ con vật đáng yêu.", icons: ["🎨", "🐶"] },
+                { text: "Vâng lời, vâng lời.", icons: ["👍", "😊"] },
+                { text: "Vui vẻ ca hát.", icons: ["🎶", "🎤"] },
+                { text: "Và, và, và.", icons: ["➕", "➕"] },
+                { text: "Văn hay chữ tốt.", icons: ["📖", "✍️"] },
+                { text: "Vịt bơi, cá bơi.", icons: ["🦆", "🐟"] },
+                { text: "Ván trượt.", icons: ["🛹", "🛹"] },
+                { text: "Vòng tay yêu thương.", icons: ["🤗", "💖"] },
+                { text: "Vô tình, vô ý.", icons: ["😬", "🫢"] },
+                { text: "Văn phòng của ba.", icons: ["👨", "🏢"] },
+                { text: "Vịt mẹ, vịt con.", icons: ["🦆", "🐥"] },
+                { text: "Vòng hoa tươi.", icons: ["💐", "🌸"] },
+                { text: "Vẽ tranh thật đẹp.", icons: ["🎨", "✨"] },
+                { text: "Vào đây chơi.", icons: ["👋", "🤸"] }
             ]},
-            { id: "ƠM", label: "ƠM", title: "Bé Học Vần ƠM", themeClass: "theme-om-mo", sentences: [
-                { text: "Bé lượm đồ chơi.", icons: ["👧", "🧸", "🚶"] },
-                { text: "Bé lượm rác.", icons: ["👧", "♻️", "🗑️"] },
-                { text: "Bạn Lượm rất tốt.", icons: ["👦", "👍", "💖"] },
-                { text: "Lượm lặt, lượm lặt.", icons: ["🚶", "🚶", "🔍"] },
-                { text: "Bé lượm kẹo.", icons: ["👧", "🍬", "🍭"] },
-                { text: "Lượm hạt.", icons: ["🫘", "🚶", "🔍"] },
-                { text: "Lượm rác.", icons: ["♻️", "🗑️", "👍"] },
-                { text: "Bé Lượm.", icons: ["👦", "👧", "🧑"] },
-                { text: "Lượm.", icons: ["🚶", "🔍", "🚶"] },
-                { text: "Lượm.", icons: ["🚶", "🔍", "🚶"] },
-                { text: "Bé lượm kẹo.", icons: ["👧", "🍬", "🍭"] },
-                { text: "Lượm.", icons: ["🚶", "🔍", "🚶"] },
-                { text: "Lượm.", icons: ["🚶", "🔍", "🚶"] },
-                { text: "Lượm.", icons: ["🚶", "🔍", "🚶"] },
-                { text: "Bé lượm kẹo.", icons: ["👧", "🍬", "🍭"] },
-                { text: "Lượm.", icons: ["🚶", "🔍", "🚶"] },
-                { text: "Lượm.", icons: ["🚶", "🔍", "🚶"] },
-                { text: "Lượm.", icons: ["🚶", "🔍", "🚶"] },
-                { text: "Bé lượm kẹo.", icons: ["👧", "🍬", "🍭"] },
-                { text: "Lượm.", icons: ["🚶", "🔍", "🚶"] }
+            { id: "X", label: "X", title: "Bé Học Chữ X", themeClass: "theme-x", sentences: [
+                { text: "Xe đạp màu xanh.", icons: ["🚲", "🟢"] },
+                { text: "Bé xem tivi.", icons: ["👧", "📺"] },
+                { text: "Xinh xắn, đáng yêu.", icons: ["✨", "😍"] },
+                { text: "Xoa đầu bạn nhỏ.", icons: ["👦", "👋"] },
+                { text: "Xa xa có mây.", icons: ["☁️", "☁️"] },
+                { text: "Xúc xích rất ngon.", icons: ["🌭", "😋"] },
+                { text: "Xách túi giúp mẹ.", icons: ["👜", "👩"] },
+                { text: "Xe hơi chạy nhanh.", icons: ["🚗", "💨"] },
+                { text: "Xúc xắc, xúc xắc.", icons: ["🎲", "🎲"] },
+                { text: "Bé xúc cát.", icons: ["👧", "🏖️"] },
+                { text: "Xa rồi, xa rồi.", icons: ["➡️", "↩️"] },
+                { text: "Xanh lá cây.", icons: ["🍃", "🌿"] },
+                { text: "Xóa đi những lỗi lầm.", icons: ["✍️", "🙅‍♀️"] },
+                { text: "Xinh đẹp như hoa.", icons: ["🌸", "👸"] },
+                { text: "Xúc động, xúc động.", icons: ["😭", "🥹"] },
+                { text: "Xả rác đúng chỗ.", icons: ["♻️", "🗑️"] },
+                { text: "Xích đu thật vui.", icons: ["🤸", "😂"] },
+                { text: "Xào nấu món ngon.", icons: ["🍳", "😋"] },
+                { text: "Xe máy của ba.", icons: ["🛵", "👨"] },
+                { text: "Xinh xắn.", icons: ["✨", "💖"] }
             ]},
-            { id: "IU", label: "IU", title: "Bé Học Vần IU", themeClass: "theme-iu", sentences: [
-                { text: "Tiu nghỉu, tiu nghỉu.", icons: ["😔", "😞", "😭"] },
-                { text: "Bé xiu xiu.", icons: ["👧", "😔", "😞"] },
-                { text: "Con tiu béo.", icons: ["🐷", "🐖", "🐽"] },
-                { text: "Bé chịu thua.", icons: ["👧", "👎", "😠"] },
-                { text: "Con tiu đi đâu.", icons: ["🐷", "🏃", "💨"] },
-                { text: "Bé xiu xiu rồi.", icons: ["👧", "😔", "😞"] },
-                { text: "Bé chịu thua.", icons: ["👧", "👎", "😠"] },
-                { text: "Con tiu.", icons: ["🐷", "🐖", "🐽"] },
-                { text: "Bé xiu xiu.", icons: ["👧", "😔", "😞"] },
-                { text: "Bé chịu thua.", icons: ["👧", "👎", "😠"] },
-                { text: "Con tiu.", icons: ["🐷", "🐖", "🐽"] },
-                { text: "Bé xiu xiu.", icons: ["👧", "😔", "😞"] },
-                { text: "Bé chịu thua.", icons: ["👧", "👎", "😠"] },
-                { text: "Con tiu.", icons: ["🐷", "🐖", "🐽"] },
-                { text: "Bé xiu xiu.", icons: ["👧", "😔", "😞"] },
-                { text: "Bé chịu thua.", icons: ["👧", "👎", "😠"] },
-                { text: "Con tiu.", icons: ["🐷", "🐖", "🐽"] },
-                { text: "Bé xiu xiu.", icons: ["👧", "😔", "😞"] },
-                { text: "Bé chịu thua.", icons: ["👧", "👎", "😠"] },
-                { text: "Con tiu.", icons: ["🐷", "🐖", "🐽"] }
+            { id: "Y", label: "Y", title: "Bé Học Chữ Y", themeClass: "theme-y", sentences: [
+                { text: "Bé đi y tế.", icons: ["👧", "🏥"] },
+                { text: "Yêu thương bạn bè.", icons: ["💖", "👫"] },
+                { text: "Cái ly của bé.", icons: ["🥤", "👦"] },
+                { text: "Bé y tá thật giỏi.", icons: ["👩‍⚕️", "👍"] },
+                { text: "Ly sữa của ba.", icons: ["🥛", "👨"] },
+                { text: "Yêu quý mọi người.", icons: ["💖", "🤗"] },
+                { text: "Yêu lắm, yêu lắm.", icons: ["❤️", "💖"] },
+                { text: "Cái ly thủy tinh.", icons: ["🥛", "💎"] },
+                { text: "Yêu nước, yêu dân.", icons: ["❤️", "🇻🇳"] },
+                { text: "Bé đi chơi ở y tế.", icons: ["👧", "🏥"] },
+                { text: "Yêu quý gia đình.", icons: ["💖", "👨‍👩‍👧‍👦"] },
+                { text: "Yêu bản thân.", icons: ["❤️", "💪"] },
+                { text: "Ly nước cam.", icons: ["🥤", "🍊"] },
+                { text: "Yên lặng, yên lặng.", icons: ["🤫", "🤫"] },
+                { text: "Yêu lắm mẹ ơi.", icons: ["💖", "👩"] },
+                { text: "Yên bình, yên ả.", icons: ["😌", " peaceful"] },
+                { text: "Yêu quý sách vở.", icons: ["💖", "📚"] },
+                { text: "Ly sinh tố.", icons: ["🥤", "😋"] },
+                { text: "Yêu cô giáo.", icons: ["💖", "👩‍🏫"] },
+                { text: "Ly cà phê của ba.", icons: ["☕", "👨"] }
             ]},
-            { id: "ÊU", label: "ÊU", title: "Bé Học Vần ÊU", themeClass: "theme-eu", sentences: [
-                { text: "Bé kêu cứu.", icons: ["👧", "📢", "🗣️"] },
-                { text: "Bé kêu meo meo.", icons: ["👧", "😺", "🔊"] },
-                { text: "Con trâu kéo cày.", icons: ["🐂", "🚜", "🌾"] },
-                { text: "Bạn êu cầu giúp đỡ.", icons: ["👦", "🤝", "🙏"] },
-                { text: "Bé kêu to.", icons: ["👧", "📢", "🗣️"] },
-                { text: "Con trâu.", icons: ["🐂", "🐄", "🐮"] },
-                { text: "Bé kêu.", icons: ["👧", "📢", "🗣️"] },
-                { text: "Bạn êu.", icons: ["👦", "👧", "🧑"] },
-                { text: "Con trâu.", icons: ["🐂", "🐄", "🐮"] },
-                { text: "Bé kêu.", icons: ["👧", "📢", "🗣️"] },
-                { text: "Bạn êu.", icons: ["👦", "👧", "🧑"] },
-                { text: "Con trâu.", icons: ["🐂", "🐄", "🐮"] },
-                { text: "Bé kêu.", icons: ["👧", "📢", "🗣️"] },
-                { text: "Bạn êu.", icons: ["👦", "👧", "🧑"] },
-                { text: "Con trâu.", icons: ["🐂", "🐄", "🐮"] },
-                { text: "Bé kêu.", icons: ["👧", "📢", "🗣️"] },
-                { text: "Bạn êu.", icons: ["👦", "👧", "🧑"] },
-                { text: "Con trâu.", icons: ["🐂", "🐄", "🐮"] },
-                { text: "Bé kêu.", icons: ["👧", "📢", "🗣️"] },
-                { text: "Bạn êu.", icons: ["👦", "👧", "🧑"] }
+            { id: "Ch", label: "Ch", title: "Bé Học Âm Ch", themeClass: "theme-ch", sentences: [
+                { text: "Chị Chanh rất chăm chỉ.", icons: ["👧", "📚"] },
+                { text: "Con chim hót ca.", icons: ["🐦", "🎶"] },
+                { text: "Chó con chạy nhanh.", icons: ["🐶", "💨"] },
+                { text: "Chiếc chén màu trắng.", icons: ["🥣", "⚪"] },
+                { text: "Chăm chỉ học hành.", icons: ["💪", "📖"] },
+                { text: "Chị Chanh của em.", icons: ["👧", "💖"] },
+                { text: "Chiếc chăn ấm áp.", icons: ["🛌", "😌"] },
+                { text: "Chó của bé.", icons: ["🐶", "👦"] },
+                { text: "Chổi của bà.", icons: ["🧹", "👵"] },
+                { text: "Chuyện cổ tích.", icons: ["📖", "🧚‍♀️"] },
+                { text: "Chào buổi sáng.", icons: ["👋", "☀️"] },
+                { text: "Chơi đồ hàng.", icons: ["🧸", "👧"] },
+                { text: "Chanh chua.", icons: ["🍋", "😖"] },
+                { text: "Chợ đông vui.", icons: ["🛍️", "🎈"] },
+                { text: "Chăm sóc cây.", icons: ["🌱", "🚿"] },
+                { text: "Chén cơm.", icons: ["🍚", "🍽️"] },
+                { text: "Chăn màn sạch.", icons: ["🛌", "✨"] },
+                { text: "Chợ hoa.", icons: ["🌸", "🛍️"] },
+                { text: "Chuyện cổ tích rất hay.", icons: ["📖", "👍"] },
+                { text: "Chào bạn.", icons: ["👋", "😊"] }
             ]},
-            { id: "UI", label: "UI", title: "Bé Học Vần UI", themeClass: "theme-ui", sentences: [
-                { text: "Bé vui vẻ đi chơi.", icons: ["👧", "😊", "🤸"] },
-                { text: "Cái túi của mẹ.", icons: ["👜", "👩", "🛍️"] },
-                { text: "Con múi bay.", icons: [" mosquito", "💨", "🌬️"] },
-                { text: "Bé mui vào chăn.", icons: ["👧", "🛌", "😴"] },
-                { text: "Bé vui vẻ.", icons: ["👦", "😊", "😂"] },
-                { text: "Cái túi của ba.", icons: ["💼", "👨", "💼"] },
-                { text: "Con múi.", icons: [" mosquito", "💨", "🌬️"] },
-                { text: "Bé mui.", icons: ["👧", "🛌", "😴"] },
-                { text: "Bé vui vẻ.", icons: ["👦", "😊", "😂"] },
-                { text: "Cái túi.", icons: ["👜", "🛍️", "💼"] },
-                { text: "Vui vẻ.", icons: ["😊", "😂", "💖"] },
-                { text: "Túi.", icons: ["👜", "🛍️", "💼"] },
-                { text: "Con múi.", icons: [" mosquito", "💨", "🌬️"] },
-                { text: "Mui.", icons: ["🛌", "😴", "😌"] },
-                { text: "Vui vẻ.", icons: ["😊", "😂", "💖"] },
-                { text: "Túi.", icons: ["👜", "🛍️", "💼"] },
-                { text: "Con múi.", icons: [" mosquito", "💨", "🌬️"] },
-                { text: "Mui.", icons: ["🛌", "😴", "😌"] },
-                { text: "Vui vẻ.", icons: ["😊", "😂", "💖"] },
-                { text: "Túi.", icons: ["👜", "🛍️", "💼"] }
+            { id: "Kh", label: "Kh", title: "Bé Học Âm Kh", themeClass: "theme-kh", sentences: [
+                { text: "Khỉ con leo trèo.", icons: ["🐒", "🌳"] },
+                { text: "Khi khách đến, khoanh tay chào.", icons: ["👋", "👥"] },
+                { text: "Khăn quàng cổ của Khang.", icons: ["🧣", "👦"] },
+                { text: "Bé thích ăn khoai tây.", icons: ["👧", "🥔"] },
+                { text: "Khó khăn không nản.", icons: ["💪", "🏆"] },
+                { text: "Khoa học thật hay.", icons: ["🧪", "💡"] },
+                { text: "Khinh khí cầu bay.", icons: ["🎈", "☁️"] },
+                { text: "Khu vườn có nhiều hoa.", icons: ["🏡", "🌸"] },
+                { text: "Khúc khích, bé khóc nhè.", icons: ["😂", "😭"] },
+                { text: "Khung cửa sổ to.", icons: ["🪟", "🖼️"] },
+                { text: "Khách khứa đến nhà.", icons: ["👥", "🏠"] },
+                { text: "Cá kho tộ.", icons: ["🐟", "🍲"] },
+                { text: "Khăn mùi soa.", icons: ["🧻", "🤧"] },
+                { text: "Bạn không khó tính.", icons: ["👍", "😊"] },
+                { text: "Khỉ và Hổ.", icons: ["🐒", "🐅"] },
+                { text: "Khiêng ghế ra sân.", icons: ["🛋️", "🌳"] },
+                { text: "Khay bánh kẹo.", icons: ["🍪", "🍫"] },
+                { text: "Khu tập thể dục.", icons: ["🤸", "💪"] },
+                { text: "Khó khăn không nản.", icons: ["💪", "🏆"] },
+                { text: "Khoảng trống giữa hai cây.", icons: ["🌳", "🌳"] }
             ]},
-            { id: "ƯI", label: "ƯI", title: "Bé Học Vần ƯI", themeClass: "theme-ui-mo", sentences: [
-                { text: "Cái lưỡi của bạn.", icons: ["👅", "👦", "👧"] },
-                { text: "Bạn cười thật vui.", icons: ["😂", "😊", "💖"] },
-                { text: "Bé lười biếng.", icons: ["👧", "😴", "😖"] },
-                { text: "Bé cười.", icons: ["👦", "😂", "😊"] },
-                { text: "Cái lưỡi.", icons: ["👅", " tongue", "👄"] },
-                { text: "Lười biếng.", icons: ["😴", "😖", "😴"] },
-                { text: "Cười.", icons: ["😂", "😊", "💖"] },
-                { text: "Cái lưỡi.", icons: ["👅", " tongue", "👄"] },
-                { text: "Lười biếng.", icons: ["😴", "😖", "😴"] },
-                { text: "Cười.", icons: ["😂", "😊", "💖"] },
-                { text: "Cái lưỡi.", icons: ["👅", " tongue", "👄"] },
-                { text: "Lười biếng.", icons: ["😴", "😖", "😴"] },
-                { text: "Cười.", icons: ["😂", "😊", "💖"] },
-                { text: "Cái lưỡi.", icons: ["👅", " tongue", "👄"] },
-                { text: "Lười biếng.", icons: ["😴", "😖", "😴"] },
-                { text: "Cười.", icons: ["😂", "😊", "💖"] },
-                { text: "Cái lưỡi.", icons: ["👅", " tongue", "👄"] },
-                { text: "Lười biếng.", icons: ["😴", "😖", "😴"] },
-                { text: "Cười.", icons: ["😂", "😊", "💖"] },
-                { text: "Cái lưỡi.", icons: ["👅", " tongue", "👄"] }
+            { id: "Nh", label: "Nh", title: "Bé Học Âm Nh", themeClass: "theme-nh", sentences: [
+                { text: "Nhà của Nhím nhỏ.", icons: ["🏡", "🦔"] },
+                { text: "Nhanh lên nào bạn ơi!", icons: ["💨", "👦"] },
+                { text: "Bạn nhỏ nhà Nhím rất hay.", icons: ["👧", "🦔"] },
+                { text: "Nhờ mẹ nhặt nhành hoa.", icons: ["👩", "🌸"] },
+                { text: "Nhanh chân lên đi nào!", icons: ["🏃", "👟"] },
+                { text: "Nhỏ nhẹ nghe lời nha.", icons: ["🤫", "👍"] },
+                { text: "Nhà của Nhím thật xinh.", icons: ["🏡", "✨"] },
+                { text: "Bạn nhỏ nhặt nhanh.", icons: ["👦", "🏃"] },
+                { text: "Nhờ bạn giúp nhé.", icons: ["🤝", "😊"] },
+                { text: "Nhím nhỏ nhay kẹo.", icons: ["🦔", "🍬"] },
+                { text: "Nhảy nhẹ nhàng trên sân.", icons: ["🤸", "🤸‍♀️"] },
+                { text: "Nhìn thấy nhà mới.", icons: ["👀", "🏡"] },
+                { text: "Nhà này thật to.", icons: ["🏠", "😮"] },
+                { text: "Nghỉ nhanh một chút.", icons: ["😴", "🛌"] },
+                { text: "Nhà mình gần nhà bạn.", icons: ["🏡", "👫"] },
+                { text: "Đôi mắt nhà bạn nhỏ.", icons: ["👀", "👦"] },
+                { text: "Nhảy múa nhịp nhàng.", icons: ["💃", "🕺"] },
+                { text: "Nhành hoa nhài thơm.", icons: ["🌸", "👃"] },
+                { text: "Nhà em có nhiều bánh.", icons: ["🏠", "🍰"] },
+                { text: "Nhà này nhỏ mà đẹp.", icons: ["🏡", "💖"] }
             ]},
-            { id: "OT", label: "OT", title: "Bé Học Vần OT", themeClass: "theme-ot", sentences: [
-                { text: "Con thỏ rất thích cà rốt.", icons: ["🐇", "🥕", "😋"] },
-                { text: "Cái bọt xà phòng.", icons: ["🫧", "🧼", "✨"] },
-                { text: "Bé hót hòn hén.", icons: ["👦", "😭", "💧"] },
-                { text: "Con chót bay.", icons: ["🐦", "🌬️", "☁️"] },
-                { text: "Cái chót to.", icons: ["🐦", "😮", "💖"] },
-                { text: "Bọt xà phòng.", icons: ["🫧", "🧼", "✨"] },
-                { text: "Hót hòn hén.", icons: ["😭", "💧", "😭"] },
-                { text: "Chót.", icons: ["🐦", "🐦", "🐦"] },
-                { text: "Hót hòn hén.", icons: ["😭", "💧", "😭"] },
-                { text: "Chót.", icons: ["🐦", "🐦", "🐦"] },
-                { text: "Bọt.", icons: ["🫧", "🧼", "✨"] },
-                { text: "Hót.", icons: ["😭", "💧", "😭"] },
-                { text: "Chót.", icons: ["🐦", "🐦", "🐦"] },
-                { text: "Bọt.", icons: ["🫧", "🧼", "✨"] },
-                { text: "Hót.", icons: ["😭", "💧", "😭"] },
-                { text: "Chót.", icons: ["🐦", "🐦", "🐦"] },
-                { text: "Bọt.", icons: ["🫧", "🧼", "✨"] },
-                { text: "Hót.", icons: ["😭", "💧", "😭"] },
-                { text: "Chót.", icons: ["🐦", "🐦", "🐦"] },
-                { text: "Bọt.", icons: ["🫧", "🧼", "✨"] }
+            { id: "Th", label: "Th", title: "Bé Học Âm Th", themeClass: "theme-th", sentences: [
+                { text: "Thỏ con rất thích ăn cà rốt.", icons: ["🐇", "🥕"] },
+                { text: "Thầy giáo thổi sáo.", icons: ["👨‍🏫", "🎶"] },
+                { text: "Thứ hai, thứ ba.", icons: ["🗓️", "🗓️"] },
+                { text: "Thành thật xin lỗi.", icons: ["🙏", "😊"] },
+                { text: "Thuyền buồm đang chạy.", icons: ["⛵", "💨"] },
+                { text: "Thấy chú thỏ, bé reo hò.", icons: ["👀", "🐇"] },
+                { text: "Thổi bong bóng thật to.", icons: ["🎈", "😮"] },
+                { text: "Thức dậy thật sớm.", icons: ["⏰", "🌞"] },
+                { text: "Thả thuyền giấy.", icons: ["⛵", "💧"] },
+                { text: "Thật thà, thật thà.", icons: ["👍", "💖"] },
+                { text: "Thứ tư, thứ năm.", icons: ["🗓️", "🗓️"] },
+                { text: "Thu hoạch trái thơm.", icons: ["🍍", "😋"] },
+                { text: "Thật nhanh, thật nhanh.", icons: ["🏃", "💨"] },
+                { text: "Thỏ trắng thích nhảy.", icons: ["🐇", "🤸"] },
+                { text: "Cá thuyền buồm.", icons: ["🐟", "⛵"] },
+                { text: "Thú bông rất mềm.", icons: ["🧸", "😊"] },
+                { text: "Thiếu nhi thật vui.", icons: ["👧", "👦"] },
+                { text: "Thăm ông bà.", icons: ["👴", "👵"] },
+                { text: "Thổi kèn thật to.", icons: ["🎺", "🎶"] },
+                { text: "Thu hái trái táo.", icons: ["🍎", "🧺"] }
             ]},
-            { id: "AT", label: "AT", title: "Bé Học Vần AT", themeClass: "theme-at", sentences: [
-                { text: "Con mèo rất bát nháo.", icons: ["😺", "😠", "😤"] },
-                { text: "Bé chạy thoát ra.", icons: ["👦", "🏃", "💨"] },
-                { text: "Cái giật mình.", icons: ["😮", " startled", "👀"] },
-                { text: "Bé rất nhát gan.", icons: ["👧", "🫣", "😨"] },
-                { text: "Bát cơm của bé.", icons: ["🥣", "🍚", "😋"] },
-                { text: "Cái giật mình.", icons: ["😮", " startled", "👀"] },
-                { text: "Bé nhát gan.", icons: ["👧", "🫣", "😨"] },
-                { text: "Bát cơm.", icons: ["🥣", "🍚", "😋"] },
-                { text: "Giật mình.", icons: ["😮", " startled", "👀"] },
-                { text: "Nhát gan.", icons: ["🫣", "😨", "😖"] },
-                { text: "Bát.", icons: ["🥣", "🍚", "😋"] },
-                { text: "Giật.", icons: ["😮", " startled", "👀"] },
-                { text: "Nhát.", icons: ["🫣", "😨", "😖"] },
-                { text: "Bát.", icons: ["🥣", "🍚", "😋"] },
-                { text: "Giật.", icons: ["😮", " startled", "👀"] },
-                { text: "Nhát.", icons: ["🫣", "😨", "😖"] },
-                { text: "Bát.", icons: ["🥣", "🍚", "😋"] },
-                { text: "Giật.", icons: ["😮", " startled", "👀"] },
-                { text: "Nhát.", icons: ["🫣", "😨", "😖"] },
-                { text: "Bát.", icons: ["🥣", "🍚", "😋"] }
+            { id: "Ph", label: "Ph", title: "Bé Học Âm Ph", themeClass: "theme-ph", sentences: [
+                { text: "Bé phát âm thật hay.", icons: ["👧", "🎤"] },
+                { text: "Phi thuyền bay trong không gian.", icons: ["🚀", "🌌"] },
+                { text: "Phát quà cho bạn nhỏ.", icons: ["🎁", "👦"] },
+                { text: "Phòng học rất sạch sẽ.", icons: ["🏫", "✨"] },
+                { text: "Phượng hoàng phấp phới bay.", icons: ["🦚", "💨"] },
+                { text: "Bố thổi phì phì.", icons: ["👨‍🦱", "💨"] },
+                { text: "Phố phường đông vui.", icons: ["🏘️", "🎈"] },
+                { text: "Phạm vi rộng lớn.", icons: ["🗺️", "😮"] },
+                { text: "Bé phát triển tốt.", icons: ["👍", "🌱"] },
+                { text: "Bạn phởn phơ cười.", icons: ["😁", "😊"] },
+                { text: "Phép màu xuất hiện.", icons: ["✨", "🪄"] },
+                { text: "Phần thưởng của bé.", icons: ["🎁", "🏆"] },
+                { text: "Phân biệt màu sắc.", icons: ["🎨", "🌈"] },
+                { text: "Pháo hoa bay lên.", icons: ["🎆", "🎇"] },
+                { text: "Phía trước có đường lớn.", icons: ["➡️", "🛣️"] },
+                { text: "Phát âm chữ cái.", icons: ["🗣️", "🔤"] },
+                { text: "Phủi bụi quần áo.", icons: ["👕", "💨"] },
+                { text: "Phù sa bồi đắp.", icons: ["🏞️", "🌾"] },
+                { text: "Phát hiện điều bí ẩn.", icons: ["🔍", "🤫"] },
+                { text: "Phút giây hạnh phúc.", icons: ["💖", "👨‍👩‍👧‍👦"] }
             ]},
-            { id: "ET", label: "ET", title: "Bé Học Vần ET", themeClass: "theme-et", sentences: [
-                { text: "Bé rất mệt mỏi.", icons: ["👧", "😴", "😔"] },
-                { text: "Cái két sắt.", icons: ["🔒", "💰", "💎"] },
-                { text: "Bé hét lên.", icons: ["👦", "📢", "🗣️"] },
-                { text: "Mệt rồi thì nghỉ.", icons: ["😴", "🛌", "😌"] },
-                { text: "Cái két to.", icons: ["🔒", "😮", "💖"] },
-                { text: "Bé hét.", icons: ["👦", "📢", "🗣️"] },
-                { text: "Mệt.", icons: ["😴", "😔", "😖"] },
-                { text: "Két.", icons: ["🔒", "💰", "💎"] },
-                { text: "Hét.", icons: ["📢", "🗣️", "📢"] },
-                { text: "Mệt.", icons: ["😴", "😔", "😖"] },
-                { text: "Két.", icons: ["🔒", "💰", "💎"] },
-                { text: "Hét.", icons: ["📢", "🗣️", "📢"] },
-                { text: "Mệt.", icons: ["😴", "😔", "😖"] },
-                { text: "Két.", icons: ["🔒", "💰", "💎"] },
-                { text: "Hét.", icons: ["📢", "🗣️", "📢"] },
-                { text: "Mệt.", icons: ["😴", "😔", "😖"] },
-                { text: "Két.", icons: ["🔒", "💰", "💎"] },
-                { text: "Hét.", icons: ["📢", "🗣️", "📢"] },
-                { text: "Mệt.", icons: ["😴", "😔", "😖"] },
-                { text: "Két.", icons: ["🔒", "💰", "💎"] }
+            { id: "Gh", label: "Gh", title: "Bé Học Âm Gh", themeClass: "theme-gh", sentences: [
+                { text: "Ghé thăm nhà của bạn Ghềnh.", icons: ["🏡", "👦"] },
+                { text: "Bạn ghét ăn gừng.", icons: ["😖", "🌶️"] },
+                { text: "Ghi chép bài học.", icons: ["✍️", "📖"] },
+                { text: "Bé rất thích ghen tị.", icons: ["😂", "😊"] },
+                { text: "Ghé vào nhà gỗ.", icons: ["🏠", "🪵"] },
+                { text: "Gánh gạo ghé qua.", icons: ["🍚", "🚶"] },
+                { text: "Ghi nhớ thật hay.", icons: ["💡", "🧠"] },
+                { text: "Bạn ghét màu đỏ.", icons: ["🙅‍♀️", "🔴"] },
+                { text: "Ghen tị với bạn bè.", icons: ["😂", "👥"] },
+                { text: "Ghi lại những điều hay.", icons: ["✍️", "👍"] },
+                { text: "Ghé vào quán ăn.", icons: ["🍽️", "😋"] },
+                { text: "Gánh nặng của ba.", icons: ["💪", "👨‍🦱"] },
+                { text: "Ghét cái nóng.", icons: ["🔥", "🥵"] },
+                { text: "Ghi tên vào vở.", icons: ["✍️", "📖"] },
+                { text: "Ghen tị với mèo.", icons: ["😂", "😺"] },
+                { text: "Ghé nhà ông bà.", icons: ["🏡", "👴"] },
+                { text: "Gánh trên vai.", icons: ["💪", "🧺"] },
+                { text: "Ghét cái lạnh.", icons: ["🥶", "🧣"] },
+                { text: "Ghi chú thật rõ.", icons: ["📝", "🔍"] },
+                { text: "Ghen tị với chim.", icons: ["😂", "🐦"] }
             ]},
-            { id: "ÊT", label: "ÊT", title: "Bé Học Vần ÊT", themeClass: "theme-et-hat", sentences: [
-                { text: "Bé hệt như mẹ.", icons: ["👧", "👩", "💖"] },
-                { text: "Rất ghét món này.", icons: ["😠", "😤", "👎"] },
-                { text: "Bé có một vết thương.", icons: ["👧", "🩹", "🤕"] },
-                { text: "Ghét cái nóng.", icons: ["😠", "🥵", "☀️"] },
-                { text: "Vết thương nhỏ.", icons: ["🩹", "🤏", "🤕"] },
-                { text: "Ghét cái lạnh.", icons: ["😠", "🥶", "🧣"] },
-                { text: "Bé hệt như ba.", icons: ["👦", "👨", "👍"] },
-                { text: "Ghét.", icons: ["😠", "😤", "👎"] },
-                { text: "Vết.", icons: ["🩹", "🤕", "🩹"] },
-                { text: "Ghét.", icons: ["😠", "😤", "👎"] },
-                { text: "Vết.", icons: ["🩹", "🤕", "🩹"] },
-                { text: "Ghét.", icons: ["😠", "😤", "👎"] },
-                { text: "Vết.", icons: ["🩹", "🤕", "🩹"] },
-                { text: "Ghét.", icons: ["😠", "😤", "👎"] },
-                { text: "Vết.", icons: ["🩹", "🤕", "🩹"] },
-                { text: "Ghét.", icons: ["😠", "😤", "👎"] },
-                { text: "Vết.", icons: ["🩹", "🤕", "🩹"] },
-                { text: "Ghét.", icons: ["😠", "😤", "👎"] },
-                { text: "Vết.", icons: ["🩹", "🤕", "🩹"] },
-                { text: "Ghét.", icons: ["😠", "😤", "👎"] }
+            { id: "Ng", label: "Ng", title: "Bé Học Âm Ng", themeClass: "theme-ng", sentences: [
+                { text: "Bé ngửi thấy mùi hoa sen.", icons: ["👃", "🌸"] },
+                { text: "Con ngựa chạy rất nhanh.", icons: ["🐴", "💨"] },
+                { text: "Ngôi nhà xinh xắn của bé.", icons: ["🏡", "👧"] },
+                { text: "Bạn Nga ngồi ghế.", icons: ["👧", "🪑"] },
+                { text: "Ngủ ngon nhé, bé yêu.", icons: ["😴", "💖"] },
+                { text: "Nghe nhạc thật vui.", icons: ["🎶", "😊"] },
+                { text: "Ngón tay nhỏ xíu.", icons: ["☝️", "🤏"] },
+                { text: "Ngủ một giấc thật sâu.", icons: ["😴", "😌"] },
+                { text: "Ngôi sao trên trời.", icons: ["✨", "🌌"] },
+                { text: "Ngừng lại, chờ tín hiệu.", icons: ["🛑", "🚦"] },
+                { text: "Ngóng trông bạn đến chơi.", icons: ["👀", "👫"] },
+                { text: "Nghe tiếng chim hót.", icons: ["👂", "🐦"] },
+                { text: "Ngôi nhà màu hồng.", icons: ["🏡", "💖"] },
+                { text: "Ngắm trăng, ngắm sao.", icons: ["🌕", "✨"] },
+                { text: "Ngại ngùng, ngại ngùng.", icons: ["😳", "😶"] },
+                { text: "Ngửi thấy mùi bánh.", icons: ["👃", "🎂"] },
+                { text: "Ngồi trong vòng tay mẹ.", icons: ["🤱", "💖"] },
+                { text: "Ngủ trưa để khỏe hơn.", icons: ["😴", "💪"] },
+                { text: "Ngôi trường thân yêu.", icons: ["🏫", "💕"] },
+                { text: "Bạn Nga rất giỏi.", icons: ["👧", "🏆"] }
             ]},
-            { id: "IT", label: "IT", title: "Bé Học Vần IT", themeClass: "theme-it", sentences: [
-                { text: "Mẹ mua một ít kẹo.", icons: ["👩", "🛍️", "🍬"] },
-                { text: "Con vịt kêu quít quít.", icons: ["🦆", "🔊", "🎶"] },
-                { text: "Bé hít vào thật sâu.", icons: ["👃", "🌬️", "😌"] },
-                { text: "Một ít thôi.", icons: ["🤏", "🤏", "🤏"] },
-                { text: "Bé hít vào.", icons: ["👃", "🌬️", "😌"] },
-                { text: "Một ít.", icons: ["🤏", "🤏", "🤏"] },
-                { text: "Hít.", icons: ["👃", "🌬️", "😌"] },
-                { text: "Ít.", icons: ["🤏", "🤏", "🤏"] },
-                { text: "Hít.", icons: ["👃", "🌬️", "😌"] },
-                { text: "Ít.", icons: ["🤏", "🤏", "🤏"] },
-                { text: "Hít.", icons: ["👃", "🌬️", "😌"] },
-                { text: "Ít.", icons: ["🤏", "🤏", "🤏"] },
-                { text: "Hít.", icons: ["👃", "🌬️", "😌"] },
-                { text: "Ít.", icons: ["🤏", "🤏", "🤏"] },
-                { text: "Hít.", icons: ["👃", "🌬️", "😌"] },
-                { text: "Ít.", icons: ["🤏", "🤏", "🤏"] },
-                { text: "Hít.", icons: ["👃", "🌬️", "😌"] },
-                { text: "Ít.", icons: ["🤏", "🤏", "🤏"] },
-                { text: "Hít.", icons: ["👃", "🌬️", "😌"] },
-                { text: "Ít.", icons: ["🤏", "🤏", "🤏"] }
+            { id: "Ngh", label: "Ngh", title: "Bé Học Âm Ngh", themeClass: "theme-ngh", sentences: [
+                { text: "Nghỉ ngơi thật đã.", icons: ["😴", "😌"] },
+                { text: "Nghĩ về những giấc mơ.", icons: ["🧠", "💭"] },
+                { text: "Nghênh chiến với bạn.", icons: ["💪", "👦"] },
+                { text: "Nghèo nhưng không hèn.", icons: ["💸", "💖"] },
+                { text: "Nghỉ hè thật là vui.", icons: ["☀️", "🎉"] },
+                { text: "Nghĩa cử cao đẹp.", icons: ["👍", "❤️"] },
+                { text: "Nghĩ cách để chiến thắng.", icons: ["🧠", "🏆"] },
+                { text: "Nghề này thật hay.", icons: ["🧑‍🔧", "👍"] },
+                { text: "Nghẹn ngào xúc động.", icons: ["🥹", "😭"] },
+                { text: "Nghênh đón khách quý.", icons: ["👋", "👥"] },
+                { text: "Nghĩa tình anh em.", icons: ["👬", "❤️"] },
+                { text: "Nghề giáo viên.", icons: ["👩‍🏫", "🏫"] },
+                { text: "Nghỉ học để đi chơi.", icons: ["🎒", "🤸"] },
+                { text: "Nghĩ về con mèo.", icons: ["💭", "😺"] },
+                { text: "Nghĩa vụ của bé.", icons: ["🧑‍🎓", "📖"] },
+                { text: "Nghề phi công.", icons: ["👨‍✈️", "✈️"] },
+                { text: "Nghịch ngợm thật vui.", icons: ["🤪", "😂"] },
+                { text: "Nghĩ ra ý tưởng mới.", icons: ["💡", "✨"] },
+                { text: "Nghèo khổ nhưng vui vẻ.", icons: ["😊", "💖"] },
+                { text: "Nghĩa là yêu thương.", icons: ["❤️", "🤗"] }
             ]},
-            { id: "IA", label: "IA", title: "Bé Học Vần IA", themeClass: "theme-ia", sentences: [
-                { text: "Con đĩa bám vào tay.", icons: ["🪱", "✋", "🤢"] },
-                { text: "Bé kia đang làm gì?", icons: ["👦", "❓", "🤔"] },
-                { text: "Cả nhà cùng chia nhau.", icons: ["👨‍👩‍👧‍👦", " 나눠", "😊"] },
-                { text: "Bé đi chơi với bạn Nia.", icons: ["👧", "👦", "🤸"] },
-                { text: "Bé chia kẹo.", icons: ["👧", "🍬", "🍭"] },
-                { text: "Chia sẻ.", icons: ["🤝", "💖", "😊"] },
-                { text: "Con đĩa.", icons: ["🪱", "🪱", "🪱"] },
-                { text: "Kia.", icons: ["👉", "👉", "👉"] },
-                { text: "Chia.", icons: [" 나눠", " 나눠", " 나눠"] },
-                { text: "Bé đi.", icons: ["👧", "🚶", "🚶"] },
-                { text: "Bé chia.", icons: ["👧", " 나눠", " 나눠"] },
-                { text: "Chia sẻ.", icons: ["🤝", "💖", "😊"] },
-                { text: "Con đĩa.", icons: ["🪱", "🪱", "🪱"] },
-                { text: "Kia.", icons: ["👉", "👉", "👉"] },
-                { text: "Chia.", icons: [" 나눠", " 나눠", " 나눠"] },
-                { text: "Bé đi.", icons: ["👧", "🚶", "🚶"] },
-                { text: "Bé chia.", icons: ["👧", " 나눠", " 나눠"] },
-                { text: "Chia sẻ.", icons: ["🤝", "💖", "😊"] },
-                { text: "Con đĩa.", icons: ["🪱", "🪱", "🪱"] },
-                { text: "Kia.", icons: ["👉", "👉", "👉"] }
+            { id: "Tr", label: "Tr", title: "Bé Học Âm Tr", themeClass: "theme-tr", sentences: [
+                { text: "Trăng tròn trên cao.", icons: ["🌕", "🌌"] },
+                { text: "Trái tim của mẹ.", icons: ["💖", "👩"] },
+                { text: "Trời trong xanh quá.", icons: ["☀️", "☁️"] },
+                { text: "Cây tre cao vút.", icons: ["🎍", "🌳"] },
+                { text: "Trò chơi trốn tìm.", icons: ["🙈", "🏃"] },
+                { text: "Trái dừa tròn tròn.", icons: ["🥥", "⚪"] },
+                { text: "Trâm cài tóc của chị.", icons: ["👩‍🦱", "✨"] },
+                { text: "Trái đất của chúng ta.", icons: ["🌎", "💖"] },
+                { text: "Trò chuyện với bạn.", icons: ["🗣️", "👫"] },
+                { text: "Trăng sao lấp lánh.", icons: ["✨", "✨"] },
+                { text: "Trống đánh thật to.", icons: ["🥁", "🔊"] },
+                { text: "Trạm y tế nhỏ.", icons: ["🏥", "💖"] },
+                { text: "Trái cây ngon quá.", icons: ["🍎", "😋"] },
+                { text: "Trẻ con thích chơi.", icons: ["👦", "👧"] },
+                { text: "Trạm xe buýt.", icons: ["🚌", "🚦"] },
+                { text: "Trời mưa lất phất.", icons: ["🌧️", "💧"] },
+                { text: "Trò chuyện cùng cô.", icons: ["🗣️", "👩‍🏫"] },
+                { text: "Trang vở sạch sẽ.", icons: ["📖", "✨"] },
+                { text: "Trò chơi vui vẻ.", icons: ["🎉", "😂"] },
+                { text: "Trái tim nhân hậu.", icons: ["❤️", "🤗"] }
             ]},
-            { id: "UÔI", label: "UÔI", title: "Bé Học Vần UÔI", themeClass: "theme-uoi", sentences: [
-                { text: "Đuôi con chó.", icons: ["🐶", "🐕", "🐾"] },
-                { text: "Cái muỗng của bé.", icons: ["🥄", "👦", "👧"] },
-                { text: "Bé đuổi theo bạn.", icons: ["👦", "🏃", "💨"] },
-                { text: "Con suối chảy.", icons: ["💧", "🌊", "🏞️"] },
-                { text: "Cái đuôi.", icons: ["🐶", "🐕", "🐾"] },
-                { text: "Cái muỗng.", icons: ["🥄", "🥄", "🥄"] },
-                { text: "Đuổi.", icons: ["🏃", "💨", "💨"] },
-                { text: "Suối.", icons: ["💧", "🌊", "🏞️"] },
-                { text: "Đuôi.", icons: ["🐶", "🐕", "🐾"] },
-                { text: "Muỗng.", icons: ["🥄", "🥄", "🥄"] },
-                { text: "Đuổi.", icons: ["🏃", "💨", "💨"] },
-                { text: "Suối.", icons: ["💧", "🌊", "🏞️"] },
-                { text: "Đuôi.", icons: ["🐶", "🐕", "🐾"] },
-                { text: "Muỗng.", icons: ["🥄", "🥄", "🥄"] },
-                { text: "Đuổi.", icons: ["🏃", "💨", "💨"] },
-                { text: "Suối.", icons: ["💧", "🌊", "🏞️"] },
-                { text: "Đuôi.", icons: ["🐶", "🐕", "🐾"] },
-                { text: "Muỗng.", icons: ["🥄", "🥄", "🥄"] },
-                { text: "Đuổi.", icons: ["🏃", "💨", "💨"] },
-                { text: "Suối.", icons: ["💧", "🌊", "🏞️"] }
+            { id: "Gi", label: "Gi", title: "Bé Học Âm Gi", themeClass: "theme-gi", sentences: [
+                { text: "Giỏ trái cây của bà.", icons: ["🧺", "👵"] },
+                { text: "Gió thổi mạnh quá.", icons: ["💨", "🌬️"] },
+                { text: "Giáo viên giảng bài.", icons: ["👩‍🏫", "📖"] },
+                { text: "Giấc mơ của Giọt Sương.", icons: ["💭", "💧"] },
+                { text: "Bé giơ tay xin phát biểu.", icons: ["🙋‍♀️", "🗣️"] },
+                { text: "Giúp đỡ người già.", icons: ["🤝", "👴"] },
+                { text: "Giọt nước long lanh.", icons: ["💧", "✨"] },
+                { text: "Giấy viết rất trắng.", icons: ["📄", "⚪"] },
+                { text: "Gió heo may thổi.", icons: ["🌬️", "🍂"] },
+                { text: "Giặt giũ quần áo.", icons: ["🧺", "👕"] },
+                { text: "Giờ ăn đến rồi.", icons: ["⏰", "😋"] },
+                { text: "Giày dép của bé.", icons: ["👟", "🥿"] },
+                { text: "Giấy gói quà.", icons: ["🎁", "📄"] },
+                { text: "Giọt sương rơi.", icons: ["💧", "🌱"] },
+                { text: "Giọng nói thật hay.", icons: ["🗣️", "🎶"] },
+                { text: "Giường ngủ êm ái.", icons: ["🛏️", "😴"] },
+                { text: "Giàn mướp xanh.", icons: ["🥒", "🌱"] },
+                { text: "Giấc ngủ trưa.", icons: ["😴", "😌"] },
+                { text: "Giúp bạn làm bài.", icons: ["🤝", "📚"] },
+                { text: "Giờ giải lao.", icons: ["⏰", "🤸"] }
             ]},
-            { id: "ANH", label: "ANH", title: "Bé Học Vần ANH", themeClass: "theme-anh", sentences: [
-                { text: "Anh trai của bé.", icons: ["👦", "👨‍🦱", "👍"] },
-                { text: "Bé đi học rất nhanh.", icons: ["👧", "🏃", "💨"] },
-                { text: "Anh trai của con.", icons: ["👦", "👨‍🦱", "👍"] },
-                { text: "Bé nhanh nhẹn.", icons: ["👧", "🤸", "💪"] },
-                { text: "Anh trai của bé.", icons: ["👦", "👨‍🦱", "👍"] },
-                { text: "Nhanh lên.", icons: ["🏃", "💨", "💨"] },
-                { text: "Anh.", icons: ["👦", "👨‍🦱", "👍"] },
-                { text: "Nhanh.", icons: ["🏃", "💨", "💨"] },
-                { text: "Anh.", icons: ["👦", "👨‍🦱", "👍"] },
-                { text: "Nhanh.", icons: ["🏃", "💨", "💨"] },
-                { text: "Anh.", icons: ["👦", "👨‍🦱", "👍"] },
-                { text: "Nhanh.", icons: ["🏃", "💨", "💨"] },
-                { text: "Anh.", icons: ["👦", "👨‍🦱", "👍"] },
-                { text: "Nhanh.", icons: ["🏃", "💨", "💨"] },
-                { text: "Anh.", icons: ["👦", "👨‍🦱", "👍"] },
-                { text: "Nhanh.", icons: ["🏃", "💨", "💨"] },
-                { text: "Anh.", icons: ["👦", "👨‍🦱", "👍"] },
-                { text: "Nhanh.", icons: ["🏃", "💨", "💨"] },
-                { text: "Anh.", icons: ["👦", "👨‍🦱", "👍"] },
-                { text: "Nhanh.", icons: ["🏃", "💨", "💨"] }
-            ]},
-            { id: "ACH", label: "ACH", title: "Bé Học Vần ACH", themeClass: "theme-ach", sentences: [
-                { text: "Bé lạch bạch.", icons: ["👧", "🚶", "🚶"] },
-                { text: "Đạt giải nhất.", icons: ["🏆", "🥇", "✨"] },
-                { text: "Bé lạch bạch.", icons: ["👦", "🚶", "🚶"] },
-                { text: "Đạt giải.", icons: ["🏆", "🥇", "✨"] },
-                { text: "Bé lạch bạch.", icons: ["👧", "🚶", "🚶"] },
-                { text: "Đạt giải.", icons: ["🏆", "🥇", "✨"] },
-                { text: "Bé lạch bạch.", icons: ["👦", "🚶", "🚶"] },
-                { text: "Đạt giải.", icons: ["🏆", "🥇", "✨"] },
-                { text: "Bé lạch bạch.", icons: ["👧", "🚶", "🚶"] },
-                { text: "Đạt giải.", icons: ["🏆", "🥇", "✨"] },
-                { text: "Bé lạch bạch.", icons: ["👦", "🚶", "🚶"] },
-                { text: "Đạt giải.", icons: ["🏆", "🥇", "✨"] },
-                { text: "Bé lạch bạch.", icons: ["👧", "🚶", "🚶"] },
-                { text: "Đạt giải.", icons: ["🏆", "🥇", "✨"] },
-                { text: "Bé lạch bạch.", icons: ["👦", "🚶", "🚶"] },
-                { text: "Đạt giải.", icons: ["🏆", "🥇", "✨"] },
-                { text: "Bé lạch bạch.", icons: ["👧", "🚶", "🚶"] },
-                { text: "Đạt giải.", icons: ["🏆", "🥇", "✨"] },
-                { text: "Bé lạch bạch.", icons: ["👦", "🚶", "🚶"] },
-                { text: "Đạt giải.", icons: ["🏆", "🥇", "✨"] }
-            ]},
-            { id: "IÊN", label: "IÊN", title: "Bé Học Vần IÊN", themeClass: "theme-ien", sentences: [
-                { text: "Chiếc thuyền trôi.", icons: ["⛵", "🌊", "💨"] },
-                { text: "Tiếng chim hót.", icons: ["🐦", "🎶", "🎤"] },
-                { text: "Yên lặng lắng nghe.", icons: ["🤫", "👂", "😌"] },
-                { text: "Bé đi thuyền.", icons: ["👧", "⛵", "🌊"] },
-                { text: "Tiếng chim.", icons: ["🐦", "🎶", "🎤"] },
-                { text: "Yên lặng.", icons: ["🤫", "😌", "🤫"] },
-                { text: "Thuyền.", icons: ["⛵", "⛵", "⛵"] },
-                { text: "Tiếng.", icons: ["🔊", "📢", "🎶"] },
-                { text: "Yên.", icons: ["🤫", "😌", "🤫"] },
-                { text: "Thuyền.", icons: ["⛵", "⛵", "⛵"] },
-                { text: "Tiếng.", icons: ["🔊", "📢", "🎶"] },
-                { text: "Yên.", icons: ["🤫", "😌", "🤫"] },
-                { text: "Thuyền.", icons: ["⛵", "⛵", "⛵"] },
-                { text: "Tiếng.", icons: ["🔊", "📢", "🎶"] },
-                { text: "Yên.", icons: ["🤫", "😌", "🤫"] },
-                { text: "Thuyền.", icons: ["⛵", "⛵", "⛵"] },
-                { text: "Tiếng.", icons: ["🔊", "📢", "🎶"] },
-                { text: "Yên.", icons: ["🤫", "😌", "🤫"] },
-                { text: "Thuyền.", icons: ["⛵", "⛵", "⛵"] },
-                { text: "Tiếng.", icons: ["🔊", "📢", "🎶"] }
-            ]},
-            { id: "ƯƠNG", label: "ƯƠNG", title: "Bé Học Vần ƯƠNG", themeClass: "theme-uong", sentences: [
-                { text: "Hướng dương quay về phía mặt trời.", icons: ["🌻", "☀️", "😊"] },
-                { text: "Bé có một gương mặt dễ thương.", icons: ["👧", "😊", "💖"] },
-                { text: "Con đường về nhà.", icons: ["🏡", "🛣️", "🚶"] },
-                { text: "Gương soi của mẹ.", icons: ["🪞", "👩", "✨"] },
-                { text: "Hướng.", icons: ["➡️", "⬅️", "⬆️"] },
-                { text: "Gương.", icons: ["🪞", "🪞", "🪞"] },
-                { text: "Đường.", icons: ["🛣️", "🛣️", "🛣️"] },
-                { text: "Gương.", icons: ["🪞", "🪞", "🪞"] },
-                { text: "Hướng.", icons: ["➡️", "⬅️", "⬆️"] },
-                { text: "Gương.", icons: ["🪞", "🪞", "🪞"] },
-                { text: "Đường.", icons: ["🛣️", "🛣️", "🛣️"] },
-                { text: "Gương.", icons: ["🪞", "🪞", "🪞"] },
-                { text: "Hướng.", icons: ["➡️", "⬅️", "⬆️"] },
-                { text: "Gương.", icons: ["🪞", "🪞", "🪞"] },
-                { text: "Đường.", icons: ["🛣️", "🛣️", "🛣️"] },
-                { text: "Gương.", icons: ["🪞", "🪞", "🪞"] },
-                { text: "Hướng.", icons: ["➡️", "⬅️", "⬆️"] },
-                { text: "Gương.", icons: ["🪞", "🪞", "🪞"] },
-                { text: "Đường.", icons: ["🛣️", "🛣️", "🛣️"] },
-                { text: "Gương.", icons: ["🪞", "🪞", "🪞"] }
-            ]},
-            { id: "UÔNG", label: "UÔNG", title: "Bé Học Vần UÔNG", themeClass: "theme-uong-mo", sentences: [
-                { text: "Uống nước thật nhiều.", icons: ["💧", "🥤", "😊"] },
-                { text: "Chiếc luống rau.", icons: ["🥬", "🌱", "🌿"] },
-                { text: "Bé uống nước.", icons: ["👧", "💧", "🥤"] },
-                { text: "Cái luống.", icons: ["🥬", "🌱", "🌿"] },
-                { text: "Bé uống.", icons: ["👧", "💧", "🥤"] },
-                { text: "Luống.", icons: ["🥬", "🌱", "🌿"] },
-                { text: "Bé uống.", icons: ["👧", "💧", "🥤"] },
-                { text: "Luống.", icons: ["🥬", "🌱", "🌿"] },
-                { text: "Bé uống.", icons: ["👧", "💧", "🥤"] },
-                { text: "Luống.", icons: ["🥬", "🌱", "🌿"] },
-                { text: "Bé uống.", icons: ["👧", "💧", "🥤"] },
-                { text: "Luống.", icons: ["🥬", "🌱", "🌿"] },
-                { text: "Bé uống.", icons: ["👧", "💧", "🥤"] },
-                { text: "Luống.", icons: ["🥬", "🌱", "🌿"] },
-                { text: "Bé uống.", icons: ["👧", "💧", "🥤"] },
-                { text: "Luống.", icons: ["🥬", "🌱", "🌿"] },
-                { text: "Bé uống.", icons: ["👧", "💧", "🥤"] },
-                { text: "Luống.", icons: ["🥬", "🌱", "🌿"] },
-                { text: "Bé uống.", icons: ["👧", "💧", "🥤"] },
-                { text: "Luống.", icons: ["🥬", "🌱", "🌿"] }
-            ]},
-            { id: "UÔT", label: "UÔT", title: "Bé Học Vần UÔT", themeClass: "theme-uot", sentences: [
-                { text: "Bé tuột tay.", icons: ["👦", "👋", "🤕"] },
-                { text: "Bé tuột rồi.", icons: ["👧", "😔", "😞"] },
-                { text: "Tuột.", icons: ["👦", "👋", "🤕"] },
-                { text: "Tuột.", icons: ["👧", "😔", "😞"] },
-                { text: "Tuột.", icons: ["👦", "👋", "🤕"] },
-                { text: "Tuột.", icons: ["👧", "😔", "😞"] },
-                { text: "Tuột.", icons: ["👦", "👋", "🤕"] },
-                { text: "Tuột.", icons: ["👧", "😔", "😞"] },
-                { text: "Tuột.", icons: ["👦", "👋", "🤕"] },
-                { text: "Tuột.", icons: ["👧", "😔", "😞"] },
-                { text: "Tuột.", icons: ["👦", "👋", "🤕"] },
-                { text: "Tuột.", icons: ["👧", "😔", "😞"] },
-                { text: "Tuột.", icons: ["👦", "👋", "🤕"] },
-                { text: "Tuột.", icons: ["👧", "😔", "😞"] },
-                { text: "Tuột.", icons: ["👦", "👋", "🤕"] },
-                { text: "Tuột.", icons: ["👧", "😔", "😞"] },
-                { text: "Tuột.", icons: ["👦", "👋", "🤕"] },
-                { text: "Tuột.", icons: ["👧", "😔", "😞"] },
-                { text: "Tuột.", icons: ["👦", "👋", "🤕"] },
-                { text: "Tuột.", icons: ["👧", "😔", "😞"] }
-            ]},
-            { id: "OAI", label: "OAI", title: "Bé Học Vần OAI", themeClass: "theme-oai", sentences: [
-                { text: "Bạn Oai rất giỏi.", icons: ["👦", "👍", "🏆"] },
-                { text: "Oai phong, lẫm liệt.", icons: ["👑", "🦁", "💪"] },
-                { text: "Bé oai oách.", icons: ["👧", "😠", "😤"] },
-                { text: "Bạn Oai.", icons: ["👦", "👍", "🏆"] },
-                { text: "Oai.", icons: ["👑", "🦁", "💪"] },
-                { text: "Oai oách.", icons: ["😠", "😤", "😠"] },
-                { text: "Bạn Oai.", icons: ["👦", "👍", "🏆"] },
-                { text: "Oai.", icons: ["👑", "🦁", "💪"] },
-                { text: "Oai oách.", icons: ["😠", "😤", "😠"] },
-                { text: "Bạn Oai.", icons: ["👦", "👍", "🏆"] },
-                { text: "Oai.", icons: ["👑", "🦁", "💪"] },
-                { text: "Oai oách.", icons: ["😠", "😤", "😠"] },
-                { text: "Bạn Oai.", icons: ["👦", "👍", "🏆"] },
-                { text: "Oai.", icons: ["👑", "🦁", "💪"] },
-                { text: "Oai oách.", icons: ["😠", "😤", "😠"] },
-                { text: "Bạn Oai.", icons: ["👦", "👍", "🏆"] },
-                { text: "Oai.", icons: ["👑", "🦁", "💪"] },
-                { text: "Oai oách.", icons: ["😠", "😤", "😠"] },
-                { text: "Bạn Oai.", icons: ["👦", "👍", "🏆"] },
-                { text: "Oai.", icons: ["👑", "🦁", "💪"] }
+            { id: "Qu", label: "Qu", title: "Bé Học Âm Qu", themeClass: "theme-qu", sentences: [
+                { text: "Bạn Quế rất quấn quýt.", icons: ["👧", "🤝"] },
+                { text: "Quả cam tròn trịa.", icons: ["🍊", "⚪"] },
+                { text: "Chim chuyền cành, quạt cánh bay.", icons: ["🐦", "💨"] },
+                { text: "Que kem thật mát.", icons: ["🍦", "🧊"] },
+                { text: "Bé qua nhà bạn chơi.", icons: ["👦", "🏠"] },
+                { text: "Quân bạn rất quý.", icons: ["👦", "💖"] },
+                { text: "Quần áo sạch sẽ.", icons: ["👕", "✨"] },
+                { text: "Quả quýt ngọt lịm.", icons: ["🍊", "😋"] },
+                { text: "Bạn quay lưng lại.", icons: ["↩️", "🚶"] },
+                { text: "Quả nho chín mọng.", icons: ["🍇", "🍇"] },
+                { text: "Bé quay lại nhìn.", icons: ["👧", "👀"] },
+                { text: "Quân đội thật mạnh.", icons: ["💂‍♂️", "💪"] },
+                { text: "Quả bóng tròn quay.", icons: ["⚽", "🔄"] },
+                { text: "Quãng đường dài.", icons: ["🛣️", "🚶"] },
+                { text: "Quê hương của tôi.", icons: ["🏡", "❤️"] },
+                { text: "Quên rồi thì hỏi.", icons: ["🤔", "❓"] },
+                { text: "Quần dài màu xanh.", icons: ["👖", "🟢"] },
+                { text: "Quả mít gai góc.", icons: ["🍈", "🌵"] },
+                { text: "Quạ đen đậu cành cây.", icons: ["🐦", "🌳"] },
+                { text: "Quần áo đẹp quá.", icons: ["👗", "😍"] }
             ]}
         ];
 
         let currentContentIndex = 0;
         let currentSentenceIndex = 0;
 
-        // Audio for recording
-        let mediaRecorder;
-        let recordedAudioChunks = [];
-        let recordedAudioBlob = null;
-        let recording = false;
-        
-        // Timer
-        let timer;
-        let timeLeft = 90;
-        let timerRunning = true;
-
         // DOM elements
         const sentenceDisplay = document.getElementById('sentence-display');
         const nextBtn = document.getElementById('next-btn');
         const prevBtn = document.getElementById('prev-btn');
         const readAloudBtn = document.getElementById('read-aloud-btn');
-        const recordBtn = document.getElementById('record-btn');
-        const playbackBtn = document.getElementById('playback-btn');
         const counter = document.getElementById('counter');
-        const timerDisplay = document.getElementById('timer-display');
-        const stopTimerBtn = document.getElementById('stop-timer-btn');
-        const micStatus = document.getElementById('mic-status');
         const navContainer = document.getElementById('nav-container');
         const gameContainer = document.querySelector('.game-container');
         const body = document.querySelector('body');
         const gameTitle = document.getElementById('game-title');
-
 
         // Functions
         function renderNav() {
@@ -1935,33 +1614,6 @@
             });
 
             counter.textContent = `${currentSentenceIndex + 1}/${currentContent.sentences.length}`;
-            resetTimer();
-        }
-
-        function resetTimer() {
-            clearInterval(timer);
-            timeLeft = 90;
-            timerRunning = true;
-            stopTimerBtn.textContent = 'Dừng lại';
-            timerDisplay.textContent = `Thời gian còn lại: ${timeLeft}s`;
-            timer = setInterval(() => {
-                timeLeft--;
-                timerDisplay.textContent = `Thời gian còn lại: ${timeLeft}s`;
-                if (timeLeft <= 0) {
-                    clearInterval(timer);
-                    nextSentence();
-                }
-            }, 1000);
-        }
-
-        function toggleTimer() {
-            if (timerRunning) {
-                clearInterval(timer);
-                stopTimerBtn.textContent = 'Tiếp tục';
-            } else {
-                resetTimer();
-            }
-            timerRunning = !timerRunning;
         }
 
         // Sound effect for navigation
@@ -1982,65 +1634,6 @@
                 oscillator.stop(audioContext.currentTime + 0.1);
             } catch (e) {
                 console.warn("AudioContext not supported, can't play sound effect.");
-            }
-        }
-
-        // --- Recording and Playback Logic ---
-
-        // Asks for microphone permission and initializes MediaRecorder
-        async function initRecorder() {
-            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-                micStatus.textContent = 'Trình duyệt không hỗ trợ ghi âm.';
-                micStatus.classList.remove('hidden');
-                recordBtn.disabled = true;
-                return;
-            }
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                mediaRecorder = new MediaRecorder(stream);
-                mediaRecorder.ondataavailable = event => {
-                    recordedAudioChunks.push(event.data);
-                };
-                mediaRecorder.onstop = () => {
-                    recordedAudioBlob = new Blob(recordedAudioChunks, { type: 'audio/webm' });
-                    playbackBtn.disabled = false;
-                    recordBtn.textContent = 'Ghi âm lại';
-                    recordBtn.classList.remove('recording');
-                    recording = false;
-                };
-            } catch (err) {
-                micStatus.textContent = 'Không thể truy cập microphone. Vui lòng cấp quyền ghi âm.';
-                micStatus.classList.remove('hidden');
-                recordBtn.disabled = true;
-                console.error(`Microphone access denied: ${err}`);
-            }
-        }
-
-        // Starts or stops the recording
-        function toggleRecording() {
-            if (!mediaRecorder) {
-                console.error('Chức năng ghi âm chưa sẵn sàng. Vui lòng thử lại.');
-                return;
-            }
-
-            if (!recording) {
-                recordedAudioChunks = [];
-                mediaRecorder.start();
-                recordBtn.textContent = 'Đang ghi âm...';
-                recordBtn.classList.add('recording');
-                playbackBtn.disabled = true;
-                recording = true;
-            } else {
-                mediaRecorder.stop();
-            }
-        }
-        
-        // Plays back the recorded audio
-        function playRecording() {
-            if (recordedAudioBlob) {
-                const audioUrl = URL.createObjectURL(recordedAudioBlob);
-                const audio = new Audio(audioUrl);
-                audio.play();
             }
         }
         
@@ -2201,16 +1794,12 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderNav();
             updateUI();
-            initRecorder();
             authenticate();
         });
 
         nextBtn.addEventListener('click', nextSentence);
         prevBtn.addEventListener('click', prevSentence);
         readAloudBtn.addEventListener('click', readAloud);
-        recordBtn.addEventListener('click', toggleRecording);
-        playbackBtn.addEventListener('click', playRecording);
-        stopTimerBtn.addEventListener('click', toggleTimer);
     </script>
 </body>
 </html>
